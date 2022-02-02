@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UsuarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/loginPOST',[UsuarioController::class, 'login']);
+
+Route::post('leer',[UsuarioController::class, 'index']);
+
+Route::post('login_ajax',[UsuarioController::class, 'login_ajax']);
