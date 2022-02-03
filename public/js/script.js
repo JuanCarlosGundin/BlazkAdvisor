@@ -1,6 +1,3 @@
-//alert("llego")
-
-
 //AJAX BASICO PARA SU FUNCIONAMIENTO
 function objetoAjax() {
     var xmlhttp = false;
@@ -18,6 +15,36 @@ function objetoAjax() {
     }
     return xmlhttp;
 }
+//alert("llego")
+function IWantToLogin() {
+    formulario_html = document.getElementById('form_login')
+    formulario_html.style.display = "block";
+}
+
+function IWantToLogout() {
+    //Hacemos un flush y que nos devuelva al home. Por ahora solo al login
+    var formData = new FormData();
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+
+    var ajax = objetoAjax();
+    //Abrimos comunicacion para el controller
+    ajax.open("POST", "logout", true);
+
+    ajax.onreadystatechange = function() {
+        if (ajax.readyState == 4 && ajax.status == 200) {}
+    }
+    ajax.send(formData);
+}
+
+window.onload = function cerrar_formulario_loginJS() {
+    formulario_html = document.getElementById('form_login')
+    formulario_html.style.display = "none";
+
+    formulario_reg_html = document.getElementById('form')
+    formulario_reg_html.style.display = "none";
+}
+
+
 //Funcion de validacion del login
 function validacion_loginJS() {
     var fails = document.getElementById('errores')
@@ -67,10 +94,6 @@ function loginJS() {
     ajax.send(formData);
 }
 
-window.onload = function cerrar_formularioJS() {
-    formulario_html = document.getElementById('form')
-    formulario_html.style.display = "none";
-}
 
 function abrir_formularioJS() {
     formulario_html = document.getElementById('form')

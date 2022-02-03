@@ -27,9 +27,15 @@ class UsuarioController extends Controller
         $email = $request->input('email_user');
         $password = $request->input('password_user');
         $login_succes=0;
-
         $search_user=DB::select('select * from tbl_usuario where mail_usuario=? and contraseña_usuario=?',[$email,$password]);
-        if (sizeof($search_user)==1){
+        if (sizeof($search_user)>0){
+            foreach ($search_user as $user) {
+                //AQUI ESTA LA CHICA
+               //session(['user' => $user['nombre_usuario']]);
+               session(['user' => $user['nombre_usuario']]);
+
+
+            }
             $login_succes=1;
             return $login_succes;
         }else{
@@ -51,6 +57,10 @@ class UsuarioController extends Controller
         } catch (\Throwable $th) {
             return response()->json(array('resultado'=> 'NOK: '.$th->getMessage()));
         }
+    }
+    public function logout(){
+        session()->forget('user');
+        return view('login');
     }
 
     /**

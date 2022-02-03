@@ -25,3 +25,5 @@ Route::post('leer',[UsuarioController::class, 'index']);
 Route::post('login_ajax',[UsuarioController::class, 'login_ajax']);
 
 Route::post('registro_ajax',[UsuarioController::class, 'registro_ajax']);
+
+Route::post('logout',[UsuarioController::class, 'logout']);
