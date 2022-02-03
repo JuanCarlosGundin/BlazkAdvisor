@@ -43,7 +43,6 @@ class UsuarioController extends Controller
             if ($request->hasFile('photo')) {
                 $path=$request->file('photo')->store('uploads','public');                
             }else{
-
                 $path="uploads/XQA0H4DjGOhvgZQAuLgnrSow4M7ho2DAngS06g6n.jpg";
             }
             

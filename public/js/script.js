@@ -128,10 +128,10 @@ function registroJS(name_reg, email_reg, pass_reg, type_reg, photo_reg) {
             /* Leerá la respuesta que es devuelta por el controlador: */
             if (respuesta.resultado == 'OK') {
                 fails.innerHTML = "Inserción correcta."
+                redirect_homeJS();
             } else {
-                fails.innerHTML = "Fallo en la inserción: " + respuesta.resultado;
+                fails.innerHTML = "Fallo en la inserción";
             }
-            redirect_homeJS();
         }
     }
     ajax.send(formData);
@@ -139,7 +139,6 @@ function registroJS(name_reg, email_reg, pass_reg, type_reg, photo_reg) {
 }
 
 function redirect_homeJS() {
-    var ajax = objetoAjax();
-    //Abrimos comunicacion para el controller
-    ajax.open("POST", "loginPOST", true);
+    //Aqui redirigimos al home
+    window.location.href = "./loginPOST";
 }
