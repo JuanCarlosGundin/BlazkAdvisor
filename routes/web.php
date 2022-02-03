@@ -18,8 +18,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/loginPOST',[UsuarioController::class, 'login']);
+Route::get('loginPOST',[UsuarioController::class, 'login']);
 
 Route::post('leer',[UsuarioController::class, 'index']);
 
 Route::post('login_ajax',[UsuarioController::class, 'login_ajax']);
+
+Route::post('registro_ajax',[UsuarioController::class, 'registro_ajax']);

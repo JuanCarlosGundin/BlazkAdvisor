@@ -37,6 +37,22 @@ class UsuarioController extends Controller
             return $login_succes;
         }
     }
+    public function registro_ajax(Request $request){
+        try {
+            
+            if ($request->hasFile('photo')) {
+                $path=$request->file('photo')->store('uploads','public');                
+            }else{
+
+                $path="uploads/XQA0H4DjGOhvgZQAuLgnrSow4M7ho2DAngS06g6n.jpg";
+            }
+            
+            DB::insert('insert into tbl_usuario (mail_usuario,contraseña_usuario,foto_usuario,nombre_usuario,perfil_usuario) values (?,?,?,?,?)',[$request->input('email'),$request->input('password'),$path,$request->input('name'),$request->input('type')]);
+            return response()->json(array('resultado'=> 'OK'));            
+        } catch (\Throwable $th) {
+            return response()->json(array('resultado'=> 'NOK: '.$th->getMessage()));
+        }
+    }
 
     /**
      * Show the form for creating a new resource.

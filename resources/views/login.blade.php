@@ -19,7 +19,13 @@
     <div id="errores"></div>
     <div id="datos_user"></div>
     <button onclick="abrir_formularioJS(); return false;">Me quiero registrar</button>
-    <div id="form"></div>
+    <div id="form">
+        <form action="" onsubmit="validacion_registroJS(); return false;"><input type="text" name="name_reg" id="name_reg" placeholder="Nombre...">
+            <br><input type="email" name="email_reg" id="email_reg" placeholder="Email..."><br><input type = "password" name = "pass_reg" id = "pass_reg" placeholder="password">
+            <input type = "hidden" name="type_reg" id="type_reg" value=1><br><input type="file" name="photo_reg" id="photo_reg">
+            <br><input type="submit" value="Registrar"></form>
+    </div>
+    <div id="errores_reg"></div>
 </body>
 <script src="./js/script.js"></script>
 </html>

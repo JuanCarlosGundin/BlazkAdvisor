@@ -67,9 +67,79 @@ function loginJS() {
     ajax.send(formData);
 }
 
+window.onload = function cerrar_formularioJS() {
+    formulario_html = document.getElementById('form')
+    formulario_html.style.display = "none";
+}
+
 function abrir_formularioJS() {
     formulario_html = document.getElementById('form')
-    formulario_html.innerHTML = '<form action="" onsubmit="validacion_registroJS(); return false;"><input type="text" name="name_reg" id="name_reg" placeholder="Nombre...">'
-    formulario_html.innerHTML += '<input type="email" name="email_reg" id="email_reg" placeholder="Email..."><br><input type = "password" name = "pass_reg" id = "pass_reg" placeholder="password">'
-    formulario_html.innerHTML += '<input type = "hidden" name="type_reg" id="type_reg" value=1><br><input type="file" name="photo_reg" id="photo_reg"></form>'
+    formulario_html.style.display = "block";
+}
+
+
+function validacion_registroJS() {
+    var fails = document.getElementById('errores_reg')
+
+    photo_reg = document.getElementById('photo_reg').files[0]
+    name_reg = document.getElementById('name_reg').value
+    email_reg = document.getElementById('email_reg').value
+    pass_reg = document.getElementById('pass_reg').value
+    type_reg = document.getElementById('type_reg').value
+
+    if (name_reg == "" && email_reg == "" && pass_reg == "") {
+        fails.innerHTML = "<p>Falta todo</p>"
+    } else if (name_reg == "" && email_reg == "") {
+        fails.innerHTML = "<p>Falta nombre y mail</p>"
+    } else if (email_reg == "" && pass_reg == "") {
+        fails.innerHTML = "<p>Falta mail y pass</p>"
+    } else if (name_reg == "" && pass_reg == "") {
+        fails.innerHTML = "<p>Falta nombre y pass</p>"
+    } else if (name_reg == "" && pass_reg == "") {
+        fails.innerHTML = "<p>Falta nombre y pass</p>"
+    } else if (pass_reg == "") {
+        fails.innerHTML = "<p>Falta pass</p>"
+    } else if (name_reg == "") {
+        fails.innerHTML = "<p>Falta nombre</p>"
+    } else if (email_reg == "") {
+        fails.innerHTML = "<p>Falta email</p>"
+    } else {
+        registroJS(name_reg, email_reg, pass_reg, type_reg, photo_reg);
+    }
+}
+
+function registroJS(name_reg, email_reg, pass_reg, type_reg, photo_reg) {
+    var fails = document.getElementById('errores_reg')
+
+    var formData = new FormData();
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('email', email_reg);
+    formData.append('password', pass_reg);
+    formData.append('name', name_reg);
+    formData.append('type', type_reg);
+    formData.append('photo', photo_reg);
+
+    var ajax = objetoAjax();
+    //Abrimos comunicacion para el controller
+    ajax.open("POST", "registro_ajax", true);
+    ajax.onreadystatechange = function() {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            var respuesta = JSON.parse(this.responseText);
+            /* Leerá la respuesta que es devuelta por el controlador: */
+            if (respuesta.resultado == 'OK') {
+                fails.innerHTML = "Inserción correcta."
+            } else {
+                fails.innerHTML = "Fallo en la inserción: " + respuesta.resultado;
+            }
+            redirect_homeJS();
+        }
+    }
+    ajax.send(formData);
+    console.log(name_reg, email_reg, pass_reg, type_reg, photo_reg)
+}
+
+function redirect_homeJS() {
+    var ajax = objetoAjax();
+    //Abrimos comunicacion para el controller
+    ajax.open("POST", "loginPOST", true);
 }
