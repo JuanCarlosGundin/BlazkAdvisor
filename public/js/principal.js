@@ -45,9 +45,8 @@ function leerJS() {
                 recarga += '<td>' + respuesta[i].nombre_restaurante + '</td>'
                 recarga += '<td>' + respuesta[i].descripcion_restaurante + '</td>'
                 recarga += '<td>' + respuesta[i].email_dueño + '</td>'
-                recarga += '<td><div id="map'+i.toString()+'" style=" height: 500px; width: 500px;"></div></td>'
+                recarga += '<td><div class="map" id="map'+i.toString()+'" style=" height: 500px; width: 500px;"></div></td>'
                 recarga += '</tr>';
-                tabla.innerHTML = recarga;
             }
             tabla.innerHTML = recarga;
             for (let i = 0; i < respuesta.length; i++) {
@@ -66,4 +65,50 @@ function leerJS() {
     }
 
     ajax.send(formData);
+}
+
+
+//Modal BOX
+
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the <span> element that closes the modal
+var cerrar = document.getElementById("cerrar");
+
+// When the user clicks the button, open the modal 
+function abrir() {
+  modal.style.display = "block";
+  filtro=document.getElementById("filtro").value
+  enter=document.getElementById("Aqui")
+  var contenido=''
+  contenido+='<form onsubmit="editar(); return false;">' 
+  contenido+='<p>Nombre<p>'
+  contenido+='<input type="text" id="nombreE">'
+  contenido+='<p>Foto<p>'
+  contenido+='<input type="file" id="fotoE">'
+  contenido+='<input type="hidden" id="idE" ><br/><br/>'
+  contenido+='<input type="submit">'
+  contenido+='</form>'
+  contenido+=''
+  filtro.innerHTML = "SEXOOOOOOO";
+  enter.innerHTML = contenido;
+}
+
+// When the user clicks on <span> (x), close the modal
+cerrar.onclick = function() {
+    filtro=document.getElementById("filtro").value
+    filtro.innerHTML = "";
+    leerJS()
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    filtro=document.getElementById("filtro").value
+    filtro.innerHTML = "";
+    leerJS()
+    modal.style.display = "none";
+  }
 }
