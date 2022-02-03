@@ -15,7 +15,7 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        $datos=DB::select('select * from tbl_user');
+        $datos=DB::select('select * from tbl_usuario');
         return response()->json($datos);
     }
     public function login(){
@@ -24,8 +24,18 @@ class UsuarioController extends Controller
         return view('login');
     }
     public function login_ajax(Request $request){
-        $email = $request->input('email');
-        return response()->json($email);
+        $email = $request->input('email_user');
+        $password = $request->input('password_user');
+        $login_succes=0;
+
+        $search_user=DB::select('select * from tbl_usuario where mail_usuario=? and contraseña_usuario=?',[$email,$password]);
+        if (sizeof($search_user)==1){
+            $login_succes=1;
+            return $login_succes;
+        }else{
+            $login_succes=0;
+            return $login_succes;
+        }
     }
 
     /**

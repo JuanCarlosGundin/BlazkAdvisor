@@ -18,7 +18,22 @@ function objetoAjax() {
     }
     return xmlhttp;
 }
+//Funcion de validacion del login
+function validacion_loginJS() {
+    var fails = document.getElementById('errores')
+    if (document.getElementById('password').value == "" && document.getElementById('email').value == "") {
+        fails.innerHTML = "<p>Falta el mail y password</p>"
+    } else if (document.getElementById('password').value == "") {
+        fails.innerHTML = "<p>Falta el password</p>"
+    } else if (document.getElementById('email').value == "") {
+        fails.innerHTML = "<p>Falta el mail</p>"
+    } else {
+        //Si todo sale bien llama a la funcion que hace el login
+        loginJS();
+    }
+}
 
+//LOGICA DE LOGIN, EN LOS RESULTADOS DEL IF Se pondrán las funciones que redirigan a funciones de controller con el index
 function loginJS() {
     var datos = document.getElementById("datos_user");
     //datos.innerHTML = "hello"
@@ -36,16 +51,25 @@ function loginJS() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
             var recarga = '';
-            /* Leerá la respuesta que es devuelta por el controlador: */
-            for (let i = 0; i < respuesta.length; i++) {
-                recarga += '<tr>';
-                recarga += '<td>' + respuesta[i].email + '</td>'
-                recarga += '</tr>';
-            }
-            datos.innerHTML = recarga;
             console.log(respuesta)
+            if (respuesta == 1) {
+                //LOGIN CON EXITO
+                recarga += '<p>BINGO</p>'
+            } else {
+                //LOGIN FRACASO
+                recarga += '<p>Usuario no encontrado</p>'
+            }
+            /* Leerá la respuesta que es devuelta por el controlador: */
+
+            datos.innerHTML = recarga;
         }
     }
-
     ajax.send(formData);
+}
+
+function abrir_formularioJS() {
+    formulario_html = document.getElementById('form')
+    formulario_html.innerHTML = '<form action="" onsubmit="validacion_registroJS(); return false;"><input type="text" name="name_reg" id="name_reg" placeholder="Nombre...">'
+    formulario_html.innerHTML += '<input type="email" name="email_reg" id="email_reg" placeholder="Email..."><br><input type = "password" name = "pass_reg" id = "pass_reg" placeholder="password">'
+    formulario_html.innerHTML += '<input type = "hidden" name="type_reg" id="type_reg" value=1><br><input type="file" name="photo_reg" id="photo_reg"></form>'
 }
