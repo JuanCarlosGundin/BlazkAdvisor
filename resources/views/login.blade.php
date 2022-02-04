@@ -10,25 +10,6 @@
     <title>Document</title>
 </head>
 <body>
-    <div>
-        <?php
-        session_start();
-        if (session('user')) {
-            if (session('tipo')==1) {
-                echo "You are raso";
-            }else{
-                echo "You are admin";
-            }
-            $username_logged = session('user');
-            //print_r($username_logged);
-            //echo "Bienvenido: ".$username_logged->nombre_usuario;
-            echo "Bienvenido: ".$username_logged;
-            echo '<button onclick="IWantToLogout(); return false;">Logout</button>';
-        }else{
-            echo '<button onclick="IWantToLogin(); return false;">Iniciar sesión</button>';
-        }
-        ?>
-    </div>
 
     <div id="form_login">
         <form action="" onsubmit="validacion_loginJS(); return false;">
@@ -61,7 +42,23 @@
             </div>
             <!-- Inicio de sesión -->
             <div class="inicio">
-                <button class="iniciosesion"><b>Iniciar sesión</b></button>
+                <?php
+                    session_start();
+                    if (session('user')) {
+                        if (session('tipo')==1) {
+                            echo "You are raso";
+                        }else{
+                            echo "You are admin";
+                        }
+                        $username_logged = session('user');
+                        //print_r($username_logged);
+                        //echo "Bienvenido: ".$username_logged->nombre_usuario;
+                        echo "Bienvenido: ".$username_logged;
+                        echo '<button class="iniciosesion" onclick="IWantToLogout(); return false;"><b>Logout</b></button>';
+                    }else{
+                        echo '<button  class="iniciosesion" onclick="IWantToLogin(); return false;"><b>Iniciar sesión</b></button>';
+                    }
+                ?>
             </div>
         </div>
     </header>
