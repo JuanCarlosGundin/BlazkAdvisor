@@ -27,11 +27,21 @@ class UsuarioController extends Controller
         $email = $request->input('email_user');
         $password = $request->input('password_user');
         $search_user=DB::select('select * from tbl_usuario where mail_usuario=? and contraseña_usuario=?',[$email,$password]);
+        if (sizeof($search_user)>0){
+            foreach ($search_user as $user) {
+                session(['user' => $user->nombre_usuario]);
+            }
+        }
         return response()->json($search_user);
     }
     public function registro_ajax(Request $request){
         try {
-            
+            $email = $request->input('email');
+            $user_mismo_mail=DB::select('select * from tbl_usuario where mail_usuario=?',[$email]);
+            if (sizeof($user_mismo_mail)>0){
+                return response()->json(array('mismo_mail'=>'NOK'));
+            }
+
             if ($request->hasFile('photo')) {
                 $path=$request->file('photo')->store('uploads','public');                
             }else{
@@ -46,7 +56,6 @@ class UsuarioController extends Controller
     }
     public function logout(){
         session()->forget('user');
-        session()->forget('tipo');
         return view('login');
     }
 

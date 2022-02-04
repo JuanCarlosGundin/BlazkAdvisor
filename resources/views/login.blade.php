@@ -21,11 +21,6 @@
                 <?php
                     session_start();
                     if (session('user')) {
-                        if (session('tipo')==1) {
-                            //POR AQUI VENGO SI SOY USER NORMAL
-                        }else{
-                            //POR AQUI VENGO SI SOY ADMIN
-                        }
                         $username_logged = session('user');
                         //print_r($username_logged);
                         //echo "Bienvenido: ".$username_logged->nombre_usuario;
@@ -81,7 +76,7 @@
                 <p class="texto_form">Dirección de correo electrónico</p>
                 <input type="email" name="email_reg" id="email_reg" placeholder="Email..." class="input">
                 <p class="texto_form">Contraseña</p>
-                <input type = "password" name = "pass_reg" id = "pass_reg" placeholder="password" class="input">
+                <input type = "password" name = "pass_reg" id = "pass_reg" placeholder="Contraseña" class="input">
                 <input type = "hidden" name="type_reg" id="type_reg" value=1>
                 <p class="texto_form">Foto de perfil</p>
                 <input type="file" name="photo_reg" id="photo_reg" class="input">

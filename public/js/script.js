@@ -31,6 +31,7 @@ function IWantToLogout() {
     ajax.open("POST", "logout", true);
 
     ajax.send(formData);
+    redirect_homeJS()
 }
 
 
@@ -52,7 +53,6 @@ function validacion_loginJS() {
 
 //LOGICA DE LOGIN, EN LOS RESULTADOS DEL IF Se pondrán las funciones que redirigan a funciones de controller con el index
 function loginJS() {
-    var datos = document.getElementById("datos_user");
     //datos.innerHTML = "hello"
     //Introducimos en el formdata los values del formulario
     var formData = new FormData();
@@ -67,8 +67,8 @@ function loginJS() {
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
+            console.log(respuesta)
             if (respuesta.length > 0) {
-                console.log(respuesta[0].perfil_usuario)
                 if (respuesta[0].perfil_usuario == 1) {
                     //ADMIN
                 } else if (respuesta[0].perfil_usuario == 2) {
@@ -77,6 +77,8 @@ function loginJS() {
                     var fails = document.getElementById('confirmacion')
                     fails.innerHTML = "<p style='color:red'>Error de autenticación</p>"
                 }
+                closeModal()
+                redirect_homeJS()
             } else {
                 var fails = document.getElementById('confirmacion')
                 fails.innerHTML = "<p style='color:red'>Usuario no encontrado</p>"
@@ -179,7 +181,7 @@ function validacion_registroJS() {
 }
 
 function registroJS(name_reg, email_reg, pass_reg, type_reg, photo_reg) {
-    var fails = document.getElementById('errores_reg')
+    var fails = document.getElementById('confirmacion_reg')
 
     var formData = new FormData();
     formData.append('_token', document.getElementById('token').getAttribute("content"));
@@ -196,11 +198,19 @@ function registroJS(name_reg, email_reg, pass_reg, type_reg, photo_reg) {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
             /* Leerá la respuesta que es devuelta por el controlador: */
-            if (respuesta.resultado == 'OK') {
-                redirect_homeJS();
+            if (respuesta.mismo_mail == 'NOK') {
+                console.log(respuesta)
+                fails.innerHTML = "<p style='color:red'>El mail ya ha sido introducido ¿Eres tú?</p>"
             } else {
-                fails.innerHTML = "Fallo en la inserción";
+                if (respuesta.resultado == 'OK') {
+                    console.log(respuesta)
+                        //redirect_homeJS();
+                } else {
+                    console.log(respuesta)
+                    fails.innerHTML = "Fallo en la inserción";
+                }
             }
+
         }
     }
     ajax.send(formData);
