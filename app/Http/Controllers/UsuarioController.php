@@ -32,9 +32,8 @@ class UsuarioController extends Controller
             foreach ($search_user as $user) {
                 //AQUI ESTA LA CHICA
                //session(['user' => $user['nombre_usuario']]);
-               session(['user' => $user['nombre_usuario']]);
-
-
+               session(['user' => $user->nombre_usuario]);
+               session(['tipo' => $user->perfil_usuario]);
             }
             $login_succes=1;
             return $login_succes;
@@ -60,6 +59,7 @@ class UsuarioController extends Controller
     }
     public function logout(){
         session()->forget('user');
+        session()->forget('tipo');
         return view('login');
     }
 

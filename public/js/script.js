@@ -30,9 +30,6 @@ function IWantToLogout() {
     //Abrimos comunicacion para el controller
     ajax.open("POST", "logout", true);
 
-    ajax.onreadystatechange = function() {
-        if (ajax.readyState == 4 && ajax.status == 200) {}
-    }
     ajax.send(formData);
 }
 

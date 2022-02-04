@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" href="./css/style.css">
     <title>Document</title>
 </head>
 <body>
@@ -12,6 +13,11 @@
         <?php
         session_start();
         if (session('user')) {
+            if (session('tipo')==1) {
+                echo "You are raso";
+            }else{
+                echo "You are admin";
+            }
             $username_logged = session('user');
             //print_r($username_logged);
             //echo "Bienvenido: ".$username_logged->nombre_usuario;
