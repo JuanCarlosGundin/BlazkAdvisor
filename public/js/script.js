@@ -33,13 +33,6 @@ function IWantToLogout() {
     ajax.send(formData);
 }
 
-window.onload = function cerrar_formulario_loginJS() {
-    formulario_html = document.getElementById('modal-content')
-    formulario_html.style.display = "none";
-
-    formulario_reg_html = document.getElementById('modal-content2')
-    formulario_reg_html.style.display = "none";
-}
 
 
 //Funcion de validacion del login
@@ -98,12 +91,35 @@ function loginJS() {
 
 
 function abrir_formularioJS() {
-    var modal = document.getElementById("myModal");
-    modal.style.display = "block";
+    var modal = document.getElementById("modal-content");
+    modal.style.display = "none";
 
-    formulario_html = document.getElementById('form')
+    formulario_html = document.getElementById('modal-content2')
     formulario_html.style.display = "block";
 }
+
+/*Close modal*/
+var span = document.getElementsByClassName("close")[0];
+span.onclick = function() {
+    var modal = document.getElementById("MyModal");
+    modal.style.display = "none";
+}
+
+
+// When the user clicks anywhere outside of the modal, close it
+
+window.onclick = function(event) {
+    var modal = document.getElementById("MyModal");
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+function closeModal() {
+    var modal = document.getElementById("MyModal");
+    modal.style.display = "none";
+}
+/*FIN CLOSE MODAL*/
 
 
 function validacion_registroJS() {

@@ -40,23 +40,34 @@
     </header>
     <!-- Aqui esta el modal -->
     <div class="modal" id="MyModal">
-        MOdal padre
-        <div id="modal-content">
+        <div class="modal-content" id="modal-content">
+            <span class="close">&times;</span>
+            <img src="https://static.tacdn.com/img2/brand_refresh/Tripadvisor_Logo_dark-bg_circle-green_horizontal-lockup_registered_RGB.svg" width="226" height="50" alt="">
+            <h1 class="text_form">¡Hola de nuevo!</h1>
             <form action="" onsubmit="validacion_loginJS(); return false;">
-                <input type="email" name="email" id="email" placeholder="email...">
+                <p class="texto_form">Dirección de correo electrónico</p><br>
+                <input type="email" name="email" id="email" placeholder="Dirección de correo electrónico" class="input">
                 <br>
-                <input type="password" name="password" id="password">password
+                <p class="texto_form">Contraseña</p><br>
+                <input type="password" name="password" id="password" placeholder="Contraseña" class="input">
                 <br>
-                <input type="submit" value="Login">
-                
+                <a href="" class="olvido_contrasena">¿Olvidaste la contraseña?</a>
+                <br>
+                <center>
+                <input type="submit" value="Login" class="iniciosesion">
+                <p class="texto_form">No eres miembro?</p><br>
+                <button onclick="abrir_formularioJS(); return false;" class="iniciosesion">Únete</button>
+                <br><p>Al continuar, declaras tu conformidad con nuestras Condiciones de uso y confirmas que has leído nuestra Declaración de privacidad y cookies.</p>
+                <br><p>Este sitio está protegido por reCAPTCHA y se aplican la Política de privacidad y las Condiciones del servicio de Google.</p>
+                </center>
             </form>
-            <button onclick="abrir_formularioJS(); return false;">Me quiero registrar</button>
+            
         </div>
 
         <div id="errores"></div>
         <div id="datos_user"></div>
 
-        <div id="modal-content2">
+        <div class="modal-content" id="modal-content2">
             <form action="" onsubmit="validacion_registroJS(); return false;"><input type="text" name="name_reg" id="name_reg" placeholder="Nombre...">
                 <br><input type="email" name="email_reg" id="email_reg" placeholder="Email..."><br><input type = "password" name = "pass_reg" id = "pass_reg" placeholder="password">
                 <input type = "hidden" name="type_reg" id="type_reg" value=1><br><input type="file" name="photo_reg" id="photo_reg">

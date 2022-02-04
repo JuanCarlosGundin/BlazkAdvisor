@@ -89,13 +89,45 @@
     
     .modal-content {
         background-color: #fefefe;
-        margin: 15% auto;
+        margin: 5% auto;
         /* 15% from the top and centered */
         padding: 20px;
         border: 1px solid #888;
-        width: 80%;
+        width: 30%;
+        height: 70vh;
+        font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
         /* Could be more or less, depending on screen size */
     }
+    
+    #modal-content2 {
+        display: none;
+        font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+    }
+    /*FINAL MODAL CONTENT BOX*/
+    /*principio de estilos del formulario*/
+    
+    .texto_form {
+        margin-left: 20px;
+        font-style: bolder;
+    }
+    
+    .close {
+        margin-left: 99%;
+    }
+    
+    .input {
+        width: 80%;
+        padding: 10px;
+        margin-left: 20px;
+    }
+    
+    .olvido_contrasena {
+        margin-left: 20px;
+        text-decoration: underline;
+        color: black;
+        font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+    }
+    /*Final de estilos del formulario*/
     
     .iniciosesion:hover {
         background-color: rgb(31, 31, 31);
