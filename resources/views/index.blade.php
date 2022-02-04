@@ -69,7 +69,7 @@
             <h1>Restaurantes</h1>
             <h4>Los mejores restaurantes de la ciudad</h4>
                 <div class="restaurante">
-                        <button class="resbtn">
+                    <button class="resbtn">
                             <div>
                                 <img class="imagenres" src="img/2.jpg">
                             </div>
@@ -82,8 +82,8 @@
                             <div class="desc">
                                 <p>DESCRIPCION</p>
                             </div>
-                        </button>
-                        <button class="resbtn">
+                    </button>
+                    <button class="resbtn">
                             <div>
                                 <img class="imagenres" src="img/2.jpg">
                             </div>
@@ -96,8 +96,8 @@
                             <div class="desc">
                                 <p>DESCRIPCION</p>
                             </div>
-                        </button>
-                        <button class="resbtn">
+                    </button>
+                    <button class="resbtn">
                             <div>
                                 <img class="imagenres" src="img/2.jpg">
                             </div>
@@ -110,8 +110,8 @@
                             <div class="desc">
                                 <p>DESCRIPCION</p>
                             </div>
-                        </button>
-                        <button class="resbtn">
+                    </button>
+                    <button class="resbtn">
                             <div>
                                 <img class="imagenres" src="img/2.jpg">
                             </div>
@@ -124,8 +124,8 @@
                             <div class="desc">
                                 <p>DESCRIPCION</p>
                             </div>
-                        </button>
-                        <button class="resbtn">
+                    </button>
+                    <button class="resbtn">
                             <div>
                                 <img class="imagenres" src="img/2.jpg">
                             </div>
@@ -138,8 +138,8 @@
                             <div class="desc">
                                 <p>DESCRIPCION</p>
                             </div>
-                        </button>
-                        <button class="resbtn">
+                    </button>
+                    <button class="resbtn">
                             <div>
                                 <img class="imagenres" src="img/2.jpg">
                             </div>
@@ -152,8 +152,8 @@
                             <div class="desc">
                                 <p>DESCRIPCION</p>
                             </div>
-                        </button>
-                        <button class="resbtn">
+                    </button>
+                    <button class="resbtn">
                             <div>
                                 <img class="imagenres" src="img/2.jpg">
                             </div>
@@ -166,8 +166,8 @@
                             <div class="desc">
                                 <p>DESCRIPCION</p>
                             </div>
-                        </button>
-                        <button class="resbtn">
+                    </button>
+                    <button class="resbtn">
                             <div>
                                 <img class="imagenres" src="img/2.jpg">
                             </div>
@@ -180,8 +180,8 @@
                             <div class="desc">
                                 <p>DESCRIPCION</p>
                             </div>
-                        </button>
-                        <button class="resbtn">
+                    </button>
+                    <button class="resbtn">
                             <div>
                                 <img class="imagenres" src="img/2.jpg">
                             </div>
@@ -194,8 +194,8 @@
                             <div class="desc">
                                 <p>DESCRIPCION</p>
                             </div>
-                        </button>
-                        <button class="resbtn">
+                    </button>
+                    <button class="resbtn">
                             <div>
                                 <img class="imagenres" src="img/2.jpg">
                             </div>
@@ -208,8 +208,8 @@
                             <div class="desc">
                                 <p>DESCRIPCION</p>
                             </div>
-                        </button>
-                        <button class="resbtn">
+                    </button>
+                    <button class="resbtn">
                             <div>
                                 <img class="imagenres" src="img/2.jpg">
                             </div>
@@ -222,8 +222,8 @@
                             <div class="desc">
                                 <p>DESCRIPCION</p>
                             </div>
-                        </button>
-                        <button class="resbtn">
+                    </button>
+                    <button class="resbtn">
                             <div>
                                 <img class="imagenres" src="img/2.jpg">
                             </div>
@@ -236,10 +236,15 @@
                             <div class="desc">
                                 <p>DESCRIPCION</p>
                             </div>
-                        </button>
+                    </button>
                 </div>
             </div>
         </div>
     </div>
+    <footer>
+        <div class="footer">
+            <p>Creado por Juan Carlos, Pol y Gerard</p>
+        </div>
+    </footer>
 </body>
 </html>
