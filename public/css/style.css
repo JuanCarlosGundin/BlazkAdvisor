@@ -96,7 +96,7 @@
         width: 100%;
         border-radius: 15px;
         padding: 12%;
-        font-size: 16px;
+        font-size: 100%;
         border-width: 1px;
         text-align: left;
         vertical-align: text-top;
@@ -194,4 +194,20 @@
         border-width: 0px;
         cursor: pointer;
         width: 24.7%;
+        padding-bottom: 5%;
+    }
+    
+    .imagenres {
+        width: 275px;
+        height: 275px;
+        object-fit: cover;
+        background-color: black;
+    }
+    
+    .imagenres:hover {
+        opacity: 80%;
+    }
+    
+    .titulo:hover {
+        text-decoration: underline;
     }
