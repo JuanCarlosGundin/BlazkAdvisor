@@ -71,7 +71,7 @@
                 <div class="restaurante">
                         <button class="resbtn">
                             <div class="imagen">
-                                <p>IMAGEN</p>
+                                <img
                             </div>
                             <div class="titulo">
                                 <p>TITULO DE MUESTRA</p>
