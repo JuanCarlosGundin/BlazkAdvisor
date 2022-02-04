@@ -67,8 +67,22 @@ function loginJS() {
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
-            var recarga = '';
-            console.log(respuesta)
+            if (respuesta.length > 0) {
+                console.log(respuesta[0].perfil_usuario)
+                if (respuesta[0].perfil_usuario == 1) {
+                    //ADMIN
+                } else if (respuesta[0].perfil_usuario == 2) {
+                    //USER
+                } else {
+                    var fails = document.getElementById('confirmacion')
+                    fails.innerHTML = "<p style='color:red'>Error de autenticación</p>"
+                }
+            } else {
+                var fails = document.getElementById('confirmacion')
+                fails.innerHTML = "<p style='color:red'>Usuario no encontrado</p>"
+            }
+
+
 
             /* AQUI LEEREMOS LO REPSUESTO EN FORMA DE JSON
 
@@ -82,8 +96,6 @@ function loginJS() {
             }
             */
             /* Leerá la respuesta que es devuelta por el controlador: */
-
-            datos.innerHTML = recarga;
         }
     }
     ajax.send(formData);

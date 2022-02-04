@@ -26,25 +26,8 @@ class UsuarioController extends Controller
     public function login_ajax(Request $request){
         $email = $request->input('email_user');
         $password = $request->input('password_user');
-        $login_succes=0;
         $search_user=DB::select('select * from tbl_usuario where mail_usuario=? and contraseña_usuario=?',[$email,$password]);
-        if (sizeof($search_user)>0){
-            return response()->json($search_user);
-
-            /*Al no usar sessiones no utilizamos esto de abajo
-            foreach ($search_user as $user) {
-                
-                //Al no usar sessiones no utilizamos esto de abajo
-               //session(['user' => $user->nombre_usuario]);
-               //session(['tipo' => $user->perfil_usuario]);
-            }
-            $login_succes=1;
-            return $login_succes;
-            */
-        }else{
-            $login_succes=0;
-            return $login_succes;
-        }
+        return response()->json($search_user);
     }
     public function registro_ajax(Request $request){
         try {
