@@ -14,7 +14,12 @@ class RestauranteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function leerControler(Request $request){
-        $datos=DB::select('select * from tbl_restaurantes where nombre_restaurante like ?',['%'.$request->input('filtro').'%']);
+        if($request->input('tipo')==1){
+            $datos=DB::select('select * from tbl_restaurantes inner join tbl_fotos on tbl_restaurantes.id_restaurante=tbl_fotos.id_foto where tipo_restaurante like ?',['%'.$request->input('filtro').'%']);
+        }else{
+            $datos=DB::select('select * from tbl_restaurantes inner join tbl_fotos on tbl_restaurantes.id_restaurante=tbl_fotos.id_foto where nombre_restaurante like ?',['%'.$request->input('filtro').'%']);
+        }
+
         return response()->json($datos);
     }
     public function index()
