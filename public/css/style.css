@@ -94,7 +94,7 @@
         padding: 20px;
         border: 1px solid #888;
         width: 30%;
-        height: 70vh;
+        height: 80vh;
         font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
         /* Could be more or less, depending on screen size */
     }
@@ -113,6 +113,7 @@
     
     .close {
         margin-left: 99%;
+        margin-bottom: 99%;
     }
     
     .input {

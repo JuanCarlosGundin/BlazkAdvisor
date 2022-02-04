@@ -57,9 +57,11 @@
                 <input type="submit" value="Login" class="iniciosesion">
                 <p class="texto_form">No eres miembro?</p><br>
                 <button onclick="abrir_formularioJS(); return false;" class="iniciosesion">Únete</button>
-                <br><p>Al continuar, declaras tu conformidad con nuestras Condiciones de uso y confirmas que has leído nuestra Declaración de privacidad y cookies.</p>
-                <br><p>Este sitio está protegido por reCAPTCHA y se aplican la Política de privacidad y las Condiciones del servicio de Google.</p>
-                </center>
+                <div id="confirmacion">
+                    <br><p>Al continuar, declaras tu conformidad con nuestras Condiciones de uso y confirmas que has leído nuestra Declaración de privacidad y cookies.</p>
+                    <br><p>Este sitio está protegido por reCAPTCHA y se aplican la Política de privacidad y las Condiciones del servicio de Google.</p>
+                </div>
+            </center>
             </form>
             
         </div>
@@ -68,10 +70,33 @@
         <div id="datos_user"></div>
 
         <div class="modal-content" id="modal-content2">
-            <form action="" onsubmit="validacion_registroJS(); return false;"><input type="text" name="name_reg" id="name_reg" placeholder="Nombre...">
-                <br><input type="email" name="email_reg" id="email_reg" placeholder="Email..."><br><input type = "password" name = "pass_reg" id = "pass_reg" placeholder="password">
-                <input type = "hidden" name="type_reg" id="type_reg" value=1><br><input type="file" name="photo_reg" id="photo_reg">
-                <br><input type="submit" value="Registrar"></form>
+            <span class="close">&times;</span>
+            <img src="https://static.tacdn.com/img2/brand_refresh/Tripadvisor_Logo_dark-bg_circle-green_horizontal-lockup_registered_RGB.svg" width="226" height="50" alt="">
+            <h1 class="text_form">Únete y descubre lo mejor de Tripadvisor</h1>
+            
+            
+            <form action="" onsubmit="validacion_registroJS(); return false;">
+                <p class="texto_form">Nombre</p>
+                <input type="text" name="name_reg" id="name_reg" placeholder="Nombre..." class="input">
+                <p class="texto_form">Dirección de correo electrónico</p>
+                <input type="email" name="email_reg" id="email_reg" placeholder="Email..." class="input">
+                <p class="texto_form">Contraseña</p>
+                <input type = "password" name = "pass_reg" id = "pass_reg" placeholder="password" class="input">
+                <input type = "hidden" name="type_reg" id="type_reg" value=1>
+                <p class="texto_form">Foto de perfil</p>
+                <input type="file" name="photo_reg" id="photo_reg" class="input">
+                <br>
+                <center>
+                <input class="iniciosesion" type="submit" value="Registrar">
+                <div id="confirmacion_reg">
+                    <p class="texto_form">¿Ya eres miemnbro?</p>
+                    <button onclick="abrir_loginJS(); return false;" class="iniciosesion">Inicia Sesión</button>
+                    <p> Al continuar, declaras tu conformidad con nuestras Condiciones de uso y confirmas que has leído nuestra Declaración de privacidad y cookies.</p>
+                </div>
+                </center>
+            </form>
+
+                
         </div>
         
         <div id="errores_reg"></div>

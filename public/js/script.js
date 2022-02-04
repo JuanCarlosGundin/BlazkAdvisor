@@ -37,13 +37,13 @@ function IWantToLogout() {
 
 //Funcion de validacion del login
 function validacion_loginJS() {
-    var fails = document.getElementById('errores')
+    var fails = document.getElementById('confirmacion')
     if (document.getElementById('password').value == "" && document.getElementById('email').value == "") {
-        fails.innerHTML = "<p>Falta el mail y password</p>"
+        fails.innerHTML = "<p style='color:red'>Falta el mail y password</p>"
     } else if (document.getElementById('password').value == "") {
-        fails.innerHTML = "<p>Falta el password</p>"
+        fails.innerHTML = "<p style='color:red'>Falta el password</p>"
     } else if (document.getElementById('email').value == "") {
-        fails.innerHTML = "<p>Falta el mail</p>"
+        fails.innerHTML = "<p style='color:red'>Falta el mail</p>"
     } else {
         //Si todo sale bien llama a la funcion que hace el login
         loginJS();
@@ -98,9 +98,23 @@ function abrir_formularioJS() {
     formulario_html.style.display = "block";
 }
 
+function abrir_loginJS() {
+    var modal = document.getElementById("modal-content2");
+    modal.style.display = "none";
+
+    formulario_html = document.getElementById('modal-content')
+    formulario_html.style.display = "block";
+}
+
+
 /*Close modal*/
-var span = document.getElementsByClassName("close")[0];
-span.onclick = function() {
+var span0 = document.getElementsByClassName("close")[0];
+var span1 = document.getElementsByClassName("close")[1];
+span0.onclick = function() {
+    var modal = document.getElementById("MyModal");
+    modal.style.display = "none";
+}
+span1.onclick = function() {
     var modal = document.getElementById("MyModal");
     modal.style.display = "none";
 }
@@ -123,7 +137,7 @@ function closeModal() {
 
 
 function validacion_registroJS() {
-    var fails = document.getElementById('errores_reg')
+    var confirmacion = document.getElementById('confirmacion_reg')
 
     photo_reg = document.getElementById('photo_reg').files[0]
     name_reg = document.getElementById('name_reg').value
@@ -132,21 +146,21 @@ function validacion_registroJS() {
     type_reg = document.getElementById('type_reg').value
 
     if (name_reg == "" && email_reg == "" && pass_reg == "") {
-        fails.innerHTML = "<p>Falta todo</p>"
+        confirmacion.innerHTML = "<p style='color:red'>Falta todo</p>"
     } else if (name_reg == "" && email_reg == "") {
-        fails.innerHTML = "<p>Falta nombre y mail</p>"
+        confirmacion.innerHTML = "<p style='color:red'>Falta nombre y mail</p>"
     } else if (email_reg == "" && pass_reg == "") {
-        fails.innerHTML = "<p>Falta mail y pass</p>"
+        confirmacion.innerHTML = "<p style='color:red'>Falta mail y pass</p>"
     } else if (name_reg == "" && pass_reg == "") {
-        fails.innerHTML = "<p>Falta nombre y pass</p>"
+        confirmacion.innerHTML = "<p style='color:red'>Falta nombre y pass</p>"
     } else if (name_reg == "" && pass_reg == "") {
-        fails.innerHTML = "<p>Falta nombre y pass</p>"
+        confirmacion.innerHTML = "<p style='color:red'>Falta nombre y pass</p>"
     } else if (pass_reg == "") {
-        fails.innerHTML = "<p>Falta pass</p>"
+        confirmacion.innerHTML = "<p style='color:red'>Falta pass</p>"
     } else if (name_reg == "") {
-        fails.innerHTML = "<p>Falta nombre</p>"
+        confirmacion.innerHTML = "<p style='color:red'>Falta nombre</p>"
     } else if (email_reg == "") {
-        fails.innerHTML = "<p>Falta email</p>"
+        confirmacion.innerHTML = "<p style='color:red'>Falta email</p>"
     } else {
         registroJS(name_reg, email_reg, pass_reg, type_reg, photo_reg);
     }
@@ -171,7 +185,6 @@ function registroJS(name_reg, email_reg, pass_reg, type_reg, photo_reg) {
             var respuesta = JSON.parse(this.responseText);
             /* Leerá la respuesta que es devuelta por el controlador: */
             if (respuesta.resultado == 'OK') {
-                fails.innerHTML = "Inserción correcta."
                 redirect_homeJS();
             } else {
                 fails.innerHTML = "Fallo en la inserción";
