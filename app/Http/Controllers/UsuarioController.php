@@ -29,14 +29,18 @@ class UsuarioController extends Controller
         $login_succes=0;
         $search_user=DB::select('select * from tbl_usuario where mail_usuario=? and contraseña_usuario=?',[$email,$password]);
         if (sizeof($search_user)>0){
+            return response()->json($search_user);
+
+            /*Al no usar sessiones no utilizamos esto de abajo
             foreach ($search_user as $user) {
-                //AQUI ESTA LA CHICA
-               //session(['user' => $user['nombre_usuario']]);
-               session(['user' => $user->nombre_usuario]);
-               session(['tipo' => $user->perfil_usuario]);
+                
+                //Al no usar sessiones no utilizamos esto de abajo
+               //session(['user' => $user->nombre_usuario]);
+               //session(['tipo' => $user->perfil_usuario]);
             }
             $login_succes=1;
             return $login_succes;
+            */
         }else{
             $login_succes=0;
             return $login_succes;

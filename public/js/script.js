@@ -17,8 +17,8 @@ function objetoAjax() {
 }
 //alert("llego")
 function IWantToLogin() {
-    formulario_html = document.getElementById('form_login')
-    formulario_html.style.display = "block";
+    modal = document.getElementById('MyModal')
+    modal.style.display = "block";
 }
 
 function IWantToLogout() {
@@ -34,10 +34,10 @@ function IWantToLogout() {
 }
 
 window.onload = function cerrar_formulario_loginJS() {
-    formulario_html = document.getElementById('form_login')
+    formulario_html = document.getElementById('modal-content')
     formulario_html.style.display = "none";
 
-    formulario_reg_html = document.getElementById('form')
+    formulario_reg_html = document.getElementById('modal-content2')
     formulario_reg_html.style.display = "none";
 }
 
@@ -76,6 +76,10 @@ function loginJS() {
             var respuesta = JSON.parse(this.responseText);
             var recarga = '';
             console.log(respuesta)
+
+            /* AQUI LEEREMOS LO REPSUESTO EN FORMA DE JSON
+
+
             if (respuesta == 1) {
                 //LOGIN CON EXITO
                 recarga += '<p>BINGO</p>'
@@ -83,6 +87,7 @@ function loginJS() {
                 //LOGIN FRACASO
                 recarga += '<p>Usuario no encontrado</p>'
             }
+            */
             /* Leerá la respuesta que es devuelta por el controlador: */
 
             datos.innerHTML = recarga;
@@ -93,6 +98,9 @@ function loginJS() {
 
 
 function abrir_formularioJS() {
+    var modal = document.getElementById("myModal");
+    modal.style.display = "block";
+
     formulario_html = document.getElementById('form')
     formulario_html.style.display = "block";
 }
