@@ -52,8 +52,9 @@
             </div>
             <div class="botonestipos">
                 <button class="tiposcomida"><b>Comida china</b><div class="iconos">
-                    <i class="far fa-star"></i>
-                </div>
+                    <div class="iconos">
+                        <i class="far fa-star"></i>
+                    </div>
             </button>
             </div>
         </div>
