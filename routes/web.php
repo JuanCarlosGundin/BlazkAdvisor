@@ -15,7 +15,11 @@ use App\Http\Controllers\UsuarioController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
+});
+
+Route::get('/restaurante', function () {
+    return view('restaurante');
 });
 
 Route::get('loginPOST',[UsuarioController::class, 'login']);
