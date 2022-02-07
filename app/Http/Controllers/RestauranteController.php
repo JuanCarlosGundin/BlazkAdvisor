@@ -49,6 +49,10 @@ class RestauranteController extends Controller
         try {
             //Request a la comunicacion con AJax
 
+            //FOTO
+            $path=$request->file('foto')->store('/img','public');
+
+            //INPUTS
             $nombre = $request->input('nombre');
             $latitud = $request->input('latitud');
             $altitud = $request->input('altitud');
@@ -62,8 +66,9 @@ class RestauranteController extends Controller
             $precio = $request->input('precio');
 
             //Textos completos
-
-            DB::insert('insert into tbl_restaurantes (nombre_restaurante,loc_lat_restaurante,descripcion_restaurante,email_dueño,loc_alt_restaurante,loc_restaurante,tipo_restaurante,dieta_especial,comidas_restaurante,activo_restaurante,precio_restaurante) values (?,?,?,?,?,?,?,?,?,?,?)',[$nombre,$latitud,$descripcion,$email,$altitud,$localidad,$tipo,$dieta,$comidas,$activo,$precio]);
+            $id = DB::table('tbl_restaurantes')->insertGetId(
+                [ 'nombre_restaurante' => $nombre,'email_dueño'=> $email,'loc_alt_restaurante'=>$altitud,'loc_restaurante'=>$localidad,'tipo_restaurante'=>$tipo,'dieta_especial'=>$dieta,'comidas_restaurante'=>$comidas,'activo_restaurante'=>$activo,'precio_restaurante'=>$precio ]);
+            DB::insert('insert into tbl_fotos (url_foto_principal,id_restaurante) values (?,?)',[$path,$id]);
             return response()->json(array('resultado'=> 'OK'));   
 
         } catch (\Throwable $th) {

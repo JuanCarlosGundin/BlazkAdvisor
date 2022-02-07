@@ -362,20 +362,22 @@ function validacion_creadorJS() {
     dieta = document.getElementById('dieta_crear').value
     comidas = document.getElementById('comidas_crear').value
     activo = document.getElementById('activo_crear').value
+    foto = document.getElementById('foto_crear').files[0]
     precio = document.getElementById('precio_crear').value
 
-    if (nombre == "" || latitud == "" || descripcion == "" || email == "" || altitud == "" || localidad == "" || tipo == "" || dieta == "" || comidas == "" || activo == "" || precio == "") {
+    if (foto == "" || nombre == "" || latitud == "" || descripcion == "" || email == "" || altitud == "" || localidad == "" || tipo == "" || dieta == "" || comidas == "" || activo == "" || precio == "") {
         creacion_errores.innerHTML = "<p style='color:red'>Falta algún dato</p>"
     } else {
-        creacionRestauranteJS(nombre, latitud, altitud, localidad, email, descripcion, tipo, dieta, comidas, activo, precio)
+        creacionRestauranteJS(foto, nombre, latitud, altitud, localidad, email, descripcion, tipo, dieta, comidas, activo, precio)
     }
 
 }
 //INSERTAMOS DATOS DEL FORMULARIO SUANDO EL CONTROLLER MEDIANTE OBJETO AJAX
-function creacionRestauranteJS(nombre, latitud, altitud, localidad, email, descripcion, tipo, dieta, comidas, activo, precio) {
+function creacionRestauranteJS(foto, nombre, latitud, altitud, localidad, email, descripcion, tipo, dieta, comidas, activo, precio) {
     var formData = new FormData();
 
     formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('foto', foto);
     formData.append('nombre', nombre);
     formData.append('latitud', latitud);
     formData.append('altitud', altitud);

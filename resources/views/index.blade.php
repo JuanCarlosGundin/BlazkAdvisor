@@ -199,6 +199,8 @@
                 <p class="texto_form">Precio</p>
                 <input type="range" name="precio_mod" id="precio_mod" placeholder="Precio..." class="input" max=3 min=1>
                 <p class="texto_form">Activo?</p>
+                <p class="texto_form">Foto de perfil</p>
+                <!--<input type="file" name="photo_mod" id="photo_mod" class="input">-->
                 <!--<input type="text" name="activo_mod" id="activo_mod" placeholder="Activo..." class="input">-->
                 <label for="activo_mod">Des / Activar</label>
                     <select name="activo_mod" id="activo_mod" data-role="slider">
@@ -258,6 +260,7 @@
                 <input type="textarea" name="descripcion_crear" id="descripcion_crear" placeholder="Descripicón..." class="input">
                 <p class="texto_form">Precio</p>
                 <input type="range" name="precio_crear" id="precio_crear" placeholder="Precio..." class="input" max=3 min=1>
+                <input type="file" name="foto_crear" id="foto_crear" class="input">
                 <p class="texto_form">Activo?</p>
                 <!--<input type="text" name="activo_crear" id="activo_crear" placeholder="Activo..." class="input">-->
                 <label for="activo_crear">Des / Activar</label>
@@ -283,6 +286,7 @@
     <footer>
         <div class="footer">
             <p>Creado por Juan Carlos, Pol y Gerard</p>
+            <img src="img/UdPCY9k5EXP6f4cDjq1fqbyMwwgiod6mt73d1lz0.jpg" alt="" srcset="">
         </div>
     </footer>
 </body>

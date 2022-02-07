@@ -43,9 +43,9 @@ class UsuarioController extends Controller
             }
 
             if ($request->hasFile('photo')) {
-                $path=$request->file('photo')->store('uploads','public');                
+                $path=$request->file('photo')->store('img/','public');                
             }else{
-                $path="uploads/XQA0H4DjGOhvgZQAuLgnrSow4M7ho2DAngS06g6n.jpg";
+                $path="img/XQA0H4DjGOhvgZQAuLgnrSow4M7ho2DAngS06g6n.jpg";
             }
             
             DB::insert('insert into tbl_usuario (mail_usuario,contraseña_usuario,foto_usuario,nombre_usuario,perfil_usuario) values (?,?,?,?,?)',[$request->input('email'),$request->input('password'),$path,$request->input('name'),$request->input('type')]);
