@@ -109,27 +109,56 @@
     /*FINAL MODAL CONTENT BOX*/
     /*principio de estilos del formulario*/
     
+    .modallogo {
+        width: 50%;
+    }
+    
     .texto_form {
         margin-left: 20px;
-        font-style: bolder;
+        font-style: bold;
     }
     
     .close {
+        font-size: 120%;
         margin-left: 99%;
         margin-bottom: 99%;
+        cursor: pointer;
+    }
+    
+    .close:hover {
+        opacity: 50%;
     }
     
     .input {
         width: 80%;
-        padding: 10px;
+        padding: 2%;
         margin-left: 20px;
+        border-width: 1px;
     }
     
     .olvido_contrasena {
+        padding: 2%;
         margin-left: 20px;
         text-decoration: underline;
         color: black;
         font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+    }
+    
+    .no_miembro {
+        padding: 2%;
+        margin-left: 20px;
+        color: black;
+        font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+    }
+    
+    .login {
+        align-content: center;
+        display: flex;
+    }
+    
+    .unete {
+        align-content: center;
+        display: flex;
     }
     /*Final de estilos del formulario*/
     
@@ -247,6 +276,8 @@
         padding-left: 12.5%;
         padding-right: 12.5%;
         padding-top: 1%;
+        padding-bottom: 1%;
+        height: 600px;
     }
     /* TITULOS */
     
@@ -266,9 +297,8 @@
     /* RESTAURANTES */
     
     .restaurante {
-        padding-top: 1%;
-        padding-bottom: 1%;
-        width: 100%;
+        width: 25%;
+        float: left;
     }
     
     .resbtn {
@@ -276,7 +306,7 @@
         background-color: white;
         border-width: 0px;
         cursor: pointer;
-        width: 24.7%;
+        width: 25%;
         padding-bottom: 5%;
         text-align: left;
     }
@@ -472,4 +502,81 @@
         padding: 5%;
         font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
         color: rgb(71, 71, 71);
+    }
+    /* ZONA ADMIN */
+    
+    .topcontent {
+        margin: 0;
+        padding-left: 12.5%;
+        padding-right: 12.5%;
+        top: 0;
+        background-color: white;
+        display: flex;
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .titulorestaurante {
+        width: 50%;
+        float: left;
+        text-align: left;
+    }
+    
+    .botoncrear {
+        width: 50%;
+        float: right;
+        padding: 0.5%;
+    }
+    
+    .modificar {
+        color: white;
+        font-size: 16px;
+        background-color: rgb(112, 212, 82);
+        border-top-left-radius: 25px;
+        border-bottom-left-radius: 25px;
+        padding: 2%;
+        width: 40%;
+        border-color: rgb(112, 212, 82);
+        border-width: 0px;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+    
+    .eliminar {
+        color: white;
+        font-size: 16px;
+        background-color: rgb(168, 50, 50);
+        border-top-right-radius: 25px;
+        border-bottom-right-radius: 25px;
+        padding: 2%;
+        width: 40%;
+        border-color: rgb(168, 50, 50);
+        border-width: 0px;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+    
+    .modificar:hover {
+        background-color: rgb(133, 226, 105);
+    }
+    
+    .eliminar:hover {
+        background-color: rgb(226, 68, 68);
+    }
+    
+    .crear {
+        color: white;
+        font-size: 16px;
+        background-color: black;
+        border-radius: 25px;
+        padding: 1.5%;
+        width: 25%;
+        border-color: black;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+    
+    .crear:hover {
+        background-color: rgb(31, 31, 31);
     }

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>INICIO</title>
+    <title>ADMIN</title>
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script defer src="css/fontawesome/js/all.js"></script>
@@ -36,24 +36,29 @@
     <div class="modal" id="MyModal">
         <div class="modal-content" id="modal-content">
             <span class="close">&times;</span>
-            <img src="https://static.tacdn.com/img2/brand_refresh/Tripadvisor_Logo_dark-bg_circle-green_horizontal-lockup_registered_RGB.svg" width="226" height="50" alt="">
+            <img src="img/logo.png" class="modallogo" alt="">
+            <br>
+            <br>
             <h1 class="text_form">¡Hola de nuevo!</h1>
             <form action="" onsubmit="validacion_loginJS(); return false;">
-                <p class="texto_form">Dirección de correo electrónico</p><br>
-                <input type="email" name="email" id="email" placeholder="Dirección de correo electrónico" class="input">
+                <p class="texto_form">Dirección de correo electrónico</p>
+                <input type="email" name="email" id="email" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Dirección de correo electrónico" class="input">
                 <br>
-                <p class="texto_form">Contraseña</p><br>
-                <input type="password" name="password" id="password" placeholder="Contraseña" class="input">
+                <p class="texto_form">Contraseña</p>
+                <input type="password" name="password" id="password" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Contraseña" class="input">
                 <br>
                 <a href="" class="olvido_contrasena">¿Olvidaste la contraseña?</a>
                 <br>
-                <center>
-                <input type="submit" value="Login" class="iniciosesion">
-                <p class="texto_form">No eres miembro?</p><br>
-                <button onclick="abrir_formularioJS(); return false;" class="iniciosesion">Únete</button>
+                <div class="login">
+                    <input type="submit" value="Login" class="iniciosesion">
+                </div>
+                <p class="no_miembro">No eres miembro?</p>
+                <br>
+                <div class="unete">
+                    <button onclick="abrir_formularioJS(); return false;" class="iniciosesion">Únete</button>
+                </div>
                 <div id="confirmacion">
                 </div>
-            </center>
             </form>
             
         </div>
@@ -69,11 +74,11 @@
             
             <form action="" onsubmit="validacion_registroJS(); return false;">
                 <p class="texto_form">Nombre</p>
-                <input type="text" name="name_reg" id="name_reg" placeholder="Nombre..." class="input">
+                <input type="text" name="name_reg" id="name_reg" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Nombre..." class="input">
                 <p class="texto_form">Dirección de correo electrónico</p>
-                <input type="email" name="email_reg" id="email_reg" placeholder="Email..." class="input">
+                <input type="email" name="email_reg" id="email_reg" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Email..." class="input">
                 <p class="texto_form">Contraseña</p>
-                <input type = "password" name = "pass_reg" id = "pass_reg" placeholder="Contraseña" class="input">
+                <input type = "password" name = "pass_reg" id = "pass_reg" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Contraseña" class="input">
                 <input type = "hidden" name="type_reg" id="type_reg" value=1>
                 <p class="texto_form">Foto de perfil</p>
                 <input type="file" name="photo_reg" id="photo_reg" class="input">
@@ -83,7 +88,6 @@
                 <div id="confirmacion_reg">
                     <p class="texto_form">¿Ya eres miemnbro?</p>
                     <button onclick="abrir_loginJS(); return false;" class="iniciosesion">Inicia Sesión</button>
-                    <p> Al continuar, declaras tu conformidad con nuestras Condiciones de uso y confirmas que has leído nuestra Declaración de privacidad y cookies.</p>
                 </div>
                 </center>
             </form>
@@ -141,16 +145,42 @@
                 </div>
             </div>
         </div>
-        <div class="restaurantes">
-            <h1>Restaurantes</h1>
-            <h4>Los mejores restaurantes de la ciudad</h4>
+            <div class="topcontent">
+                <div class="titulorestaurante">
+                    <h1>Restaurantes</h1>
+                    <h4>Los mejores restaurantes de la ciudad</h4>
+                </div>
+                <div class="inicio">
+                    <button class="crear" onclick="(); return false;"><b>CREAR</b></button>
+                </div>
+            </div>        
+            <div class="restaurantes">
+                <div class="restaurante">
+                        <button class="resbtn">
+                                <div>
+                                    <img class="imagenres" src="img/2.jpg">
+                                </div>
+                                <div class="titulo">
+                                    <h1>TITULO DE MUESTRA</h1>
+                                </div>
+                                <div class="estrellas">
+                                    <p>ESTRELLAS</p>
+                                </div>
+                                <div class="desc">
+                                    <p>DESCRIPCION</p>
+                                </div>
+                        </button>
+                        <br>
+                        <button  class="modificar" onclick="(); return false;"><b>MODIFICAR</b></button>
+                        <button  class="eliminar" onclick="(); return false;"><b>ELIMINAR</b></button>
+                </div>
                 <div class="restaurante">
                     <button class="resbtn">
                             <div>
                                 <img class="imagenres" src="img/2.jpg">
                             </div>
                             <div class="titulo">
-                                <p>TITULO DE MUESTRA</p>
+                                <h1>TITULO DE MUESTRA</h1>
                             </div>
                             <div class="estrellas">
                                 <p>ESTRELLAS</p>
@@ -159,12 +189,17 @@
                                 <p>DESCRIPCION</p>
                             </div>
                     </button>
+                    <br>
+                    <button  class="modificar" onclick="(); return false;"><b>MODIFICAR</b></button>
+                    <button  class="eliminar" onclick="(); return false;"><b>ELIMINAR</b></button>
+                </div>
+                <div class="restaurante">
                     <button class="resbtn">
                             <div>
                                 <img class="imagenres" src="img/2.jpg">
                             </div>
                             <div class="titulo">
-                                <p>TITULO DE MUESTRA</p>
+                                <h1>TITULO DE MUESTRA</h1>
                             </div>
                             <div class="estrellas">
                                 <p>ESTRELLAS</p>
@@ -172,13 +207,18 @@
                             <div class="desc">
                                 <p>DESCRIPCION</p>
                             </div>
-                    </button>
+                    </button>                        
+                    <br>
+                    <button  class="modificar" onclick="(); return false;"><b>MODIFICAR</b></button>
+                    <button  class="eliminar" onclick="(); return false;"><b>ELIMINAR</b></button>
+                </div>
+                <div class="restaurante">
                     <button class="resbtn">
                             <div>
                                 <img class="imagenres" src="img/2.jpg">
                             </div>
                             <div class="titulo">
-                                <p>TITULO DE MUESTRA</p>
+                                <h1>TITULO DE MUESTRA</h1>
                             </div>
                             <div class="estrellas">
                                 <p>ESTRELLAS</p>
@@ -187,132 +227,9 @@
                                 <p>DESCRIPCION</p>
                             </div>
                     </button>
-                    <button class="resbtn">
-                            <div>
-                                <img class="imagenres" src="img/2.jpg">
-                            </div>
-                            <div class="titulo">
-                                <p>TITULO DE MUESTRA</p>
-                            </div>
-                            <div class="estrellas">
-                                <p>ESTRELLAS</p>
-                            </div>
-                            <div class="desc">
-                                <p>DESCRIPCION</p>
-                            </div>
-                    </button>
-                    <button class="resbtn">
-                            <div>
-                                <img class="imagenres" src="img/2.jpg">
-                            </div>
-                            <div class="titulo">
-                                <p>TITULO DE MUESTRA</p>
-                            </div>
-                            <div class="estrellas">
-                                <p>ESTRELLAS</p>
-                            </div>
-                            <div class="desc">
-                                <p>DESCRIPCION</p>
-                            </div>
-                    </button>
-                    <button class="resbtn">
-                            <div>
-                                <img class="imagenres" src="img/2.jpg">
-                            </div>
-                            <div class="titulo">
-                                <p>TITULO DE MUESTRA</p>
-                            </div>
-                            <div class="estrellas">
-                                <p>ESTRELLAS</p>
-                            </div>
-                            <div class="desc">
-                                <p>DESCRIPCION</p>
-                            </div>
-                    </button>
-                    <button class="resbtn">
-                            <div>
-                                <img class="imagenres" src="img/2.jpg">
-                            </div>
-                            <div class="titulo">
-                                <p>TITULO DE MUESTRA</p>
-                            </div>
-                            <div class="estrellas">
-                                <p>ESTRELLAS</p>
-                            </div>
-                            <div class="desc">
-                                <p>DESCRIPCION</p>
-                            </div>
-                    </button>
-                    <button class="resbtn">
-                            <div>
-                                <img class="imagenres" src="img/2.jpg">
-                            </div>
-                            <div class="titulo">
-                                <p>TITULO DE MUESTRA</p>
-                            </div>
-                            <div class="estrellas">
-                                <p>ESTRELLAS</p>
-                            </div>
-                            <div class="desc">
-                                <p>DESCRIPCION</p>
-                            </div>
-                    </button>
-                    <button class="resbtn">
-                            <div>
-                                <img class="imagenres" src="img/2.jpg">
-                            </div>
-                            <div class="titulo">
-                                <p>TITULO DE MUESTRA</p>
-                            </div>
-                            <div class="estrellas">
-                                <p>ESTRELLAS</p>
-                            </div>
-                            <div class="desc">
-                                <p>DESCRIPCION</p>
-                            </div>
-                    </button>
-                    <button class="resbtn">
-                            <div>
-                                <img class="imagenres" src="img/2.jpg">
-                            </div>
-                            <div class="titulo">
-                                <p>TITULO DE MUESTRA</p>
-                            </div>
-                            <div class="estrellas">
-                                <p>ESTRELLAS</p>
-                            </div>
-                            <div class="desc">
-                                <p>DESCRIPCION</p>
-                            </div>
-                    </button>
-                    <button class="resbtn">
-                            <div>
-                                <img class="imagenres" src="img/2.jpg">
-                            </div>
-                            <div class="titulo">
-                                <p>TITULO DE MUESTRA</p>
-                            </div>
-                            <div class="estrellas">
-                                <p>ESTRELLAS</p>
-                            </div>
-                            <div class="desc">
-                                <p>DESCRIPCION</p>
-                            </div>
-                    </button>
-                    <button class="resbtn">
-                            <div>
-                                <img class="imagenres" src="img/2.jpg">
-                            </div>
-                            <div class="titulo">
-                                <p>TITULO DE MUESTRA</p>
-                            </div>
-                            <div class="estrellas">
-                                <p>ESTRELLAS</p>
-                            </div>
-                            <div class="desc">
-                                <p>DESCRIPCION</p>
-                            </div>
-                    </button>
+                    <br>
+                    <button  class="modificar" onclick="(); return false;"><b>MODIFICAR</b></button>
+                    <button  class="eliminar" onclick="(); return false;"><b>ELIMINAR</b></button>
                 </div>
             </div>
         </div>
