@@ -68,7 +68,7 @@
         <div class="cuadros">
             <div class="ubicacion">
                 <p class="descripcion">{{$restaurante->loc_restaurante}}</p>
-                <div id="map" style="width: 200px"></div>
+                <div id="map" style=" height: 200px; "></div>
             </div>
         </div>
         <div class="cuadros">

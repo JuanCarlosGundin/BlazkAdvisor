@@ -34,19 +34,18 @@ function leerJS() {
     /* Inicializar un objeto AJAX */
     var ajax = objetoAjax();
     ajax.open("POST", "../leer", true);
-    alert("si")
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
             console.log(respuesta[0].loc_lat_restaurante)
             var map = L.map('map').setView([respuesta[0].loc_lat_restaurante,  respuesta[0].loc_alt_restaurante], 13);
             L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-             maxZoom: 18,
-            id: 'mapbox/streets-v11',
-             tileSize: 512,
-            zoomOffset: -1,
-            accessToken: 'pk.eyJ1Ijoic2hha3RlcmlubyIsImEiOiJja3o0ZzRzbjcwZXdlMm5rMm91bm1qaTI3In0.jgiCv-cyrWE1qvvKyns_AA'
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                maxZoom: 18,
+                id: 'mapbox/streets-v11',
+                tileSize: 512,
+                zoomOffset: -1,
+                accessToken: 'pk.eyJ1Ijoic2hha3RlcmlubyIsImEiOiJja3o0ZzRzbjcwZXdlMm5rMm91bm1qaTI3In0.jgiCv-cyrWE1qvvKyns_AA'
             }).addTo(map);
             L.marker([respuesta[0].loc_lat_restaurante, respuesta[0].loc_alt_restaurante]).addTo(map);
         }
