@@ -144,6 +144,7 @@
         <div class="restaurantes">
             <h1>Restaurantes</h1>
             <button onclick="crearModalRestaurante(); return false;" class="iniciosesion">Crear Restaurante</button>
+            <div id="creacion_bien"></div>
             <h4>Los mejores restaurantes de la ciudad</h4>
                 <div class="restaurante">
                     <button class="resbtn">
@@ -173,7 +174,14 @@
                 <p class="texto_form">Nombre</p>
                 <input type="text" name="nombre_mod" id="nombre_mod" placeholder="Nombre..." class="input">
                 <p class="texto_form">Tipo Restaurante</p>
-                <input type="text" name="tipo_mod" id="tipo_mod" placeholder="Tipo..." class="input">
+                <input list="tipo_mod" class="input">
+                    <datalist id="tipo_mod">
+                        <option value="Italiana">
+                        <option value="Española">
+                        <option value="Mexicana">
+                        <option value="Arabe">
+                        <option value="China">
+                    </datalist>
                 <p class="texto_form">Localidad</p>
                 <input type="text" name="localidad_mod" id="localidad_mod" placeholder="Localidad..." class="input">
                 <p class="texto_form">Latitud</p>
@@ -189,7 +197,7 @@
                 <p class="texto_form">Descripcion</p>
                 <input type="textarea" name="descripcion_mod" id="descripcion_mod" placeholder="Descripicón..." class="input">
                 <p class="texto_form">Precio</p>
-                <input type="range" name="precio_mod" id="precio_mod" placeholder="Precio..." class="input" max=10 min=2>
+                <input type="range" name="precio_mod" id="precio_mod" placeholder="Precio..." class="input" max=3 min=1>
                 <p class="texto_form">Activo?</p>
                 <!--<input type="text" name="activo_mod" id="activo_mod" placeholder="Activo..." class="input">-->
                 <label for="activo_mod">Des / Activar</label>
@@ -226,7 +234,14 @@
                 <p class="texto_form">Nombre</p>
                 <input type="text" name="nombre_crear" id="nombre_crear" placeholder="Nombre..." class="input">
                 <p class="texto_form">Tipo Restaurante</p>
-                <input type="text" name="tipo_crear" id="tipo_crear" placeholder="Tipo..." class="input">
+                <input list="tipo_crear" class="input">
+                    <datalist id="tipo_crear">
+                        <option value="Italiana">
+                        <option value="Española">
+                        <option value="Mexicana">
+                        <option value="Arabe">
+                        <option value="China">
+                    </datalist>
                 <p class="texto_form">Localidad</p>
                 <input type="text" name="localidad_crear" id="localidad_crear" placeholder="Localidad..." class="input">
                 <p class="texto_form">Latitud</p>
@@ -242,7 +257,7 @@
                 <p class="texto_form">Descripcion</p>
                 <input type="textarea" name="descripcion_crear" id="descripcion_crear" placeholder="Descripicón..." class="input">
                 <p class="texto_form">Precio</p>
-                <input type="range" name="precio_crear" id="precio_crear" placeholder="Precio..." class="input" max=10 min=2>
+                <input type="range" name="precio_crear" id="precio_crear" placeholder="Precio..." class="input" max=3 min=1>
                 <p class="texto_form">Activo?</p>
                 <!--<input type="text" name="activo_crear" id="activo_crear" placeholder="Activo..." class="input">-->
                 <label for="activo_crear">Des / Activar</label>
@@ -250,20 +265,17 @@
                         <option value="0">Desactivo</option>
                         <option value="1">Activo</option>
                     </select> 
-                <input type="hidden" name="id_crear" id="id_crear" value=1>
         
                 <br>
                 <center>
                 <input class="iniciosesion" type="submit" value="Crear">
-                <div id="fallo_validacion">
+                <div id="fallo_validacion_crear">
                 </div>
                 </center>
             </form>
 
                 
         </div>
-        
-        <div id="errores_reg"></div>
     </div>
     <!-- FINAL MODAL CREAR RESTAURANTE-->
 

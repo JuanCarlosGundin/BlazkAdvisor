@@ -32,4 +32,6 @@ Route::post('registro_ajax',[UsuarioController::class, 'registro_ajax']);
 
 Route::post('edicion_restaurante_ajax',[RestauranteController::class, 'editar']);
 
+Route::post('creacion_restaurante_ajax',[RestauranteController::class, 'crear']);
+
 Route::post('logout',[UsuarioController::class, 'logout']);

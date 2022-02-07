@@ -45,6 +45,31 @@ class RestauranteController extends Controller
             return response()->json(array('resultado'=> 'NOK: '.$th->getMessage()));
         }
     }
+    public function crear(Request $request){
+        try {
+            //Request a la comunicacion con AJax
+
+            $nombre = $request->input('nombre');
+            $latitud = $request->input('latitud');
+            $altitud = $request->input('altitud');
+            $localidad = $request->input('localidad');
+            $tipo = $request->input('tipo');
+            $email = $request->input('email');
+            $dieta = $request->input('dieta');
+            $comidas = $request->input('comidas');
+            $descripcion = $request->input('descripcion');
+            $activo = $request->input('activo');
+            $precio = $request->input('precio');
+
+            //Textos completos
+
+            DB::insert('insert into tbl_restaurantes (nombre_restaurante,loc_lat_restaurante,descripcion_restaurante,email_dueño,loc_alt_restaurante,loc_restaurante,tipo_restaurante,dieta_especial,comidas_restaurante,activo_restaurante,precio_restaurante) values (?,?,?,?,?,?,?,?,?,?,?)',[$nombre,$latitud,$descripcion,$email,$altitud,$localidad,$tipo,$dieta,$comidas,$activo,$precio]);
+            return response()->json(array('resultado'=> 'OK'));   
+
+        } catch (\Throwable $th) {
+            return response()->json(array('resultado'=> 'NOK: '.$th->getMessage()));
+        }
+    }
 
     /**
      * Show the form for creating a new resource.

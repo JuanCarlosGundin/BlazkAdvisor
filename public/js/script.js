@@ -277,7 +277,6 @@ function validacion_modificadorJS() {
     comidas = document.getElementById('comidas_mod').value
     activo = document.getElementById('activo_mod').value
     precio = document.getElementById('precio_mod').value
-    console.log(precio)
 
     if (id == "" || nombre == "" || latitud == "" || descripcion == "" || email == "" || altitud == "" || localidad == "" || tipo == "" || dieta == "" || comidas == "" || activo == "" || precio == "") {
         edicion_errores.innerHTML = "<p style='color:red'>Falta algún dato</p>"
@@ -291,7 +290,7 @@ function edicionRestauranteJS(id, nombre, latitud, altitud, localidad, email, de
     fail_validacion = document.getElementById('fallo_validacion')
 
     var formData = new FormData();
-    console.log("precio en el input" + precio)
+
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('id', id);
     formData.append('nombre', nombre);
@@ -348,6 +347,68 @@ function crearModalRestaurante() {
 
 
     modal.style.display = "block";
+}
+//VALIDAMOS DATOS DEL FORMULARIO MODAL DE CREACION
+function validacion_creadorJS() {
+    var creacion_errores = document.getElementById('creacion_errores');
+
+    nombre = document.getElementById('nombre_crear').value
+    latitud = document.getElementById('latitud_crear').value
+    descripcion = document.getElementById('descripcion_crear').value
+    email = document.getElementById('email_crear').value
+    altitud = document.getElementById('altitud_crear').value
+    localidad = document.getElementById('localidad_crear').value
+    tipo = document.getElementById('tipo_crear').value
+    dieta = document.getElementById('dieta_crear').value
+    comidas = document.getElementById('comidas_crear').value
+    activo = document.getElementById('activo_crear').value
+    precio = document.getElementById('precio_crear').value
+
+    if (nombre == "" || latitud == "" || descripcion == "" || email == "" || altitud == "" || localidad == "" || tipo == "" || dieta == "" || comidas == "" || activo == "" || precio == "") {
+        creacion_errores.innerHTML = "<p style='color:red'>Falta algún dato</p>"
+    } else {
+        creacionRestauranteJS(nombre, latitud, altitud, localidad, email, descripcion, tipo, dieta, comidas, activo, precio)
+    }
+
+}
+//INSERTAMOS DATOS DEL FORMULARIO SUANDO EL CONTROLLER MEDIANTE OBJETO AJAX
+function creacionRestauranteJS(nombre, latitud, altitud, localidad, email, descripcion, tipo, dieta, comidas, activo, precio) {
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('nombre', nombre);
+    formData.append('latitud', latitud);
+    formData.append('altitud', altitud);
+    formData.append('localidad', localidad);
+    formData.append('tipo', tipo);
+    formData.append('email', email);
+    formData.append('dieta', dieta);
+    formData.append('comidas', comidas);
+    formData.append('descripcion', descripcion);
+    formData.append('activo', activo);
+    formData.append('precio', precio);
+
+    var ajax = objetoAjax();
+    //Abrimos comunicacion para el controller
+    validacion_crear = document.getElementById('fallo_validacion_crear')
+    creacion_bien = document.getElementById('creacion_bien')
+    ajax.open("POST", "creacion_restaurante_ajax", true);
+    ajax.onreadystatechange = function() {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            var respuesta = JSON.parse(this.responseText);
+            /* Leerá la respuesta que es devuelta por el controlador: */
+            if (respuesta.resultado == 'OK') {
+                console.log(respuesta)
+                creacion_bien.innerHTML = "<p style='color:green'>Creacion registrada y correcta en BD</p>";
+                closeModalCreacion()
+
+            } else {
+                console.log(respuesta)
+                validacion_crear.innerHTML = "<p style='color:red'>Edición no registrada, fallo de datos o servidor</p>";
+            }
+        }
+    }
+    ajax.send(formData);
 }
 //Cerrar Modal en click outside el modal
 window.onclick = function(event) {
