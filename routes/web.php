@@ -17,5 +17,12 @@ use App\Http\Controllers\RestauranteController;
 Route::get('/', function () {
     return view('principal');
 });
+Route::get('/restaurante/{id}', [RestauranteController::class, 'mostrarControler']);
 
 Route::post('leer',[RestauranteController::class, 'leerControler']);
+
+Route::post('login_ajax',[UsuarioController::class, 'login_ajax']);
+
+Route::post('registro_ajax',[UsuarioController::class, 'registro_ajax']);
+
+Route::post('logout',[UsuarioController::class, 'logout']);

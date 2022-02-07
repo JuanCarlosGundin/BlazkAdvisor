@@ -1,246 +1,475 @@
-    * {
-        box-sizing: border-box;
-    }
-    
-    body {
-        background-color: white;
-        margin: 0px;
-    }
-    /* HEADER */
-    
-    .header {
-        font-size: medium;
-        margin: 0;
-        padding: 0;
-        width: 75%;
-        align-content: center;
-        display: block;
-        position: fixed;
-        top: 0;
-        background-color: white;
-        z-index: 1000;
-    }
-    /* IMAGEN LOGO */
-    
-    .logo {
-        width: 50%;
-        float: left;
-        text-align: left;
-    }
-    
-    .logoimagen {
-        margin: 0;
-        padding: 0;
-        width: 35%;
-    }
-    /* INICIO SESION */
-    
-    .inicio {
-        width: 50%;
-        float: right;
-        text-align: right;
-        padding: 0.5%;
-    }
-    
-    .iniciosesion {
-        color: white;
-        font-size: 16px;
-        background-color: black;
-        border-radius: 25px;
-        padding: 1.5%;
-        width: 25%;
-        border-color: black;
-        cursor: pointer;
-        transition: 0.2s;
-    }
-    
-    .iniciosesion:hover {
-        background-color: rgb(31, 31, 31);
-    }
-    /* PAGINA PRINCIPAL */
-    
-    header {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-    }
-    
-    .main {
-        align-items: center;
-        justify-content: center;
-        padding-top: 3.5%;
-    }
-    /* BOTONES TIPOS COMIDA */
-    
-    .tipos {
-        margin: 0;
-        width: 100%;
-        align-content: center;
-        display: block;
-        display: flex;
-        padding-top: 2%;
-        padding-left: 12.5%;
-        padding-right: 12.5%;
-    }
-    
-    .botonestipos {
-        padding-top: 1%;
-        padding-bottom: 1%;
-        padding-left: 0.5%;
-        padding-right: 0.5%;
-        width: 20%;
-        float: left;
-    }
-    
-    .tiposcomida {
-        border-color: black;
-        background-color: white;
-        width: 100%;
-        border-radius: 15px;
-        padding: 12%;
-        font-size: 100%;
-        border-width: 1px;
-        text-align: left;
-        vertical-align: text-top;
-        cursor: pointer;
-        transition: 0.2s;
-    }
-    
-    .tiposcomida:hover {
-        background-color: black;
-        color: white;
-    }
-    
-    .iconos {
-        float: right;
-    }
-    /* FILTRO */
-    
-    .filtro {
-        margin: 0;
-        width: 100%;
-        align-items: center;
-        justify-content: center;
-        display: flex;
-        padding-left: 12.5%;
-        padding-right: 12.5%;
-        padding-top: 1%;
-        padding-bottom: 1.5%;
-    }
-    
-    .imagenfiltro {
-        background-image: url("https://www.restaurantelacave.com/wp-content/uploads/2021/02/restaurantelacave-home-23.jpg");
-        height: 350px;
-        width: 100%;
-        padding-left: 15%;
-        padding-right: 15%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    .filtroinput {
-        width: 100%;
-        border-radius: 25px;
-        padding: 1.7%;
-        border-width: 0px;
-        background-color: white;
-        box-shadow: 3px 3px 3px black;
-    }
-    
-    .input1 {
-        outline: none;
-        border: 0;
-        font-size: 25px;
-        padding-left: 1%;
-        font-size: 20px;
-    }
-    
-     ::-webkit-input-placeholder {
-        font-weight: bold;
-    }
-    /* LISTA DE RESTAURANTES */
-    
-    .restaurantes {
-        margin: 0;
-        width: 100%;
-        padding-left: 12.5%;
-        padding-right: 12.5%;
-        padding-top: 1%;
-    }
-    /* TITULOS */
-    
-    h1 {
-        padding: 0;
-        font-size: 25px;
-        font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
-    }
-    
-    h4 {
-        padding: 0;
-        font-size: 15px;
-        font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
-        color: grey;
-        font-weight: 200;
-    }
-    /* RESTAURANTES */
-    
-    .restaurante {
-        padding-top: 1%;
-        padding-bottom: 1%;
-        width: 100%;
-    }
-    
-    .resbtn {
-        border-color: white;
-        background-color: white;
-        border-width: 0px;
-        cursor: pointer;
-        width: 24.7%;
-        padding-bottom: 5%;
-        text-align: left;
-    }
-    /* IMAGENES RESTAURANTE */
-    
-    .imagenres {
-        width: 275px;
-        height: 275px;
-        object-fit: cover;
-    }
-    
-    .imagenres:hover {
-        opacity: 90%;
-        width: 275px;
-        height: 275px;
-        object-fit: cover;
-        transition: 0.4s;
-    }
-    /* TITULO */
-    
-    .titulo {
-        padding: 0;
-        font-size: 20px;
-        font-weight: bold;
-    }
-    
-    .desc {
-        padding: 0;
-        font-size: 13px;
-        color: rgb(117, 117, 117);
-    }
-    
-    .titulo:hover {
-        text-decoration: underline;
-        transition: 0.5s;
-    }
-    /* FOOTER */
-    
-    .footer {
-        background-color: rgb(248, 243, 234);
-        width: 100%;
-        height: 10%;
-        padding: 5%;
-        font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
-        color: rgb(71, 71, 71);
-    }
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: white;
+    margin: 0px;
+}
+/* HEADER */
+
+.header {
+    margin: 0;
+    padding: 0;
+    width: 75%;
+    align-content: center;
+    display: block;
+    position: fixed;
+    top: 0;
+    background-color: white;
+    z-index: 1000;
+}
+/* IMAGEN LOGO */
+
+.logo {
+    width: 50%;
+    float: left;
+    text-align: left;
+}
+
+.logoimagen {
+    margin: 0;
+    padding: 0;
+    width: 35%;
+}
+/* INICIO SESION */
+
+.inicio {
+    width: 50%;
+    float: right;
+    text-align: right;
+    padding: 0.5%;
+}
+
+.iniciosesion {
+    color: white;
+    font-size: 16px;
+    background-color: black;
+    border-radius: 25px;
+    padding: 1.5%;
+    width: 25%;
+    border-color: black;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.iniciosesion:hover {
+    background-color: rgb(31, 31, 31);
+}
+/*Estilos para dar bienvenido al user logueado*/
+
+.bienvenido {
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+    padding: 1.5%;
+    width: 30%;
+    border-width: 0px;
+    background-color: white;
+}
+/*Empeiezan los estilos del modal*/
+
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+/* Modal Content/Box */
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+    height: 80vh;
+    font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+    /* Could be more or less, depending on screen size */
+}
+
+#modal-content2 {
+    display: none;
+    font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+}
+/*FINAL MODAL CONTENT BOX*/
+/*principio de estilos del formulario*/
+
+.texto_form {
+    margin-left: 20px;
+    font-style: bolder;
+}
+
+.close {
+    margin-left: 99%;
+    margin-bottom: 99%;
+}
+
+.input {
+    width: 80%;
+    padding: 10px;
+    margin-left: 20px;
+}
+
+.olvido_contrasena {
+    margin-left: 20px;
+    text-decoration: underline;
+    color: black;
+    font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+}
+/*Final de estilos del formulario*/
+
+.iniciosesion:hover {
+    background-color: rgb(31, 31, 31);
+}
+/* PAGINA PRINCIPAL */
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.main {
+    align-items: center;
+    justify-content: center;
+    padding-top: 3.5%;
+}
+/* BOTONES TIPOS COMIDA */
+
+.tipos {
+    margin: 0;
+    width: 100%;
+    align-content: center;
+    display: block;
+    display: flex;
+    padding-top: 2%;
+    padding-left: 12.5%;
+    padding-right: 12.5%;
+}
+
+.botonestipos {
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
+    width: 20%;
+    float: left;
+}
+
+.tiposcomida {
+    border-color: black;
+    background-color: white;
+    width: 100%;
+    border-radius: 15px;
+    padding: 12%;
+    font-size: 100%;
+    border-width: 1px;
+    text-align: left;
+    vertical-align: text-top;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.tiposcomida:hover {
+    background-color: black;
+    color: white;
+}
+/* ICONOS DE LA PAGINA */
+
+.iconos {
+    float: right;
+}
+/* FILTRO */
+
+.filtro {
+    margin: 0;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    padding-left: 12.5%;
+    padding-right: 12.5%;
+    padding-top: 1%;
+    padding-bottom: 1.5%;
+}
+
+.imagenfiltro {
+    background-image: url("https://www.restaurantelacave.com/wp-content/uploads/2021/02/restaurantelacave-home-23.jpg");
+    height: 350px;
+    width: 100%;
+    padding-left: 15%;
+    padding-right: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.filtroinput {
+    width: 100%;
+    border-radius: 25px;
+    padding: 1.7%;
+    border-width: 0px;
+    background-color: white;
+    box-shadow: 3px 3px 3px black;
+}
+
+.input1 {
+    outline: none;
+    border: 0;
+    padding-left: 1%;
+    font-size: 20px;
+}
+
+ ::-webkit-input-placeholder {
+    font-weight: bold;
+}
+/* LISTA DE RESTAURANTES */
+
+.restaurantes {
+    margin: 0;
+    width: 100%;
+    padding-left: 12.5%;
+    padding-right: 12.5%;
+    padding-top: 1%;
+}
+/* TITULOS */
+
+h1 {
+    padding: 0;
+    font-size: 25px;
+    font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+}
+
+h4 {
+    padding: 0;
+    font-size: 15px;
+    font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+    color: grey;
+    font-weight: 200;
+}
+/* RESTAURANTES */
+
+.restaurante {
+    padding-top: 1%;
+    padding-bottom: 1%;
+    width: 100%;
+}
+
+.resbtn {
+    border-color: white;
+    background-color: white;
+    border-width: 0px;
+    cursor: pointer;
+    width: 24.7%;
+    padding-bottom: 5%;
+    text-align: left;
+}
+/* IMAGENES RESTAURANTE */
+
+.imagenres {
+    width: 275px;
+    height: 275px;
+    object-fit: cover;
+}
+
+.imagenres:hover {
+    opacity: 90%;
+    width: 275px;
+    height: 275px;
+    object-fit: cover;
+    transition: 0.4s;
+}
+/* TITULO */
+
+.titulo {
+    padding: 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.desc {
+    padding: 0;
+    font-size: 13px;
+    color: rgb(117, 117, 117);
+}
+
+.titulo:hover {
+    text-decoration: underline;
+    transition: 0.5s;
+}
+/* PAGINA RESTAURANTES */
+/* HEADER PAGINA PRESTAURANTES */
+
+.header1 {
+    margin: 0;
+    padding: 0;
+    width: 75%;
+    align-content: center;
+    display: block;
+    top: 0;
+    background-color: white;
+}
+/* MENU */
+
+.menu {
+    padding-left: 12%;
+    padding-right: 12%;
+    border-top: solid 0.2px rgb(206, 206, 206);
+    border-bottom: solid 0.2px rgb(206, 206, 206);
+    font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border-width: 2px;
+    border-color: black;
+}
+
+li {
+    display: inline;
+    float: left;
+    display: block;
+    text-align: center;
+    padding: 14px 14px;
+}
+
+a {
+    color: rgb(117, 117, 117);
+    text-decoration: none;
+    font-size: 80%;
+    font-weight: bold;
+}
+
+a:hover {
+    opacity: 75%;
+}
+/* INFORMACION DEL RESTAURANTE */
+
+.info {
+    padding-left: 12.5%;
+    padding-right: 12.5%;
+    align-items: left;
+    justify-content: left;
+}
+
+.titulores {
+    padding: 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+/* CONTENIDO */
+
+.contenido {
+    background-color: rgb(245, 245, 245);
+    border-top: solid 0.2px rgb(206, 206, 206);
+    border-bottom: solid 0.2px rgb(206, 206, 206);
+    padding-left: 12.5%;
+    padding-right: 12.5%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    height: 1000px;
+    font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+}
+
+.cuadros {
+    color: rgb(117, 117, 117);
+    text-decoration: none;
+    font-size: 80%;
+    font-weight: bold;
+}
+/* FOTOS */
+
+.fotos {
+    background-color: white;
+    width: 100%;
+    float: right;
+    padding: 1%;
+    border: solid 0.2px rgb(206, 206, 206);
+}
+
+.fotoprincipal {
+    width: 50%;
+    padding: 1%;
+    float: left;
+}
+
+.fotosecundaria {
+    width: 50%;
+    padding: 1%;
+    float: right;
+}
+
+.foto1 {
+    width: 100%;
+}
+
+.foto2 {
+    width: 49%;
+}
+/* DETALLES */
+
+.detalles {
+    background-color: white;
+    width: 50%;
+    float: left;
+    padding: 2%;
+    border: solid 0.2px rgb(206, 206, 206);
+}
+
+.descripcion {
+    color: rgb(117, 117, 117);
+    text-decoration: none;
+    font-size: 120%;
+    font-weight: bold;
+}
+/* UBICACION */
+
+.ubicacion {
+    background-color: white;
+    width: 50%;
+    float: right;
+    padding: 2%;
+    border: solid 0.2px rgb(206, 206, 206);
+}
+
+.mapa {
+    width: 100%;
+}
+/* OPINIONES */
+
+.opiniones {
+    background-color: white;
+    width: 100%;
+    float: right;
+    padding: 2%;
+    border: solid 0.2px rgb(206, 206, 206);
+}
+/* FOOTER */
+
+.footer {
+    background-color: rgb(248, 243, 234);
+    width: 100%;
+    height: 10%;
+    padding: 5%;
+    font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+    color: rgb(71, 71, 71);
+}
