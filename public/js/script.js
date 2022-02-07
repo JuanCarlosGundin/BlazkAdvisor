@@ -105,7 +105,7 @@ function loginJS() {
 
 
 function abrir_formularioJS() {
-    var modal = document.getElementById("modal-content");
+    let modal = document.getElementById("modal-content");
     modal.style.display = "none";
 
     formulario_html = document.getElementById('modal-content2')
@@ -113,7 +113,7 @@ function abrir_formularioJS() {
 }
 
 function abrir_loginJS() {
-    var modal = document.getElementById("modal-content2");
+    let modal = document.getElementById("modal-content2");
     modal.style.display = "none";
 
     formulario_html = document.getElementById('modal-content')
@@ -124,12 +124,22 @@ function abrir_loginJS() {
 /*Close modal*/
 var span0 = document.getElementsByClassName("close")[0];
 var span1 = document.getElementsByClassName("close")[1];
+var span2 = document.getElementsByClassName("close")[2];
+var span3 = document.getElementsByClassName("close")[3];
 span0.onclick = function() {
-    var modal = document.getElementById("MyModal");
+    let modal = document.getElementById("MyModal");
     modal.style.display = "none";
 }
 span1.onclick = function() {
-    var modal = document.getElementById("MyModal");
+    let modal = document.getElementById("MyModal");
+    modal.style.display = "none";
+}
+span2.onclick = function() {
+    let modal = document.getElementById("MyModalEditar");
+    modal.style.display = "none";
+}
+span3.onclick = function() {
+    let modal = document.getElementById("MyModalCrear");
     modal.style.display = "none";
 }
 
@@ -137,15 +147,15 @@ span1.onclick = function() {
 // When the user clicks anywhere outside of the modal, close it
 
 window.onclick = function(event) {
-    var modal = document.getElementById("MyModal");
+    let modallogin = document.getElementById("MyModal");
     if (event.target == modal) {
-        modal.style.display = "none";
+        modallogin.style.display = "none";
     }
 }
 
 function closeModal() {
-    var modal = document.getElementById("MyModal");
-    modal.style.display = "none";
+    let modallogin = document.getElementById("MyModal");
+    modallogin.style.display = "none";
 }
 /*FIN CLOSE MODAL*/
 
@@ -223,5 +233,131 @@ function registroJS(name_reg, email_reg, pass_reg, type_reg, photo_reg) {
 
 function redirect_homeJS() {
     //Aqui redirigimos al home
-    window.location.href = "./loginPOST";
+    window.location.href = "./";
+}
+
+//INICIO MODAL EDITAR RESTAURNATE
+/*
+id_restaurante nombre_restaurante  loc_lat_restaurante  descripcion_restaurante 
+email_dueño loc_alt_restaurante  loc_restaurante   tipo_restaurante 
+dieta_especial  comidas_restaurante  activo_restaurante   precio_restaurante
+*/
+function editarModalRestaurante(id, nombre, latitud, descripcion, email, altitud, localidad, tipo, dieta, comidas, activo, precio) {
+    let modal = document.getElementById('MyModalEditar')
+        //RECOPILamos valores del restaurante
+    document.getElementById('id_mod').value = id
+    document.getElementById('nombre_mod').value = nombre
+    document.getElementById('latitud_mod').value = latitud
+    document.getElementById('descripcion_mod').value = descripcion
+    document.getElementById('email_mod').value = email
+    document.getElementById('altitud_mod').value = altitud
+    document.getElementById('localidad_mod').value = localidad
+    document.getElementById('tipo_mod').value = tipo
+    document.getElementById('dieta_mod').value = dieta
+    document.getElementById('comidas_mod').value = comidas
+    document.getElementById('activo_mod').value = activo
+    document.getElementById('precio_mod').value = precio
+
+
+    modal.style.display = "block";
+}
+
+function validacion_modificadorJS() {
+    var edicion_errores = document.getElementById('edicion_errores');
+
+    id = document.getElementById('id_mod').value
+    nombre = document.getElementById('nombre_mod').value
+    latitud = document.getElementById('latitud_mod').value
+    descripcion = document.getElementById('descripcion_mod').value
+    email = document.getElementById('email_mod').value
+    altitud = document.getElementById('altitud_mod').value
+    localidad = document.getElementById('localidad_mod').value
+    tipo = document.getElementById('tipo_mod').value
+    dieta = document.getElementById('dieta_mod').value
+    comidas = document.getElementById('comidas_mod').value
+    activo = document.getElementById('activo_mod').value
+    precio = document.getElementById('precio_mod').value
+    console.log(precio)
+
+    if (id == "" || nombre == "" || latitud == "" || descripcion == "" || email == "" || altitud == "" || localidad == "" || tipo == "" || dieta == "" || comidas == "" || activo == "" || precio == "") {
+        edicion_errores.innerHTML = "<p style='color:red'>Falta algún dato</p>"
+    } else {
+        edicionRestauranteJS(id, nombre, latitud, altitud, localidad, email, descripcion, tipo, dieta, comidas, activo, precio)
+    }
+}
+
+function edicionRestauranteJS(id, nombre, latitud, altitud, localidad, email, descripcion, tipo, dieta, comidas, activo, precio) {
+    fails = document.getElementById('edicion_errores')
+    fail_validacion = document.getElementById('fallo_validacion')
+
+    var formData = new FormData();
+    console.log("precio en el input" + precio)
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('id', id);
+    formData.append('nombre', nombre);
+    formData.append('latitud', latitud);
+    formData.append('altitud', altitud);
+    formData.append('localidad', localidad);
+    formData.append('tipo', tipo);
+    formData.append('email', email);
+    formData.append('dieta', dieta);
+    formData.append('comidas', comidas);
+    formData.append('descripcion', descripcion);
+    formData.append('activo', activo);
+    formData.append('precio', precio);
+
+    var ajax = objetoAjax();
+    //Abrimos comunicacion para el controller
+    ajax.open("POST", "edicion_restaurante_ajax", true);
+    ajax.onreadystatechange = function() {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            var respuesta = JSON.parse(this.responseText);
+            /* Leerá la respuesta que es devuelta por el controlador: */
+            if (respuesta.resultado == 'OK') {
+                console.log(respuesta)
+                fails.innerHTML = "<p style='color:green'>Edición registrada y correcta en BD</p>";
+                closeModalEdicion()
+
+            } else {
+                console.log(respuesta)
+                fails.innerHTML = "<p style='color:red'>Edición no registrada, fallo de datos o servidor</p>";
+            }
+
+
+        }
+    }
+    ajax.send(formData);
+}
+//Cerrar Modal en click outside el modal
+window.onclick = function(event) {
+    let modalEditar = document.getElementById("MyModalEditar");
+    if (event.target == modalEditar) {
+        modalEditar.style.display = "none";
+    }
+}
+
+function closeModalEdicion() {
+    let modalEditar = document.getElementById("MyModalEditar");
+    modalEditar.style.display = "none";
+}
+//FINAL MODAL EDICIÓN
+//INICIO MODAL CREACION
+function crearModalRestaurante() {
+    let modal = document.getElementById('MyModalCrear')
+        //RECOPILamos valores del restaurante
+
+
+    modal.style.display = "block";
+}
+//Cerrar Modal en click outside el modal
+window.onclick = function(event) {
+    let modalCrear = document.getElementById("MyModalCrear");
+    if (event.target == modalCrear) {
+        modalCrear.style.display = "none";
+    }
+}
+
+function closeModalCreacion() {
+    let modalCrear = document.getElementById("MyModalCrear");
+    modalCrear.style.display = "none";
 }

@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
-
+use App\Http\Controllers\RestauranteController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,5 +29,7 @@ Route::post('leer',[UsuarioController::class, 'index']);
 Route::post('login_ajax',[UsuarioController::class, 'login_ajax']);
 
 Route::post('registro_ajax',[UsuarioController::class, 'registro_ajax']);
+
+Route::post('edicion_restaurante_ajax',[RestauranteController::class, 'editar']);
 
 Route::post('logout',[UsuarioController::class, 'logout']);

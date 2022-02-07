@@ -143,180 +143,131 @@
         </div>
         <div class="restaurantes">
             <h1>Restaurantes</h1>
+            <button onclick="crearModalRestaurante(); return false;" class="iniciosesion">Crear Restaurante</button>
             <h4>Los mejores restaurantes de la ciudad</h4>
                 <div class="restaurante">
                     <button class="resbtn">
                             <div>
-                                <img class="imagenres" src="img/2.jpg">
+                                <img class="imagenres" src="img/2.jpg"><br>
+                                
+                                
+                                <button onclick="editarModalRestaurante(1,'Tio Bigotes', '2', 'muy cuco','joselito@a.com','2','Hospi','italiano','ninguna especial','patats',1,33); return false;">EDITAR</button>
+                                <div id="edicion_errores">
+                                </div>
                             </div>
-                            <div class="titulo">
-                                <p>TITULO DE MUESTRA</p>
-                            </div>
-                            <div class="estrellas">
-                                <p>ESTRELLAS</p>
-                            </div>
-                            <div class="desc">
-                                <p>DESCRIPCION</p>
-                            </div>
-                    </button>
-                    <button class="resbtn">
-                            <div>
-                                <img class="imagenres" src="img/2.jpg">
-                            </div>
-                            <div class="titulo">
-                                <p>TITULO DE MUESTRA</p>
-                            </div>
-                            <div class="estrellas">
-                                <p>ESTRELLAS</p>
-                            </div>
-                            <div class="desc">
-                                <p>DESCRIPCION</p>
-                            </div>
-                    </button>
-                    <button class="resbtn">
-                            <div>
-                                <img class="imagenres" src="img/2.jpg">
-                            </div>
-                            <div class="titulo">
-                                <p>TITULO DE MUESTRA</p>
-                            </div>
-                            <div class="estrellas">
-                                <p>ESTRELLAS</p>
-                            </div>
-                            <div class="desc">
-                                <p>DESCRIPCION</p>
-                            </div>
-                    </button>
-                    <button class="resbtn">
-                            <div>
-                                <img class="imagenres" src="img/2.jpg">
-                            </div>
-                            <div class="titulo">
-                                <p>TITULO DE MUESTRA</p>
-                            </div>
-                            <div class="estrellas">
-                                <p>ESTRELLAS</p>
-                            </div>
-                            <div class="desc">
-                                <p>DESCRIPCION</p>
-                            </div>
-                    </button>
-                    <button class="resbtn">
-                            <div>
-                                <img class="imagenres" src="img/2.jpg">
-                            </div>
-                            <div class="titulo">
-                                <p>TITULO DE MUESTRA</p>
-                            </div>
-                            <div class="estrellas">
-                                <p>ESTRELLAS</p>
-                            </div>
-                            <div class="desc">
-                                <p>DESCRIPCION</p>
-                            </div>
-                    </button>
-                    <button class="resbtn">
-                            <div>
-                                <img class="imagenres" src="img/2.jpg">
-                            </div>
-                            <div class="titulo">
-                                <p>TITULO DE MUESTRA</p>
-                            </div>
-                            <div class="estrellas">
-                                <p>ESTRELLAS</p>
-                            </div>
-                            <div class="desc">
-                                <p>DESCRIPCION</p>
-                            </div>
-                    </button>
-                    <button class="resbtn">
-                            <div>
-                                <img class="imagenres" src="img/2.jpg">
-                            </div>
-                            <div class="titulo">
-                                <p>TITULO DE MUESTRA</p>
-                            </div>
-                            <div class="estrellas">
-                                <p>ESTRELLAS</p>
-                            </div>
-                            <div class="desc">
-                                <p>DESCRIPCION</p>
-                            </div>
-                    </button>
-                    <button class="resbtn">
-                            <div>
-                                <img class="imagenres" src="img/2.jpg">
-                            </div>
-                            <div class="titulo">
-                                <p>TITULO DE MUESTRA</p>
-                            </div>
-                            <div class="estrellas">
-                                <p>ESTRELLAS</p>
-                            </div>
-                            <div class="desc">
-                                <p>DESCRIPCION</p>
-                            </div>
-                    </button>
-                    <button class="resbtn">
-                            <div>
-                                <img class="imagenres" src="img/2.jpg">
-                            </div>
-                            <div class="titulo">
-                                <p>TITULO DE MUESTRA</p>
-                            </div>
-                            <div class="estrellas">
-                                <p>ESTRELLAS</p>
-                            </div>
-                            <div class="desc">
-                                <p>DESCRIPCION</p>
-                            </div>
-                    </button>
-                    <button class="resbtn">
-                            <div>
-                                <img class="imagenres" src="img/2.jpg">
-                            </div>
-                            <div class="titulo">
-                                <p>TITULO DE MUESTRA</p>
-                            </div>
-                            <div class="estrellas">
-                                <p>ESTRELLAS</p>
-                            </div>
-                            <div class="desc">
-                                <p>DESCRIPCION</p>
-                            </div>
-                    </button>
-                    <button class="resbtn">
-                            <div>
-                                <img class="imagenres" src="img/2.jpg">
-                            </div>
-                            <div class="titulo">
-                                <p>TITULO DE MUESTRA</p>
-                            </div>
-                            <div class="estrellas">
-                                <p>ESTRELLAS</p>
-                            </div>
-                            <div class="desc">
-                                <p>DESCRIPCION</p>
-                            </div>
-                    </button>
-                    <button class="resbtn">
-                            <div>
-                                <img class="imagenres" src="img/2.jpg">
-                            </div>
-                            <div class="titulo">
-                                <p>TITULO DE MUESTRA</p>
-                            </div>
-                            <div class="estrellas">
-                                <p>ESTRELLAS</p>
-                            </div>
-                            <div class="desc">
-                                <p>DESCRIPCION</p>
-                            </div>
-                    </button>
+                            <!-- AQUI VIENEN MAS REST -->
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- INICIO MODAL EDITAR RESTAURANTE-->
+    <div class="modal" id="MyModalEditar">
+        <div class="modal-content" id="modal-content-editar">
+            <span class="close">&times;</span>
+            <img src="https://static.tacdn.com/img2/brand_refresh/Tripadvisor_Logo_dark-bg_circle-green_horizontal-lockup_registered_RGB.svg" width="226" height="50" alt="">
+            <h1 class="text_form">Editar valores Restaurante</h1>
+            
+            
+            <form action="" onsubmit="validacion_modificadorJS(); return false;">
+                <p class="texto_form">Nombre</p>
+                <input type="text" name="nombre_mod" id="nombre_mod" placeholder="Nombre..." class="input">
+                <p class="texto_form">Tipo Restaurante</p>
+                <input type="text" name="tipo_mod" id="tipo_mod" placeholder="Tipo..." class="input">
+                <p class="texto_form">Localidad</p>
+                <input type="text" name="localidad_mod" id="localidad_mod" placeholder="Localidad..." class="input">
+                <p class="texto_form">Latitud</p>
+                <input type="text" name="latitud_mod" id="latitud_mod" placeholder="Latitud..." class="input">
+                <p class="texto_form">Altitud</p>
+                <input type="text" name="altitud_mod" id="altitud_mod" placeholder="Altitud..." class="input">
+                <p class="texto_form">Dirección de correo electrónico</p>
+                <input type="email" name="email_mod" id="email_mod" placeholder="Email..." class="input">
+                <p class="texto_form">Dieta</p>
+                <input type="text" name="dieta_mod" id="dieta_mod" placeholder="Dieta..." class="input">
+                <p class="texto_form">Comidas</p>
+                <input type="text" name="comidas_mod" id="comidas_mod" placeholder="Comidas..." class="input">
+                <p class="texto_form">Descripcion</p>
+                <input type="textarea" name="descripcion_mod" id="descripcion_mod" placeholder="Descripicón..." class="input">
+                <p class="texto_form">Precio</p>
+                <input type="range" name="precio_mod" id="precio_mod" placeholder="Precio..." class="input" max=10 min=2>
+                <p class="texto_form">Activo?</p>
+                <!--<input type="text" name="activo_mod" id="activo_mod" placeholder="Activo..." class="input">-->
+                <label for="activo_mod">Des / Activar</label>
+                    <select name="activo_mod" id="activo_mod" data-role="slider">
+                        <option value="0">Desactivo</option>
+                        <option value="1">Activo</option>
+                    </select> 
+                <input type="hidden" name="id_mod" id="id_mod" value=1>
+        
+                <br>
+                <center>
+                <input class="iniciosesion" type="submit" value="Editar">
+                <div id="fallo_validacion">
+                </div>
+                </center>
+            </form>
+
+                
+        </div>
+        
+        <div id="errores_reg"></div>
+    </div>
+    <!-- FINAL MODAL EDITAR RESTAURANTE-->
+
+    <!-- INICIO MODAL CREAR RESTAURANTE-->
+    <div class="modal" id="MyModalCrear">
+        <div class="modal-content" id="modal-content-crear">
+            <span class="close">&times;</span>
+            <img src="https://static.tacdn.com/img2/brand_refresh/Tripadvisor_Logo_dark-bg_circle-green_horizontal-lockup_registered_RGB.svg" width="226" height="50" alt="">
+            <h1 class="text_form">Crear Restaurante</h1>
+            
+            
+            <form action="" onsubmit="validacion_creadorJS(); return false;">
+                <p class="texto_form">Nombre</p>
+                <input type="text" name="nombre_crear" id="nombre_crear" placeholder="Nombre..." class="input">
+                <p class="texto_form">Tipo Restaurante</p>
+                <input type="text" name="tipo_crear" id="tipo_crear" placeholder="Tipo..." class="input">
+                <p class="texto_form">Localidad</p>
+                <input type="text" name="localidad_crear" id="localidad_crear" placeholder="Localidad..." class="input">
+                <p class="texto_form">Latitud</p>
+                <input type="text" name="latitud_crear" id="latitud_crear" placeholder="Latitud..." class="input">
+                <p class="texto_form">Altitud</p>
+                <input type="text" name="altitud_crear" id="altitud_crear" placeholder="Altitud..." class="input">
+                <p class="texto_form">Dirección de correo electrónico</p>
+                <input type="email" name="email_crear" id="email_crear" placeholder="Email..." class="input">
+                <p class="texto_form">Dieta</p>
+                <input type="text" name="dieta_crear" id="dieta_crear" placeholder="Dieta..." class="input">
+                <p class="texto_form">Comidas</p>
+                <input type="text" name="comidas_crear" id="comidas_crear" placeholder="Comidas..." class="input">
+                <p class="texto_form">Descripcion</p>
+                <input type="textarea" name="descripcion_crear" id="descripcion_crear" placeholder="Descripicón..." class="input">
+                <p class="texto_form">Precio</p>
+                <input type="range" name="precio_crear" id="precio_crear" placeholder="Precio..." class="input" max=10 min=2>
+                <p class="texto_form">Activo?</p>
+                <!--<input type="text" name="activo_crear" id="activo_crear" placeholder="Activo..." class="input">-->
+                <label for="activo_crear">Des / Activar</label>
+                    <select name="activo_crear" id="activo_crear" data-role="slider">
+                        <option value="0">Desactivo</option>
+                        <option value="1">Activo</option>
+                    </select> 
+                <input type="hidden" name="id_crear" id="id_crear" value=1>
+        
+                <br>
+                <center>
+                <input class="iniciosesion" type="submit" value="Crear">
+                <div id="fallo_validacion">
+                </div>
+                </center>
+            </form>
+
+                
+        </div>
+        
+        <div id="errores_reg"></div>
+    </div>
+    <!-- FINAL MODAL CREAR RESTAURANTE-->
+
+
     <footer>
         <div class="footer">
             <p>Creado por Juan Carlos, Pol y Gerard</p>
