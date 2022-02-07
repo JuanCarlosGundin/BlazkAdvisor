@@ -4,18 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>INICIO</title>
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script defer src="css/fontawesome/js/all.js"></script>
-
+    <title>Document</title>
 </head>
 <body>
     <header>
+        <!-- Botones de inicio de sesion -->
         <div class="header">
             <div class="logo">
                     <img class="logoimagen" src="img/logo.png">
             </div>
+            <!-- Inicio de sesión -->
             <div class="inicio">
                 <?php
                     session_start();
@@ -93,8 +94,9 @@
         
         <div id="errores_reg"></div>
     </div>
-        </div>
-    </header>
+    <!-- Hasta aqui -->
+    
+
     <div class="main">
         <div class="tipos">
             <div class="botonestipos">
@@ -127,9 +129,8 @@
             </div>
             <div class="botonestipos">
                 <button class="tiposcomida"><b>Comida china</b><div class="iconos">
-                    <div class="iconos">
-                        <i class="far fa-star"></i>
-                    </div>
+                    <i class="far fa-star"></i>
+                </div>
             </button>
             </div>
         </div>
@@ -145,9 +146,9 @@
             <h1>Restaurantes</h1>
             <h4>Los mejores restaurantes de la ciudad</h4>
                 <div class="restaurante">
-                    <button class="resbtn">
-                            <div>
-                                <img class="imagenres" src="img/2.jpg">
+                        <button class="resbtn">
+                            <div class="imagen">
+                                <p>IMAGEN</p>
                             </div>
                             <div class="titulo">
                                 <p>TITULO DE MUESTRA</p>
@@ -158,10 +159,10 @@
                             <div class="desc">
                                 <p>DESCRIPCION</p>
                             </div>
-                    </button>
-                    <button class="resbtn">
-                            <div>
-                                <img class="imagenres" src="img/2.jpg">
+                        </button>
+                        <button class="resbtn">
+                            <div class="imagen">
+                                <p>IMAGEN</p>
                             </div>
                             <div class="titulo">
                                 <p>TITULO DE MUESTRA</p>
@@ -172,10 +173,10 @@
                             <div class="desc">
                                 <p>DESCRIPCION</p>
                             </div>
-                    </button>
-                    <button class="resbtn">
-                            <div>
-                                <img class="imagenres" src="img/2.jpg">
+                        </button>
+                        <button class="resbtn">
+                            <div class="imagen">
+                                <p>IMAGEN</p>
                             </div>
                             <div class="titulo">
                                 <p>TITULO DE MUESTRA</p>
@@ -186,10 +187,10 @@
                             <div class="desc">
                                 <p>DESCRIPCION</p>
                             </div>
-                    </button>
-                    <button class="resbtn">
-                            <div>
-                                <img class="imagenres" src="img/2.jpg">
+                        </button>
+                        <button class="resbtn">
+                            <div class="imagen">
+                                <p>IMAGEN</p>
                             </div>
                             <div class="titulo">
                                 <p>TITULO DE MUESTRA</p>
@@ -200,129 +201,11 @@
                             <div class="desc">
                                 <p>DESCRIPCION</p>
                             </div>
-                    </button>
-                    <button class="resbtn">
-                            <div>
-                                <img class="imagenres" src="img/2.jpg">
-                            </div>
-                            <div class="titulo">
-                                <p>TITULO DE MUESTRA</p>
-                            </div>
-                            <div class="estrellas">
-                                <p>ESTRELLAS</p>
-                            </div>
-                            <div class="desc">
-                                <p>DESCRIPCION</p>
-                            </div>
-                    </button>
-                    <button class="resbtn">
-                            <div>
-                                <img class="imagenres" src="img/2.jpg">
-                            </div>
-                            <div class="titulo">
-                                <p>TITULO DE MUESTRA</p>
-                            </div>
-                            <div class="estrellas">
-                                <p>ESTRELLAS</p>
-                            </div>
-                            <div class="desc">
-                                <p>DESCRIPCION</p>
-                            </div>
-                    </button>
-                    <button class="resbtn">
-                            <div>
-                                <img class="imagenres" src="img/2.jpg">
-                            </div>
-                            <div class="titulo">
-                                <p>TITULO DE MUESTRA</p>
-                            </div>
-                            <div class="estrellas">
-                                <p>ESTRELLAS</p>
-                            </div>
-                            <div class="desc">
-                                <p>DESCRIPCION</p>
-                            </div>
-                    </button>
-                    <button class="resbtn">
-                            <div>
-                                <img class="imagenres" src="img/2.jpg">
-                            </div>
-                            <div class="titulo">
-                                <p>TITULO DE MUESTRA</p>
-                            </div>
-                            <div class="estrellas">
-                                <p>ESTRELLAS</p>
-                            </div>
-                            <div class="desc">
-                                <p>DESCRIPCION</p>
-                            </div>
-                    </button>
-                    <button class="resbtn">
-                            <div>
-                                <img class="imagenres" src="img/2.jpg">
-                            </div>
-                            <div class="titulo">
-                                <p>TITULO DE MUESTRA</p>
-                            </div>
-                            <div class="estrellas">
-                                <p>ESTRELLAS</p>
-                            </div>
-                            <div class="desc">
-                                <p>DESCRIPCION</p>
-                            </div>
-                    </button>
-                    <button class="resbtn">
-                            <div>
-                                <img class="imagenres" src="img/2.jpg">
-                            </div>
-                            <div class="titulo">
-                                <p>TITULO DE MUESTRA</p>
-                            </div>
-                            <div class="estrellas">
-                                <p>ESTRELLAS</p>
-                            </div>
-                            <div class="desc">
-                                <p>DESCRIPCION</p>
-                            </div>
-                    </button>
-                    <button class="resbtn">
-                            <div>
-                                <img class="imagenres" src="img/2.jpg">
-                            </div>
-                            <div class="titulo">
-                                <p>TITULO DE MUESTRA</p>
-                            </div>
-                            <div class="estrellas">
-                                <p>ESTRELLAS</p>
-                            </div>
-                            <div class="desc">
-                                <p>DESCRIPCION</p>
-                            </div>
-                    </button>
-                    <button class="resbtn">
-                            <div>
-                                <img class="imagenres" src="img/2.jpg">
-                            </div>
-                            <div class="titulo">
-                                <p>TITULO DE MUESTRA</p>
-                            </div>
-                            <div class="estrellas">
-                                <p>ESTRELLAS</p>
-                            </div>
-                            <div class="desc">
-                                <p>DESCRIPCION</p>
-                            </div>
-                    </button>
+                        </button>
                 </div>
             </div>
         </div>
     </div>
-    <footer>
-        <div class="footer">
-            <p>Creado por Juan Carlos, Pol y Gerard</p>
-        </div>
-    </footer>
 </body>
 <script src="./js/script.js"></script>
-
 </html>

@@ -39,17 +39,35 @@
         </div>
     </div>
     <div class="contenido">
-        <div class="fotos">
-            <h1>TEXTO DE MUESTRA</h1>
+        <div class="cuadros">
+            <div class="fotos">
+                <div class="fotoprincipal">
+                    <img class="foto1" src="img/2.jpg">
+                </div>
+                <div class="fotosecundaria">
+                    <img class="foto2" src="img/2.jpg">
+                    <img class="foto2" src="img/2.jpg">
+                    <img class="foto2" src="img/2.jpg">
+                    <img class="foto2" src="img/2.jpg">
+                </div>
+            </div>
         </div>
-        <div class="detalles">
-            <h1>TEXTO DE MUESTRA</h1>
+        <div class="cuadros">
+            <div class="detalles">
+                <h1>TEXTO DE MUESTRA</h1>
+                <p class="descripcion">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
         </div>
-        <div class="ubicacion">
-            <h1>TEXTO DE MUESTRA</h1>
+        <div class="cuadros">
+            <div class="ubicacion">
+                <p class="descripcion">Lorem Ipsum</p>
+                <img class="mapa" src="img/2.jpg">
+            </div>
         </div>
-        <div class="opiniones">
-            <h1>TEXTO DE MUESTRA</h1>
+        <div class="cuadros">
+            <div class="opiniones">
+                <h1>TEXTO DE MUESTRA</h1>
+            </div>
         </div>
     </div>
     <footer>
