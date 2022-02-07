@@ -271,13 +271,16 @@
     /* LISTA DE RESTAURANTES */
     
     .restaurantes {
-        margin: 0;
         width: 100%;
         padding-left: 12.5%;
         padding-right: 12.5%;
         padding-top: 1%;
         padding-bottom: 1%;
-        height: 600px;
+        height: 800px;
+    }
+    
+    button {
+        padding: 0;
     }
     /* TITULOS */
     
@@ -299,6 +302,7 @@
     .restaurante {
         width: 25%;
         float: left;
+        padding-bottom: 5%;
     }
     
     .resbtn {
@@ -363,6 +367,9 @@
         border-top: solid 0.2px rgb(206, 206, 206);
         border-bottom: solid 0.2px rgb(206, 206, 206);
         font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+        position: fixed;
+        width: 100%;
+        background-color: white;
     }
     
     ul {
@@ -495,7 +502,7 @@
     }
     /* FOOTER */
     
-    .footer {
+    footer {
         background-color: rgb(248, 243, 234);
         width: 100%;
         height: 10%;

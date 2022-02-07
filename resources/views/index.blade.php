@@ -145,93 +145,37 @@
                 </div>
             </div>
         </div>
-            <div class="topcontent">
-                <div class="titulorestaurante">
-                    <h1>Restaurantes</h1>
-                    <h4>Los mejores restaurantes de la ciudad</h4>
-                </div>
-                <div class="inicio">
-                    <button class="crear" onclick="(); return false;"><b>CREAR</b></button>
-                </div>
-            </div>        
-            <div class="restaurantes">
-                <div class="restaurante">
-                        <button class="resbtn">
-                                <div>
-                                    <img class="imagenres" src="img/2.jpg">
-                                </div>
-                                <div class="titulo">
-                                    <h1>TITULO DE MUESTRA</h1>
-                                </div>
-                                <div class="estrellas">
-                                    <p>ESTRELLAS</p>
-                                </div>
-                                <div class="desc">
-                                    <p>DESCRIPCION</p>
-                                </div>
-                        </button>
-                        <br>
-                        <button  class="modificar" onclick="(); return false;"><b>MODIFICAR</b></button>
-                        <button  class="eliminar" onclick="(); return false;"><b>ELIMINAR</b></button>
-                </div>
-                <div class="restaurante">
-                    <button class="resbtn">
-                            <div>
-                                <img class="imagenres" src="img/2.jpg">
-                            </div>
-                            <div class="titulo">
-                                <h1>TITULO DE MUESTRA</h1>
-                            </div>
-                            <div class="estrellas">
-                                <p>ESTRELLAS</p>
-                            </div>
-                            <div class="desc">
-                                <p>DESCRIPCION</p>
-                            </div>
-                    </button>
-                    <br>
-                    <button  class="modificar" onclick="(); return false;"><b>MODIFICAR</b></button>
-                    <button  class="eliminar" onclick="(); return false;"><b>ELIMINAR</b></button>
-                </div>
-                <div class="restaurante">
-                    <button class="resbtn">
-                            <div>
-                                <img class="imagenres" src="img/2.jpg">
-                            </div>
-                            <div class="titulo">
-                                <h1>TITULO DE MUESTRA</h1>
-                            </div>
-                            <div class="estrellas">
-                                <p>ESTRELLAS</p>
-                            </div>
-                            <div class="desc">
-                                <p>DESCRIPCION</p>
-                            </div>
-                    </button>                        
-                    <br>
-                    <button  class="modificar" onclick="(); return false;"><b>MODIFICAR</b></button>
-                    <button  class="eliminar" onclick="(); return false;"><b>ELIMINAR</b></button>
-                </div>
-                <div class="restaurante">
-                    <button class="resbtn">
-                            <div>
-                                <img class="imagenres" src="img/2.jpg">
-                            </div>
-                            <div class="titulo">
-                                <h1>TITULO DE MUESTRA</h1>
-                            </div>
-                            <div class="estrellas">
-                                <p>ESTRELLAS</p>
-                            </div>
-                            <div class="desc">
-                                <p>DESCRIPCION</p>
-                            </div>
-                    </button>
-                    <br>
-                    <button  class="modificar" onclick="(); return false;"><b>MODIFICAR</b></button>
-                    <button  class="eliminar" onclick="(); return false;"><b>ELIMINAR</b></button>
-                </div>
+        <div class="topcontent">
+            <div class="titulorestaurante">
+                <h1>Restaurantes</h1>
+                <h4>Los mejores restaurantes de la ciudad</h4>
             </div>
+            <div class="inicio">
+                <button class="crear" onclick="(); return false;"><b>CREAR</b></button>
+            </div>
+        </div>        
+        <div class="restaurantes">
+            <?php
+
+            ?>
+            @foreach($listarestaurantes as $restaurante)
+            <div class="restaurante">
+                <button class="resbtn">
+                        <div class="imagenres">{{$restaurante->imagen_restaurante}}</div>
+                        <div class="titulo">{{$restaurante->nombre_restaurante}}</div>
+                        <div class="estrellas">{{$restaurante->puntuacion}}</div>
+                        <div class="desc">{{$restaurante->descripcion_restaurante}}</div>
+                        <form action="{{url('modificar/'.$restaurante->id)}}" method="GET">
+                            <button class="modificar" onclick="editarModalRestaurante(1,'Tio Bigotes', '2', 'muy cuco','joselito@a.com','2','Hospi','italiano','ninguna especial','patats',1,33); return false;">MODIFICAR</button>
+                        </form>
+                        <form action="{{url('eliminar/'.$restaurante->id)}}" method="POST">
+                            @csrf
+                            {{method_field('DELETE')}}
+                            <button class="eliminar" onclick="(); return false;"><b>ELIMINAR</b></button>
+                        </form>
+                </button>
+            </div>
+            @endforeach
         </div>
     </div>
     <footer>
