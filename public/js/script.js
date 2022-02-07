@@ -204,7 +204,11 @@ function registroJS(name_reg, email_reg, pass_reg, type_reg, photo_reg) {
             } else {
                 if (respuesta.resultado == 'OK') {
                     console.log(respuesta)
-                        //redirect_homeJS();
+                    document.getElementById('email').value = email_reg
+                    document.getElementById('password').value = pass_reg
+                    loginJS()
+                        //closemodal()
+
                 } else {
                     console.log(respuesta)
                     fails.innerHTML = "Fallo en la inserción";
