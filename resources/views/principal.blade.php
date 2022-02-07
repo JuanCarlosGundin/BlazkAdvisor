@@ -47,7 +47,7 @@ session_start();
                 <br>
                 <a href="" class="olvido_contrasena">¿Olvidaste la contraseña?</a>
                 <br>
-                <center>
+            <center>
                 <input type="submit" value="Login" class="iniciosesion">
                 <p class="texto_form">No eres miembro?</p><br>
                 <button onclick="abrir_formularioJS(); return false;" class="iniciosesion">Únete</button>
