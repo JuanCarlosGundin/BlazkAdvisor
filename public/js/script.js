@@ -242,7 +242,7 @@ id_restaurante nombre_restaurante  loc_lat_restaurante  descripcion_restaurante
 email_dueño loc_alt_restaurante  loc_restaurante   tipo_restaurante 
 dieta_especial  comidas_restaurante  activo_restaurante   precio_restaurante
 */
-function editarModalRestaurante(id, nombre, latitud, descripcion, email, altitud, localidad, tipo, dieta, comidas, activo, precio) {
+function editarModalRestaurante(id, nombre, latitud, descripcion, email, altitud, localidad, tipo, dieta, comidas, activo, precio, desc_larga, telefono) {
     let modal = document.getElementById('MyModalEditar')
         //RECOPILamos valores del restaurante
     document.getElementById('id_mod').value = id
@@ -257,6 +257,8 @@ function editarModalRestaurante(id, nombre, latitud, descripcion, email, altitud
     document.getElementById('comidas_mod').value = comidas
     document.getElementById('activo_mod').value = activo
     document.getElementById('precio_mod').value = precio
+    document.getElementById('descripcion_larga_mod').value = desc_larga
+    document.getElementById('telefono_mod').value = telefono
 
 
     modal.style.display = "block";
@@ -269,7 +271,9 @@ function validacion_modificadorJS() {
     nombre = document.getElementById('nombre_mod').value
     latitud = document.getElementById('latitud_mod').value
     descripcion = document.getElementById('descripcion_mod').value
+    descripcion_larga = document.getElementById('descripcion_larga_mod').value
     email = document.getElementById('email_mod').value
+    telefono = document.getElementById('telefono_mod').value
     altitud = document.getElementById('altitud_mod').value
     localidad = document.getElementById('localidad_mod').value
     tipo = document.getElementById('tipo_mod').value
@@ -278,14 +282,14 @@ function validacion_modificadorJS() {
     activo = document.getElementById('activo_mod').value
     precio = document.getElementById('precio_mod').value
 
-    if (id == "" || nombre == "" || latitud == "" || descripcion == "" || email == "" || altitud == "" || localidad == "" || tipo == "" || dieta == "" || comidas == "" || activo == "" || precio == "") {
+    if (id == "" || nombre == "" || latitud == "" || descripcion == "" || descripcion_larga == "" || email == "" || telefono == "" || altitud == "" || localidad == "" || tipo == "" || dieta == "" || comidas == "" || activo == "" || precio == "") {
         edicion_errores.innerHTML = "<p style='color:red'>Falta algún dato</p>"
     } else {
-        edicionRestauranteJS(id, nombre, latitud, altitud, localidad, email, descripcion, tipo, dieta, comidas, activo, precio)
+        edicionRestauranteJS(id, nombre, latitud, altitud, localidad, email, telefono, descripcion, descripcion_larga, tipo, dieta, comidas, activo, precio)
     }
 }
 
-function edicionRestauranteJS(id, nombre, latitud, altitud, localidad, email, descripcion, tipo, dieta, comidas, activo, precio) {
+function edicionRestauranteJS(id, nombre, latitud, altitud, localidad, email, telefono, descripcion, descripcion_larga, tipo, dieta, comidas, activo, precio) {
     fails = document.getElementById('edicion_errores')
     fail_validacion = document.getElementById('fallo_validacion')
 
@@ -299,9 +303,11 @@ function edicionRestauranteJS(id, nombre, latitud, altitud, localidad, email, de
     formData.append('localidad', localidad);
     formData.append('tipo', tipo);
     formData.append('email', email);
+    formData.append('telefono', telefono);
     formData.append('dieta', dieta);
     formData.append('comidas', comidas);
     formData.append('descripcion', descripcion);
+    formData.append('descripcion_larga', descripcion_larga);
     formData.append('activo', activo);
     formData.append('precio', precio);
 
@@ -355,7 +361,9 @@ function validacion_creadorJS() {
     nombre = document.getElementById('nombre_crear').value
     latitud = document.getElementById('latitud_crear').value
     descripcion = document.getElementById('descripcion_crear').value
+    descripcion_larga = document.getElementById('descripcion_larga_crear').value
     email = document.getElementById('email_crear').value
+    telefono = document.getElementById('telefono_crear').value
     altitud = document.getElementById('altitud_crear').value
     localidad = document.getElementById('localidad_crear').value
     tipo = document.getElementById('tipo_crear').value
@@ -369,15 +377,15 @@ function validacion_creadorJS() {
     foto5 = document.getElementById('foto_crear5').files[0]
     precio = document.getElementById('precio_crear').value
 
-    if (nombre == "" || latitud == "" || descripcion == "" || email == "" || altitud == "" || localidad == "" || tipo == "" || dieta == "" || comidas == "" || activo == "" || precio == "") {
+    if (nombre == "" || latitud == "" || descripcion == "" || descripcion_larga == "" || email == "" || telefono == "" || altitud == "" || localidad == "" || tipo == "" || dieta == "" || comidas == "" || activo == "" || precio == "") {
         creacion_errores.innerHTML = "<p style='color:red'>Falta algún dato</p>"
     } else {
-        creacionRestauranteJS(foto, nombre, latitud, altitud, localidad, email, descripcion, tipo, dieta, comidas, activo, precio, foto2, foto3, foto4, foto5)
+        creacionRestauranteJS(foto, nombre, latitud, altitud, localidad, email, telefono, descripcion, descripcion_larga, tipo, dieta, comidas, activo, precio, foto2, foto3, foto4, foto5)
     }
 
 }
 //INSERTAMOS DATOS DEL FORMULARIO SUANDO EL CONTROLLER MEDIANTE OBJETO AJAX
-function creacionRestauranteJS(foto, nombre, latitud, altitud, localidad, email, descripcion, tipo, dieta, comidas, activo, precio, foto2, foto3, foto4, foto5) {
+function creacionRestauranteJS(foto, nombre, latitud, altitud, localidad, email, telefono, descripcion, descripcion_larga, tipo, dieta, comidas, activo, precio, foto2, foto3, foto4, foto5) {
     var formData = new FormData();
 
     formData.append('_token', document.getElementById('token').getAttribute("content"));
@@ -392,6 +400,8 @@ function creacionRestauranteJS(foto, nombre, latitud, altitud, localidad, email,
     formData.append('localidad', localidad);
     formData.append('tipo', tipo);
     formData.append('email', email);
+    formData.append('telefono', telefono);
+    formData.append('descripcion_larga', descripcion_larga);
     formData.append('dieta', dieta);
     formData.append('comidas', comidas);
     formData.append('descripcion', descripcion);

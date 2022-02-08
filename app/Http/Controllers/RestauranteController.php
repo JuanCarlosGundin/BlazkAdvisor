@@ -27,17 +27,19 @@ class RestauranteController extends Controller
             $localidad = $request->input('localidad');
             $tipo = $request->input('tipo');
             $email = $request->input('email');
+            $telefono = $request->input('telefono');
             $dieta = $request->input('dieta');
             $comidas = $request->input('comidas');
             $descripcion = $request->input('descripcion');
+            $descripcion_larga = $request->input('descripcion_larga');
             $activo = $request->input('activo');
             $precio = $request->input('precio');
 
             //Textos completos
 
 
-            DB::update('update tbl_restaurantes set nombre_restaurante = ?,loc_lat_restaurante=?,descripcion_restaurante=?,email_dueño=?,loc_alt_restaurante=?,loc_restaurante=?,tipo_restaurante=?,dieta_especial=?,comidas_restaurante=?,activo_restaurante=?,precio_restaurante=? where id_restaurante = ?',
-            [$nombre,$latitud,$descripcion,$email,$altitud,$localidad,$tipo,$dieta,$comidas,$activo,$precio,$id]);
+            DB::update('update tbl_restaurantes set nombre_restaurante = ?,loc_lat_restaurante=?,descripcion_restaurante=?,desc_larga=?,email_dueño=?,telefono=?,loc_alt_restaurante=?,loc_restaurante=?,tipo_restaurante=?,dieta_especial=?,comidas_restaurante=?,activo_restaurante=?,precio_restaurante=? where id_restaurante = ?',
+            [$nombre,$latitud,$descripcion,$descripcion_larga,$email,$telefono,$altitud,$localidad,$tipo,$dieta,$comidas,$activo,$precio,$id]);
 
             return response()->json(array('resultado'=> 'OK'));   
 
@@ -70,15 +72,17 @@ class RestauranteController extends Controller
             $localidad = $request->input('localidad');
             $tipo = $request->input('tipo');
             $email = $request->input('email');
+            $telefono = $request->input('telefono');
             $dieta = $request->input('dieta');
             $comidas = $request->input('comidas');
             $descripcion = $request->input('descripcion');
+            $descripcion_larga = $request->input('descripcion_larga');
             $activo = $request->input('activo');
             $precio = $request->input('precio');
 
             //Textos completos
             $id = DB::table('tbl_restaurantes')->insertGetId(
-                [ 'nombre_restaurante' => $nombre,'email_dueño'=> $email,'loc_alt_restaurante'=>$altitud,'loc_lat_restaurante'=>$latitud,'descripcion_restaurante'=>$descripcion,'loc_restaurante'=>$localidad,'tipo_restaurante'=>$tipo,'dieta_especial'=>$dieta,'comidas_restaurante'=>$comidas,'activo_restaurante'=>$activo,'precio_restaurante'=>$precio ]);
+                [ 'nombre_restaurante' => $nombre,'email_dueño'=> $email,'loc_alt_restaurante'=>$altitud,'loc_lat_restaurante'=>$latitud,'descripcion_restaurante'=>$descripcion,'desc_larga'=>$descripcion_larga,'telefono'=>$telefono,'loc_restaurante'=>$localidad,'tipo_restaurante'=>$tipo,'dieta_especial'=>$dieta,'comidas_restaurante'=>$comidas,'activo_restaurante'=>$activo,'precio_restaurante'=>$precio ]);
             DB::insert('insert into tbl_fotos (url_foto_principal,id_restaurante,url_foto1,url_foto2,url_foto3,url_foto4) values (?,?,?,?,?,?)',[$path1,$id,$path[2],$path[3],$path[4],$path[5]]);
             return response()->json(array('resultado'=> 'OK'));   
 

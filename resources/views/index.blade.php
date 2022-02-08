@@ -151,7 +151,7 @@
                             <div>
                                 <img class="imagenres" src="img/2.jpg"><br>
                                 
-                                <button onclick="editarModalRestaurante(1,'Tio Bigotes', '2', 'muy cuco','joselito@a.com','2','Hospi','italiano','ninguna especial','patats',1,33); return false;">EDITAR</button>
+                                <button onclick="editarModalRestaurante(1,'Tio Bigotes', '2', 'muy cuco','joselito@a.com','2','Hospi','italiano','ninguna especial','patats',1,33,'dexcripcion larga muestra','987654321'); return false;">EDITAR</button>
                                 <!-- INICIO DESACTIVAR RESTAURANTE-->
                                 <button onclick="desactivarActivarRestaurante(1); return false;">DESACTIVAR</button>
                                 <div id="desactivar_errores"></div>
@@ -192,12 +192,16 @@
                 <input type="text" name="altitud_mod" id="altitud_mod" placeholder="Altitud..." class="input">
                 <p class="texto_form">Dirección de correo electrónico</p>
                 <input type="email" name="email_mod" id="email_mod" placeholder="Email..." class="input">
+                <p class="texto_form">Telefono</p>
+                <input type="text" name="telefono_mod" id="telefono_mod" placeholder="Telefono..." class="input">
                 <p class="texto_form">Dieta</p>
                 <input type="text" name="dieta_mod" id="dieta_mod" placeholder="Dieta..." class="input">
                 <p class="texto_form">Comidas</p>
                 <input type="text" name="comidas_mod" id="comidas_mod" placeholder="Comidas..." class="input">
                 <p class="texto_form">Descripcion</p>
                 <input type="textarea" name="descripcion_mod" id="descripcion_mod" placeholder="Descripicón..." class="input">
+                <p class="texto_form">Descripcion larga</p>
+                <input type="textarea" name="descripcion_larga_mod" id="descripcion_larga_mod" placeholder="Descripicón larga..." class="input">
                 <p class="texto_form">Precio</p>
                 <input type="range" name="precio_mod" id="precio_mod" placeholder="Precio..." class="input" max=3 min=1>
                 <p class="texto_form">Activo?</p>
@@ -254,12 +258,16 @@
                 <input type="text" name="altitud_crear" id="altitud_crear" placeholder="Altitud..." class="input">
                 <p class="texto_form">Dirección de correo electrónico</p>
                 <input type="email" name="email_crear" id="email_crear" placeholder="Email..." class="input">
+                <p class="texto_form">Telefono</p>
+                <input type="text" name="telefono_crear" id="telefono_crear" placeholder="Telefono..." class="input">
                 <p class="texto_form">Dieta</p>
                 <input type="text" name="dieta_crear" id="dieta_crear" placeholder="Dieta..." class="input">
                 <p class="texto_form">Comidas</p>
                 <input type="text" name="comidas_crear" id="comidas_crear" placeholder="Comidas..." class="input">
                 <p class="texto_form">Descripcion</p>
                 <input type="textarea" name="descripcion_crear" id="descripcion_crear" placeholder="Descripicón..." class="input">
+                <p class="texto_form">Descripcion larga</p>
+                <input type="textarea" name="descripcion_larga_crear" id="descripcion_larga_crear" placeholder="Descripicón larga..." class="input">
                 <p class="texto_form">Precio</p>
                 <input type="range" name="precio_crear" id="precio_crear" placeholder="Precio..." class="input" max=3 min=1>
                 <input type="file" name="foto_crear" id="foto_crear" class="input">
