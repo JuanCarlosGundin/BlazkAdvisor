@@ -3,10 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\RestauranteController;
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/pol
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,13 +14,9 @@ use App\Http\Controllers\RestauranteController;
 |
 */
 
-<<<<<<< HEAD
 Route::get('/', function () {
     return view('index');
 });
-=======
-Route::get('/', [RestauranteController::class, '' ]);
->>>>>>> origin/pol
 
 Route::get('/restaurante', function () {
     return view('restaurante');
