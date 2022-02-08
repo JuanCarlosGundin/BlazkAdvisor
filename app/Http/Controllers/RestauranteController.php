@@ -101,6 +101,10 @@ class RestauranteController extends Controller
             DB::update('update tbl_restaurantes set activo_restaurante=? where id_restaurante = ?',[1,$id]);
             return response()->json($select_rest[0]);
         }
-        
     }
+    public function mostrarRestaurantes(Request $request){
+        $listarestaurantes=DB::select('select * from tbl_restaurantes');
+        return view('/', compact('listarestaurantes'));
+    }
+    
 }

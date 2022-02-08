@@ -4,7 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<<<<<<< HEAD
     <title>INICIO</title>
+=======
+<<<<<<<< HEAD:resources/views/index.blade.php
+    <title>ADMIN</title>
+========
+    <title>INICIO</title>
+>>>>>>>> origin/pol:resources/views/login.blade.php
+>>>>>>> origin/pol
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script defer src="css/fontawesome/js/all.js"></script>
@@ -36,6 +44,7 @@
     <div class="modal" id="MyModal">
         <div class="modal-content" id="modal-content">
             <span class="close">&times;</span>
+<<<<<<< HEAD
             <img src="https://static.tacdn.com/img2/brand_refresh/Tripadvisor_Logo_dark-bg_circle-green_horizontal-lockup_registered_RGB.svg" width="226" height="50" alt="">
             <h1 class="text_form">¡Hola de nuevo!</h1>
             <form action="" onsubmit="validacion_loginJS(); return false;">
@@ -54,6 +63,31 @@
                 <div id="confirmacion">
                 </div>
             </center>
+=======
+            <img src="img/logo.png" class="modallogo" alt="">
+            <br>
+            <br>
+            <h1 class="text_form">¡Hola de nuevo!</h1>
+            <form action="" onsubmit="validacion_loginJS(); return false;">
+                <p class="texto_form">Dirección de correo electrónico</p>
+                <input type="email" name="email" id="email" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Dirección de correo electrónico" class="input">
+                <br>
+                <p class="texto_form">Contraseña</p>
+                <input type="password" name="password" id="password" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Contraseña" class="input">
+                <br>
+                <a href="" class="olvido_contrasena">¿Olvidaste la contraseña?</a>
+                <br>
+                <div class="login">
+                    <input type="submit" value="Login" class="iniciosesion">
+                </div>
+                <p class="no_miembro">No eres miembro?</p>
+                <br>
+                <div class="unete">
+                    <button onclick="abrir_formularioJS(); return false;" class="iniciosesion">Únete</button>
+                </div>
+                <div id="confirmacion">
+                </div>
+>>>>>>> origin/pol
             </form>
             
         </div>
@@ -69,11 +103,19 @@
             
             <form action="" onsubmit="validacion_registroJS(); return false;">
                 <p class="texto_form">Nombre</p>
+<<<<<<< HEAD
                 <input type="text" name="name_reg" id="name_reg" placeholder="Nombre..." class="input">
                 <p class="texto_form">Dirección de correo electrónico</p>
                 <input type="email" name="email_reg" id="email_reg" placeholder="Email..." class="input">
                 <p class="texto_form">Contraseña</p>
                 <input type = "password" name = "pass_reg" id = "pass_reg" placeholder="Contraseña" class="input">
+=======
+                <input type="text" name="name_reg" id="name_reg" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Nombre..." class="input">
+                <p class="texto_form">Dirección de correo electrónico</p>
+                <input type="email" name="email_reg" id="email_reg" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Email..." class="input">
+                <p class="texto_form">Contraseña</p>
+                <input type = "password" name = "pass_reg" id = "pass_reg" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Contraseña" class="input">
+>>>>>>> origin/pol
                 <input type = "hidden" name="type_reg" id="type_reg" value=1>
                 <p class="texto_form">Foto de perfil</p>
                 <input type="file" name="photo_reg" id="photo_reg" class="input">
@@ -83,7 +125,10 @@
                 <div id="confirmacion_reg">
                     <p class="texto_form">¿Ya eres miemnbro?</p>
                     <button onclick="abrir_loginJS(); return false;" class="iniciosesion">Inicia Sesión</button>
+<<<<<<< HEAD
                     <p> Al continuar, declaras tu conformidad con nuestras Condiciones de uso y confirmas que has leído nuestra Declaración de privacidad y cookies.</p>
+=======
+>>>>>>> origin/pol
                 </div>
                 </center>
             </form>
@@ -141,14 +186,50 @@
                 </div>
             </div>
         </div>
+<<<<<<< HEAD
         <div class="restaurantes">
             <h1>Restaurantes</h1>
             <button onclick="crearModalRestaurante(); return false;" class="iniciosesion">Crear Restaurante</button>
             <div id="creacion_bien"></div>
+=======
+        <div class="topcontent">
+            <div class="titulorestaurante">
+                <h1>Restaurantes</h1>
+                <h4>Los mejores restaurantes de la ciudad</h4>
+            </div>
+            <div class="inicio">
+                <button class="crear" onclick="(); return false;"><b>CREAR</b></button>
+            </div>
+        </div>        
+        <div class="restaurantes">
+<<<<<<<< HEAD:resources/views/index.blade.php
+            <?php
+
+            ?>
+            @foreach($listarestaurantes as $restaurante)
+            <div class="restaurante">
+                <button class="resbtn">
+                        <div class="imagenres">{{$restaurante->imagen_restaurante}}</div>
+                        <div class="titulo">{{$restaurante->nombre_restaurante}}</div>
+                        <div class="estrellas">{{$restaurante->puntuacion}}</div>
+                        <div class="desc">{{$restaurante->descripcion_restaurante}}</div>
+                        <form action="{{url('modificar/'.$restaurante->id)}}" method="GET">
+                            <button class="modificar" onclick="editarModalRestaurante(1,'Tio Bigotes', '2', 'muy cuco','joselito@a.com','2','Hospi','italiano','ninguna especial','patats',1,33); return false;">MODIFICAR</button>
+                        </form>
+                        <form action="{{url('eliminar/'.$restaurante->id)}}" method="POST">
+                            @csrf
+                            {{method_field('DELETE')}}
+                            <button class="eliminar" onclick="(); return false;"><b>ELIMINAR</b></button>
+                        </form>
+                </button>
+========
+            <h1>Restaurantes</h1>
+>>>>>>> origin/pol
             <h4>Los mejores restaurantes de la ciudad</h4>
                 <div class="restaurante">
                     <button class="resbtn">
                             <div>
+<<<<<<< HEAD
                                 <img class="imagenres" src="img/2.jpg"><br>
                                 
                                 <button onclick="editarModalRestaurante(1,'Tio Bigotes', '2', 'muy cuco','joselito@a.com','2','Hospi','italiano','ninguna especial','patats',1,33,'dexcripcion larga muestra','987654321'); return false;">EDITAR</button>
@@ -297,6 +378,180 @@
     <!-- FINAL MODAL CREAR RESTAURANTE-->
 
 
+=======
+                                <img class="imagenres" src="img/2.jpg">
+                            </div>
+                            <div class="titulo">
+                                <p>TITULO DE MUESTRA</p>
+                            </div>
+                            <div class="estrellas">
+                                <p>ESTRELLAS</p>
+                            </div>
+                            <div class="desc">
+                                <p>DESCRIPCION</p>
+                            </div>
+                    </button>
+                    <button class="resbtn">
+                            <div>
+                                <img class="imagenres" src="img/2.jpg">
+                            </div>
+                            <div class="titulo">
+                                <p>TITULO DE MUESTRA</p>
+                            </div>
+                            <div class="estrellas">
+                                <p>ESTRELLAS</p>
+                            </div>
+                            <div class="desc">
+                                <p>DESCRIPCION</p>
+                            </div>
+                    </button>
+                    <button class="resbtn">
+                            <div>
+                                <img class="imagenres" src="img/2.jpg">
+                            </div>
+                            <div class="titulo">
+                                <p>TITULO DE MUESTRA</p>
+                            </div>
+                            <div class="estrellas">
+                                <p>ESTRELLAS</p>
+                            </div>
+                            <div class="desc">
+                                <p>DESCRIPCION</p>
+                            </div>
+                    </button>
+                    <button class="resbtn">
+                            <div>
+                                <img class="imagenres" src="img/2.jpg">
+                            </div>
+                            <div class="titulo">
+                                <p>TITULO DE MUESTRA</p>
+                            </div>
+                            <div class="estrellas">
+                                <p>ESTRELLAS</p>
+                            </div>
+                            <div class="desc">
+                                <p>DESCRIPCION</p>
+                            </div>
+                    </button>
+                    <button class="resbtn">
+                            <div>
+                                <img class="imagenres" src="img/2.jpg">
+                            </div>
+                            <div class="titulo">
+                                <p>TITULO DE MUESTRA</p>
+                            </div>
+                            <div class="estrellas">
+                                <p>ESTRELLAS</p>
+                            </div>
+                            <div class="desc">
+                                <p>DESCRIPCION</p>
+                            </div>
+                    </button>
+                    <button class="resbtn">
+                            <div>
+                                <img class="imagenres" src="img/2.jpg">
+                            </div>
+                            <div class="titulo">
+                                <p>TITULO DE MUESTRA</p>
+                            </div>
+                            <div class="estrellas">
+                                <p>ESTRELLAS</p>
+                            </div>
+                            <div class="desc">
+                                <p>DESCRIPCION</p>
+                            </div>
+                    </button>
+                    <button class="resbtn">
+                            <div>
+                                <img class="imagenres" src="img/2.jpg">
+                            </div>
+                            <div class="titulo">
+                                <p>TITULO DE MUESTRA</p>
+                            </div>
+                            <div class="estrellas">
+                                <p>ESTRELLAS</p>
+                            </div>
+                            <div class="desc">
+                                <p>DESCRIPCION</p>
+                            </div>
+                    </button>
+                    <button class="resbtn">
+                            <div>
+                                <img class="imagenres" src="img/2.jpg">
+                            </div>
+                            <div class="titulo">
+                                <p>TITULO DE MUESTRA</p>
+                            </div>
+                            <div class="estrellas">
+                                <p>ESTRELLAS</p>
+                            </div>
+                            <div class="desc">
+                                <p>DESCRIPCION</p>
+                            </div>
+                    </button>
+                    <button class="resbtn">
+                            <div>
+                                <img class="imagenres" src="img/2.jpg">
+                            </div>
+                            <div class="titulo">
+                                <p>TITULO DE MUESTRA</p>
+                            </div>
+                            <div class="estrellas">
+                                <p>ESTRELLAS</p>
+                            </div>
+                            <div class="desc">
+                                <p>DESCRIPCION</p>
+                            </div>
+                    </button>
+                    <button class="resbtn">
+                            <div>
+                                <img class="imagenres" src="img/2.jpg">
+                            </div>
+                            <div class="titulo">
+                                <p>TITULO DE MUESTRA</p>
+                            </div>
+                            <div class="estrellas">
+                                <p>ESTRELLAS</p>
+                            </div>
+                            <div class="desc">
+                                <p>DESCRIPCION</p>
+                            </div>
+                    </button>
+                    <button class="resbtn">
+                            <div>
+                                <img class="imagenres" src="img/2.jpg">
+                            </div>
+                            <div class="titulo">
+                                <p>TITULO DE MUESTRA</p>
+                            </div>
+                            <div class="estrellas">
+                                <p>ESTRELLAS</p>
+                            </div>
+                            <div class="desc">
+                                <p>DESCRIPCION</p>
+                            </div>
+                    </button>
+                    <button class="resbtn">
+                            <div>
+                                <img class="imagenres" src="img/2.jpg">
+                            </div>
+                            <div class="titulo">
+                                <p>TITULO DE MUESTRA</p>
+                            </div>
+                            <div class="estrellas">
+                                <p>ESTRELLAS</p>
+                            </div>
+                            <div class="desc">
+                                <p>DESCRIPCION</p>
+                            </div>
+                    </button>
+                </div>
+>>>>>>>> origin/pol:resources/views/login.blade.php
+            </div>
+            @endforeach
+        </div>
+    </div>
+>>>>>>> origin/pol
     <footer>
         <div class="footer">
             <p>Creado por Juan Carlos, Pol y Gerard</p>

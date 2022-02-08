@@ -60,8 +60,16 @@
         </div>
         <div class="cuadros">
             <div class="ubicacion">
+<<<<<<< HEAD
                 <p class="descripcion">Lorem Ipsum</p>
                 <img class="mapa" src="img/2.jpg">
+=======
+                <h1>Ubicación: </h1>
+                <p class="descripcion">Calle de Laravel numero 69</p>
+                <img class="mapa" src="img/2.jpg">
+                <p class="descripcion">Telefono: </p>
+                <p class="descripcion">Correo: </p>
+>>>>>>> origin/pol
             </div>
         </div>
         <div class="cuadros">
