@@ -45,7 +45,6 @@ session_start();
                 <p class="texto_form">Contraseña</p><br>
                 <input type="password" name="password" id="password" placeholder="Contraseña" class="input">
                 <br>
-                <a href="" class="olvido_contrasena">¿Olvidaste la contraseña?</a>
                 <br>
                 <center>
                 <input type="submit" value="Login" class="iniciosesion">
@@ -65,8 +64,6 @@ session_start();
             <span class="close">&times;</span>
             <img src="https://static.tacdn.com/img2/brand_refresh/Tripadvisor_Logo_dark-bg_circle-green_horizontal-lockup_registered_RGB.svg" width="226" height="50" alt="">
             <h3 class="text_form">Únete y descubre lo mejor de Tripadvisor</h3>
-            
-            
             <form action="" onsubmit="validacion_registroJS(); return false;">
                 <p class="texto_form">Nombre</p>
                 <input type="text" name="name_reg" id="name_reg" placeholder="Nombre..." class="input">
@@ -154,7 +151,7 @@ session_start();
                 <h4>Los mejores restaurantes de la ciudad</h4>
             </div>
             <div class="inicio">
-                <button class="crear" onclick="(); return false;"><b>CREAR</b></button>
+                <button class="crear" onclick="crearModalRestaurante(); return false;"><b>CREAR</b></button>
             </div>
         </div>  
         <div id="tabla" class="restaurantes">
@@ -165,6 +162,134 @@ session_start();
             <p>Creado por Juan Carlos, Pol y Gerard</p>
         </div>
     </footer>
+    <div class="modal" id="MyModalEditar">
+        <div class="modal-content" id="modal-content-editar">
+            <span class="close">&times;</span>
+            <img src="https://static.tacdn.com/img2/brand_refresh/Tripadvisor_Logo_dark-bg_circle-green_horizontal-lockup_registered_RGB.svg" width="226" height="50" alt="">
+            <h1 class="text_form">Editar valores Restaurante</h1>
+            
+            
+            <form action="" onsubmit="validacion_modificadorJS(); return false;">
+                <p class="texto_form">Nombre</p>
+                <input type="text" name="nombre_mod" id="nombre_mod" placeholder="Nombre..." class="input">
+                <p class="texto_form">Tipo Restaurante</p>
+                <input list="tipo_mod" class="input">
+                    <datalist id="tipo_mod">
+                        <option value="Italiana">
+                        <option value="Española">
+                        <option value="Mexicana">
+                        <option value="Arabe">
+                        <option value="China">
+                    </datalist>
+                <p class="texto_form">Localidad</p>
+                <input type="text" name="localidad_mod" id="localidad_mod" placeholder="Localidad..." class="input">
+                <p class="texto_form">Latitud</p>
+                <input type="text" name="latitud_mod" id="latitud_mod" placeholder="Latitud..." class="input">
+                <p class="texto_form">Altitud</p>
+                <input type="text" name="altitud_mod" id="altitud_mod" placeholder="Altitud..." class="input">
+                <p class="texto_form">Dirección de correo electrónico</p>
+                <input type="email" name="email_mod" id="email_mod" placeholder="Email..." class="input">
+                <p class="texto_form">Telefono</p>
+                <input type="text" name="telefono_mod" id="telefono_mod" placeholder="Telefono..." class="input">
+                <p class="texto_form">Dieta</p>
+                <input type="text" name="dieta_mod" id="dieta_mod" placeholder="Dieta..." class="input">
+                <p class="texto_form">Comidas</p>
+                <input type="text" name="comidas_mod" id="comidas_mod" placeholder="Comidas..." class="input">
+                <p class="texto_form">Descripcion</p>
+                <input type="textarea" name="descripcion_mod" id="descripcion_mod" placeholder="Descripicón..." class="input">
+                <p class="texto_form">Descripcion larga</p>
+                <input type="textarea" name="descripcion_larga_mod" id="descripcion_larga_mod" placeholder="Descripicón larga..." class="input">
+                <p class="texto_form">Precio</p>
+                <input type="range" name="precio_mod" id="precio_mod" placeholder="Precio..." class="input" max=3 min=1>
+                <p class="texto_form">Activo?</p>
+                <p class="texto_form">Foto de perfil</p>
+                <!--<input type="file" name="photo_mod" id="photo_mod" class="input">-->
+                <!--<input type="text" name="activo_mod" id="activo_mod" placeholder="Activo..." class="input">-->
+                <label for="activo_mod">Des / Activar</label>
+                    <select name="activo_mod" id="activo_mod" data-role="slider">
+                        <option value="0">Desactivo</option>
+                        <option value="1">Activo</option>
+                    </select> 
+                <input type="hidden" name="id_mod" id="id_mod" value=1>
+        
+                <br>
+                <center>
+                <input class="iniciosesion" type="submit" value="Editar">
+                <div id="fallo_validacion">
+                </div>
+                </center>
+            </form>
+
+                
+        </div>
+        
+        <div id="errores_reg"></div>
+    </div>
+    <!-- INICIO MODAL CREAR RESTAURANTE-->
+    <div class="modal" id="MyModalCrear">
+        <div class="modal-content" id="modal-content-crear">
+            <span class="close">&times;</span>
+            <img src="https://static.tacdn.com/img2/brand_refresh/Tripadvisor_Logo_dark-bg_circle-green_horizontal-lockup_registered_RGB.svg" width="226" height="50" alt="">
+            <h1 class="text_form">Crear Restaurante</h1>
+            
+            
+            <form action="" onsubmit="validacion_creadorJS(); return false;">
+                <p class="texto_form">Nombre</p>
+                <input type="text" name="nombre_crear" id="nombre_crear" placeholder="Nombre..." class="input">
+                <p class="texto_form">Tipo Restaurante</p>
+                <input list="tipos" class="input" id="tipo_crear">
+                    <datalist id="tipos">
+                        <option value="Italiana">
+                        <option value="Española">
+                        <option value="Mexicana">
+                        <option value="Arabe">
+                        <option value="China">
+                    </datalist>
+                <p class="texto_form">Localidad</p>
+                <input type="text" name="localidad_crear" id="localidad_crear" placeholder="Localidad..." class="input">
+                <p class="texto_form">Latitud</p>
+                <input type="text" name="latitud_crear" id="latitud_crear" placeholder="Latitud..." class="input">
+                <p class="texto_form">Altitud</p>
+                <input type="text" name="altitud_crear" id="altitud_crear" placeholder="Altitud..." class="input">
+                <p class="texto_form">Dirección de correo electrónico</p>
+                <input type="email" name="email_crear" id="email_crear" placeholder="Email..." class="input">
+                <p class="texto_form">Telefono</p>
+                <input type="text" name="telefono_crear" id="telefono_crear" placeholder="Telefono..." class="input">
+                <p class="texto_form">Dieta</p>
+                <input type="text" name="dieta_crear" id="dieta_crear" placeholder="Dieta..." class="input">
+                <p class="texto_form">Comidas</p>
+                <input type="text" name="comidas_crear" id="comidas_crear" placeholder="Comidas..." class="input">
+                <p class="texto_form">Descripcion</p>
+                <input type="textarea" name="descripcion_crear" id="descripcion_crear" placeholder="Descripicón..." class="input">
+                <p class="texto_form">Descripcion larga</p>
+                <input type="textarea" name="descripcion_larga_crear" id="descripcion_larga_crear" placeholder="Descripicón larga..." class="input">
+                <p class="texto_form">Precio</p>
+                <input type="range" name="precio_crear" id="precio_crear" placeholder="Precio..." class="input" max=3 min=1>
+                <input type="file" name="foto_crear" id="foto_crear" class="input">
+                <input type="file" name="foto_crear2" id="foto_crear2" class="input">
+                <input type="file" name="foto_crear3" id="foto_crear3" class="input">
+                <input type="file" name="foto_crear4" id="foto_crear4" class="input">
+                <input type="file" name="foto_crear5" id="foto_crear5" class="input">
+                <p class="texto_form">Activo?</p>
+                <!--<input type="text" name="activo_crear" id="activo_crear" placeholder="Activo..." class="input">-->
+                <label for="activo_crear">Des / Activar</label>
+                    <select name="activo_crear" id="activo_crear" data-role="slider">
+                        <option value="0">Desactivo</option>
+                        <option value="1">Activo</option>
+                    </select> 
+        
+                <br>
+                <center>
+                <input class="iniciosesion" type="submit" value="Crear">
+                <div id="creacion_errores">
+                </div>
+                </center>
+            </form>
+
+                
+        </div>
+    </div>
+    <!-- FINAL MODAL CREAR RESTAURANTE-->
 </body>
     <script src="js/principal.js"></script>
 </body>

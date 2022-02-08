@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RestauranteController;
+use App\Http\Controllers\UsuarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,10 +20,17 @@ Route::get('/', function () {
 });
 Route::get('/restaurante/{id}', [RestauranteController::class, 'mostrarControler']);
 
+//LEER EL CONTENIDO
 Route::post('leer',[RestauranteController::class, 'leerControler']);
-
+//Editar el contenido
+Route::post('edicion_restaurante_ajax',[RestauranteController::class, 'editar']);
+//RUTA PARA DESACTIVAR 
+Route::post('desactivar_activar_ajax',[RestauranteController::class, 'desactivar_activar']);
+//RUTA PARA ACTIVAR
+Route::post('creacion_restaurante_ajax',[RestauranteController::class, 'crear']);
+//RUTA PARA LOGEARSE
 Route::post('login_ajax',[UsuarioController::class, 'login_ajax']);
-
-Route::post('registro_ajax',[UsuarioController::class, 'registro_ajax']);
-
+//logout
 Route::post('logout',[UsuarioController::class, 'logout']);
+//Registrarse
+Route::post('registro_ajax',[UsuarioController::class, 'registro_ajax']);
