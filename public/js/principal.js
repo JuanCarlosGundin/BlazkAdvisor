@@ -31,11 +31,12 @@ function leerJS(valor) {
     //estoy filtrando el valor, si es 0 es el valor del texto
     // y si es diferente de 0 es el valor de los botones "String"
     if(valor != 0){
-        formData.append('filtro',valor);
-        formData.append('tipo',1);
-    }else{
+        formData.append('comida',valor);
         formData.append('filtro', document.getElementById('filtro').value);
         formData.append('tipo',2);
+    }else{
+        formData.append('filtro', document.getElementById('filtro').value);
+        formData.append('tipo',1);
     }
 
     /* Inicializar un objeto AJAX */
@@ -45,24 +46,31 @@ function leerJS(valor) {
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
+            console.log(respuesta)
             var recarga = '';
             /* Leerá la respuesta que es devuelta por el controlador y empezare a cargar la variable
              que contiene todo el contenido de la propia web*/
             for (let i = 0; i < respuesta.length; i++) {
-                recarga +='<button class="resbtn" onclick="window.location.href = \'restaurante/'+respuesta[i].id_restaurante+'\'">'
-                recarga +='<div>'
-                recarga +='<img class="imagenres" src="img/'+respuesta[i].url_foto_principal+'">'
-                recarga +='</div>'
-                recarga +='<div class="titulo">'
-                recarga +='<p>'+respuesta[i].nombre_restaurante+'</p>'
-                recarga +='</div>'
-                recarga +='<div class="estrellas">'
-                recarga +='<p>'+respuesta[i].descripcion_restaurante+'</p>'
-                recarga +='</div>'
-                recarga +='<div class="desc">'
-                recarga +='<p>Cocina '+respuesta[i].tipo_restaurante+'</p>'
-                recarga +='</div>'
-                recarga +='</button>'
+                recarga += '<div class="restaurante">'
+                recarga += '<button class="resbtn" onclick="window.location.href = \'restaurante/' + respuesta[i].id_restaurante + '\'">'
+                recarga += '<div>'
+                recarga += '<img class="imagenres" src="img/' + respuesta[i].url_foto_principal + '">'
+                recarga += '</div>'
+                recarga += '<div class="titulo">'
+                recarga += '<p>' + respuesta[i].nombre_restaurante + '</p>'
+                recarga += '</div>'
+                recarga += '<div class="estrellas">'
+                recarga += '<p>' + respuesta[i].descripcion_restaurante + '</p>'
+                recarga += '</div>'
+                recarga += '<div class="desc">'
+                recarga += '<p>Cocina ' + respuesta[i].tipo_restaurante + '</p>'
+                recarga += '</div>'
+                recarga += '</button>'
+                recarga += '<button class="modificar" onclick="editarModalRestaurante(' + respuesta[i].id_restaurante + ',' + respuesta[i].nombre_restaurante + ',' + respuesta[i].loc_lat_restaurante + ',' + respuesta[i].descripcion_restaurante + ',' + respuesta[i].email_dueño + ',' + respuesta[i].loc_alt_restaurante + ',' + respuesta[i].loc_restaurante + ',' + respuesta[i].tipo_restaurante + ',' + respuesta[i].dieta_especial + ',' + respuesta[i].comidas_restaurante + ',' + respuesta[i].activo_restaurante + ',' + respuesta[i].precio_restaurante + ',' + respuesta[i].desc_larga + ',' + respuesta[i].telefono + ');return false;">EDITAR</button>'
+                recarga += '<button class="eliminar" onclick="desactivarActivarRestaurante(' + respuesta[i].id_restaurante + '); return false;">DESACTIVAR</button>'
+                recarga += '<div id="desactivar_errores"></div>'
+                recarga += '<div id="edicion_errores"></div>'
+                recarga += '</div>'
             }
             tabla.innerHTML = recarga;
         

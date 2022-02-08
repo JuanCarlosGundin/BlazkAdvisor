@@ -16,7 +16,7 @@ session_start();
     <header>
         <div class="header">
             <div class="logo">
-                    <img class="logoimagen" src="img/logo.png">
+                <img class="logoimagen" src="img/logo.png" >
             </div>
             <div class="inicio">
                 <?php
@@ -37,7 +37,7 @@ session_start();
         <div class="modal-content" id="modal-content">
             <span class="close">&times;</span>
             <img src="https://static.tacdn.com/img2/brand_refresh/Tripadvisor_Logo_dark-bg_circle-green_horizontal-lockup_registered_RGB.svg" width="226" height="50" alt="">
-            <h1 class="text_form">¡Hola de nuevo!</h1>
+            <h3 class="text_form">¡Hola de nuevo!</h3>
             <form action="" onsubmit="validacion_loginJS(); return false;">
                 <p class="texto_form">Dirección de correo electrónico</p><br>
                 <input type="email" name="email" id="email" placeholder="Dirección de correo electrónico" class="input">
@@ -47,13 +47,13 @@ session_start();
                 <br>
                 <a href="" class="olvido_contrasena">¿Olvidaste la contraseña?</a>
                 <br>
-            <center>
+                <center>
                 <input type="submit" value="Login" class="iniciosesion">
                 <p class="texto_form">No eres miembro?</p><br>
                 <button onclick="abrir_formularioJS(); return false;" class="iniciosesion">Únete</button>
                 <div id="confirmacion">
                 </div>
-            </center>
+                </center>
             </form>
             
         </div>
@@ -64,7 +64,7 @@ session_start();
         <div class="modal-content" id="modal-content2">
             <span class="close">&times;</span>
             <img src="https://static.tacdn.com/img2/brand_refresh/Tripadvisor_Logo_dark-bg_circle-green_horizontal-lockup_registered_RGB.svg" width="226" height="50" alt="">
-            <h1 class="text_form">Únete y descubre lo mejor de Tripadvisor</h1>
+            <h3 class="text_form">Únete y descubre lo mejor de Tripadvisor</h3>
             
             
             <form action="" onsubmit="validacion_registroJS(); return false;">
@@ -83,53 +83,61 @@ session_start();
                 <div id="confirmacion_reg">
                     <p class="texto_form">¿Ya eres miemnbro?</p>
                     <button onclick="abrir_loginJS(); return false;" class="iniciosesion">Inicia Sesión</button>
-                    <p> Al continuar, declaras tu conformidad con nuestras Condiciones de uso y confirmas que has leído nuestra Declaración de privacidad y cookies.</p>
                 </div>
                 </center>
             </form>
-
-                
         </div>
-        
-        <div id="errores_reg"></div>
+        <div id="errores_reg">
+        </div>
+        </div>
     </div>
-        </div>
     </header>
     <div class="main">
         <div class="tipos">
             <div class="botonestipos">
-                <button class="tiposcomida" onclick="leerJS('Italiana');"><b>Comida Italiana</b>
+                <button class="tiposcomida" onclick="leerJS('Italiana');"><b>Italiana</b>
                     <div class="iconos">
                         <i class="fas fa-pizza-slice"></i>
                     </div>
                 </button>
             </div>
             <div class="botonestipos">
-                <button class="tiposcomida" onclick="leerJS('Española');"><b>Comida Española</b>
+                <button class="tiposcomida" onclick="leerJS('Española');"><b>Española</b>
                     <div class="iconos">
                         <i class="fas fa-utensils"></i>
                     </div>
                 </button>
             </div>
             <div class="botonestipos">
-                <button class="tiposcomida" onclick="leerJS('Mexicana');"><b>Comida Mexicana</b>
+                <button class="tiposcomida" onclick="leerJS('Mexicana');"><b>Mexicana</b>
                     <div class="iconos">
                         <i class="fas fa-pepper-hot"></i>
                     </div>
                 </button>
             </div>
             <div class="botonestipos">
-                <button class="tiposcomida" onclick="leerJS('Arabe');"><b>Comida arabe</b>
+                <button class="tiposcomida" onclick="leerJS('Arabe');"><b>Arabe</b>
                     <div class="iconos">
                         <i class="fas fa-mosque"></i>
                     </div>
                 </button>
             </div>
             <div class="botonestipos">
-                <button class="tiposcomida" onclick="leerJS('China');"><b>Comida china</b><div class="iconos">
-                    <i class="far fa-star"></i>
-                </div>
-            </button>
+                <button class="tiposcomida" onclick="leerJS('China');"><b>China</b>
+                    <div class="iconos">
+                        <i class="far fa-star"></i>
+                    </div>
+                </button>
+            </div>
+            <div class="botonestipos">
+                <button class="tiposcomida" data-toggle="dropdown" onclick=""><b>Mejor valorados</b>
+                </button>
+                <ul role="menu">
+                    <li><a href="#">Acción #1</a></li>
+                    <li><a href="#">Acción #2</a></li>
+                    <li><a href="#">Acción #3</a></li>
+                    <li><a href="#">Acción #4</a></li>
+                </ul>
             </div>
         </div>
         <div class="filtro">
@@ -140,14 +148,24 @@ session_start();
                 </div>
             </div>
         </div>
-        <div class="restaurantes">
-            <h1>Restaurantes</h1>
-            <h4>Los mejores restaurantes de la ciudad</h4>
-                <div id="tabla"class="restaurante">
-                </div>
+        <div class="topcontent">
+            <div class="titulorestaurante">
+                <h1>Restaurantes</h1>
+                <h4>Los mejores restaurantes de la ciudad</h4>
             </div>
+            <div class="inicio">
+                <button class="crear" onclick="(); return false;"><b>CREAR</b></button>
+            </div>
+        </div>  
+        <div id="tabla" class="restaurantes">
         </div>
     </div>
+    <footer>
+        <div class="footer">
+            <p>Creado por Juan Carlos, Pol y Gerard</p>
+        </div>
+    </footer>
+</body>
     <script src="js/principal.js"></script>
 </body>
 </html>
