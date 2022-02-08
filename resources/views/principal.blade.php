@@ -22,6 +22,7 @@ session_start();
                 <?php
                 if (session('user')) {
                     $username_logged = session('user');
+                    $tipo_user = session('tipo');
                     //print_r($username_logged);
                     //echo "Bienvenido: ".$username_logged->nombre_usuario;
                     echo '<button class="bienvenido" ><b>Bienvenido '.$username_logged.'</b></button>';
@@ -30,6 +31,7 @@ session_start();
                     echo '<button  class="iniciosesion" onclick="IWantToLogin(); return false;"><b>Iniciar sesión</b></button>';
                 }
             ?>
+            <input id="typeUser" type="hidden" value="<?php if(isset($tipo_user)){echo $tipo_user;}else{echo "nada";}?>">
             </div>
         </div>
         <!-- Aqui esta el modal -->
@@ -59,6 +61,7 @@ session_start();
 
         <div id="errores"></div>
         <div id="datos_user"></div>
+        
 
         <div class="modal-content" id="modal-content2">
             <span class="close">&times;</span>

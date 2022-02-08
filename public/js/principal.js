@@ -38,6 +38,10 @@ function leerJS(valor) {
         formData.append('filtro', document.getElementById('filtro').value);
         formData.append('tipo',1);
     }
+    usuario=document.getElementById('typeUser').value
+    if (usuario == 1) {
+        alert("admin")
+    }
 
     /* Inicializar un objeto AJAX */
     var ajax = objetoAjax();

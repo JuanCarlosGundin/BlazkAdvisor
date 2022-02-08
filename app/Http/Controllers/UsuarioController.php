@@ -16,6 +16,8 @@ class UsuarioController extends Controller
         if (sizeof($search_user)>0){
             foreach ($search_user as $user) {
                 session(['user' => $user->nombre_usuario]);
+                session(['tipo' => $user->perfil_usuario]);
+
             }
         }
         return response()->json($search_user);
