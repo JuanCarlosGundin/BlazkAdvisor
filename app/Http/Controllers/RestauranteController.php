@@ -17,6 +17,7 @@ class RestauranteController extends Controller
         $restaurante=DB::table('tbl_restaurantes')->join('tbl_fotos','tbl_restaurantes.id_restaurante','=','tbl_fotos.id_restaurante')->select()->where('tbl_restaurantes.id_restaurante','=',$id)->first();
         return view('restaurante', compact('restaurante'));
     }
+    //FILTRo
     public function leerControler(Request $request){
         if($request->input('tipo')==1){
             $datos=DB::select('select * from tbl_restaurantes inner join tbl_fotos on tbl_restaurantes.id_restaurante=tbl_fotos.id_foto where nombre_restaurante like ?',['%'.$request->input('filtro').'%']);
@@ -30,109 +31,100 @@ class RestauranteController extends Controller
 
         return response()->json($datos);
     }
-    public function login_ajax(Request $request){
-        $email = $request->input('email_user');
-        $password = $request->input('password_user');
-        $search_user=DB::select('select * from tbl_usuario where mail_usuario=? and contraseña_usuario=?',[$email,$password]);
-        if (sizeof($search_user)>0){
-            foreach ($search_user as $user) {
-                session(['user' => $user->nombre_usuario]);
-            }
-        }
-        return response()->json($search_user);
-    }
-    public function registro_ajax(Request $request){
+   //FUNCIONES GERARD
+   //EDITAR
+   public function editar(Request $request)
+    {
+        
         try {
-            $email = $request->input('email');
-            $user_mismo_mail=DB::select('select * from tbl_usuario where mail_usuario=?',[$email]);
-            if (sizeof($user_mismo_mail)>0){
-                return response()->json(array('mismo_mail'=>'NOK'));
-            }
+            //Request a la comunicacion con AJax
 
-            if ($request->hasFile('photo')) {
-                $path=$request->file('photo')->store('uploads','public');                
-            }else{
-                $path="uploads/XQA0H4DjGOhvgZQAuLgnrSow4M7ho2DAngS06g6n.jpg";
-            }
-            
-            DB::insert('insert into tbl_usuario (mail_usuario,contraseña_usuario,foto_usuario,nombre_usuario,perfil_usuario) values (?,?,?,?,?)',[$request->input('email'),$request->input('password'),$path,$request->input('name'),$request->input('type')]);
-            return response()->json(array('resultado'=> 'OK'));            
+            $id = $request->input('id');
+            $nombre = $request->input('nombre');
+            $latitud = $request->input('latitud');
+            $altitud = $request->input('altitud');
+            $localidad = $request->input('localidad');
+            $tipo = $request->input('tipo');
+            $email = $request->input('email');
+            $telefono = $request->input('telefono');
+            $dieta = $request->input('dieta');
+            $comidas = $request->input('comidas');
+            $descripcion = $request->input('descripcion');
+            $descripcion_larga = $request->input('descripcion_larga');
+            $activo = $request->input('activo');
+            $precio = $request->input('precio');
+
+            //Textos completos
+
+
+            DB::update('update tbl_restaurantes set nombre_restaurante = ?,loc_lat_restaurante=?,descripcion_restaurante=?,desc_larga=?,email_dueño=?,telefono=?,loc_alt_restaurante=?,loc_restaurante=?,tipo_restaurante=?,dieta_especial=?,comidas_restaurante=?,activo_restaurante=?,precio_restaurante=? where id_restaurante = ?',
+            [$nombre,$latitud,$descripcion,$descripcion_larga,$email,$telefono,$altitud,$localidad,$tipo,$dieta,$comidas,$activo,$precio,$id]);
+
+            return response()->json(array('resultado'=> 'OK'));   
+
         } catch (\Throwable $th) {
             return response()->json(array('resultado'=> 'NOK: '.$th->getMessage()));
         }
     }
-    public function logout(){
-        session()->forget('user');
-        return view('login');
-    }
-    public function index()
-    {
-        //
+
+    //FUNCION DE DESACTIVAR
+    public function desactivar_activar(Request $request){
+        $id = $request->input('id');
+
+        $select_rest=DB::select('select activo_restaurante from tbl_restaurantes where id_restaurante=?',[$id]);
+        if ($select_rest[0]->activo_restaurante==1) {
+            DB::update('update tbl_restaurantes set activo_restaurante=? where id_restaurante = ?',[0,$id]);
+            return response()->json($select_rest[0]);
+        }elseif($select_rest[0]->activo_restaurante==0){
+            DB::update('update tbl_restaurantes set activo_restaurante=? where id_restaurante = ?',[1,$id]);
+            return response()->json($select_rest[0]);
+        }
+        
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    //Funcion para crear
+    public function crear(Request $request){
+        try {
+            //Request a la comunicacion con AJax
+            
+            //FOTO
+            if ($request->hasFile('foto')) {
+                $path1=$request->file('foto')->store('/img','public');                
+            }else{
+                $path1="img/XQA0H4DjGOhvgZQAuLgnrSow4M7ho2DAngS06g6n.jpg";
+            }
+            for ($i=2; $i <= 6; $i++) { 
+                if ($request->hasFile('foto'.$i)) {
+                    $path[$i]=$request->file('foto'.$i)->store('/img','public');
+                }else{
+                    $path[$i]="img/XQA0H4DjGOhvgZQAuLgnrSow4M7ho2DAngS06g6n.jpg";
+                }
+            }
+
+            //INPUTS
+            $nombre = $request->input('nombre');
+            $latitud = $request->input('latitud');
+            $altitud = $request->input('altitud');
+            $localidad = $request->input('localidad');
+            $tipo = $request->input('tipo');
+            $email = $request->input('email');
+            $telefono = $request->input('telefono');
+            $dieta = $request->input('dieta');
+            $comidas = $request->input('comidas');
+            $descripcion = $request->input('descripcion');
+            $descripcion_larga = $request->input('descripcion_larga');
+            $activo = $request->input('activo');
+            $precio = $request->input('precio');
+
+            //Textos completos
+            $id = DB::table('tbl_restaurantes')->insertGetId(
+                [ 'nombre_restaurante' => $nombre,'email_dueño'=> $email,'loc_alt_restaurante'=>$altitud,'loc_lat_restaurante'=>$latitud,'descripcion_restaurante'=>$descripcion,'desc_larga'=>$descripcion_larga,'telefono'=>$telefono,'loc_restaurante'=>$localidad,'tipo_restaurante'=>$tipo,'dieta_especial'=>$dieta,'comidas_restaurante'=>$comidas,'activo_restaurante'=>$activo,'precio_restaurante'=>$precio ]);
+            DB::insert('insert into tbl_fotos (url_foto_principal,id_restaurante,url_foto1,url_foto2,url_foto3,url_foto4) values (?,?,?,?,?,?)',[$path1,$id,$path[2],$path[3],$path[4],$path[5]]);
+            return response()->json(array('resultado'=> 'OK'));   
+
+        } catch (\Throwable $th) {
+            return response()->json(array('resultado'=> 'NOK: '.$th->getMessage()));
+        }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Restaurante  $restaurante
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Restaurante $restaurante)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Restaurante  $restaurante
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Restaurante $restaurante)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Restaurante  $restaurante
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Restaurante $restaurante)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Restaurante  $restaurante
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Restaurante $restaurante)
-    {
-        //
-    }
 }

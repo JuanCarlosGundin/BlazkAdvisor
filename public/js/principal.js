@@ -54,7 +54,7 @@ function leerJS(valor) {
                 recarga += '<div class="restaurante">'
                 recarga += '<button class="resbtn" onclick="window.location.href = \'restaurante/' + respuesta[i].id_restaurante + '\'">'
                 recarga += '<div>'
-                recarga += '<img class="imagenres" src="img/' + respuesta[i].url_foto_principal + '">'
+                recarga += '<img class="imagenres" src="storage/'+ respuesta[i].url_foto_principal + '">'
                 recarga += '</div>'
                 recarga += '<div class="titulo">'
                 recarga += '<p>' + respuesta[i].nombre_restaurante + '</p>'
@@ -66,7 +66,7 @@ function leerJS(valor) {
                 recarga += '<p>Cocina ' + respuesta[i].tipo_restaurante + '</p>'
                 recarga += '</div>'
                 recarga += '</button>'
-                recarga += '<button class="modificar" onclick="editarModalRestaurante(' + respuesta[i].id_restaurante + ',' + respuesta[i].nombre_restaurante + ',' + respuesta[i].loc_lat_restaurante + ',' + respuesta[i].descripcion_restaurante + ',' + respuesta[i].email_dueño + ',' + respuesta[i].loc_alt_restaurante + ',' + respuesta[i].loc_restaurante + ',' + respuesta[i].tipo_restaurante + ',' + respuesta[i].dieta_especial + ',' + respuesta[i].comidas_restaurante + ',' + respuesta[i].activo_restaurante + ',' + respuesta[i].precio_restaurante + ',' + respuesta[i].desc_larga + ',' + respuesta[i].telefono + ');return false;">EDITAR</button>'
+                recarga += '<button class="modificar" onclick="editarModalRestaurante(' + respuesta[i].id_restaurante + ',\'' + respuesta[i].nombre_restaurante + '\',' + respuesta[i].loc_lat_restaurante + ',\'' + respuesta[i].descripcion_restaurante + '\',\'' + respuesta[i].email_dueño + '\',' + respuesta[i].loc_alt_restaurante + ',\'' + respuesta[i].loc_restaurante + '\',\'' + respuesta[i].tipo_restaurante + '\',\'' + respuesta[i].dieta_especial + '\',\'' + respuesta[i].comidas_restaurante + '\',' + respuesta[i].activo_restaurante + ',' + respuesta[i].precio_restaurante + ',\'' + respuesta[i].desc_larga + '\',\'' + respuesta[i].telefono +'\');return false;">EDITAR</button>'
                 recarga += '<button class="eliminar" onclick="desactivarActivarRestaurante(' + respuesta[i].id_restaurante + '); return false;">DESACTIVAR</button>'
                 recarga += '<div id="desactivar_errores"></div>'
                 recarga += '<div id="edicion_errores"></div>'
@@ -80,81 +80,254 @@ function leerJS(valor) {
     ajax.send(formData);
 }
 
-//cambiar de pagina a restaurante en cuestion
-function restaurante(id) {
-    alert("Llegamos")
+
+
+///EDITAR UN RESTAURANTE
+
+function editarModalRestaurante(id, nombre, latitud, descripcion, email, altitud, localidad, tipo, dieta, comidas, activo, precio, desc_larga, telefono) {
+    console.log(tipo)
+    let modal = document.getElementById('MyModalEditar')
+            //RECOPILamos valores del restaurante
+    document.getElementById('id_mod').value = id
+    document.getElementById('nombre_mod').value = nombre
+    document.getElementById('latitud_mod').value = latitud
+    document.getElementById('descripcion_mod').value = descripcion
+    document.getElementById('email_mod').value = email
+    document.getElementById('altitud_mod').value = altitud
+    document.getElementById('localidad_mod').value = localidad
+    document.getElementById('tipo_mod').value = tipo
+    document.getElementById('dieta_mod').value = dieta
+    document.getElementById('comidas_mod').value = comidas
+    document.getElementById('activo_mod').value = activo
+    document.getElementById('precio_mod').value = precio
+    document.getElementById('descripcion_larga_mod').value = desc_larga
+    document.getElementById('telefono_mod').value = telefono
+    modal.style.display = "block";
+}
+
+function validacion_modificadorJS() {
+    var edicion_errores = document.getElementById('edicion_errores');
+
+    id = document.getElementById('id_mod').value
+    nombre = document.getElementById('nombre_mod').value
+    latitud = document.getElementById('latitud_mod').value
+    descripcion = document.getElementById('descripcion_mod').value
+    descripcion_larga = document.getElementById('descripcion_larga_mod').value
+    email = document.getElementById('email_mod').value
+    telefono = document.getElementById('telefono_mod').value
+    altitud = document.getElementById('altitud_mod').value
+    localidad = document.getElementById('localidad_mod').value
+    tipo = document.getElementById('tipo_mod').value
+    dieta = document.getElementById('dieta_mod').value
+    comidas = document.getElementById('comidas_mod').value
+    activo = document.getElementById('activo_mod').value
+    precio = document.getElementById('precio_mod').value
+
+    if (id == "" || nombre == "" || latitud == "" || descripcion == "" || descripcion_larga == "" || email == "" || telefono == "" || altitud == "" || localidad == "" || tipo == "" || dieta == "" || comidas == "" || activo == "" || precio == "") {
+        edicion_errores.innerHTML = "<p style='color:red'>Falta algún dato</p>"
+    } else {
+        edicionRestauranteJS(id, nombre, latitud, altitud, localidad, email, telefono, descripcion, descripcion_larga, tipo, dieta, comidas, activo, precio)
+    }
+}
+
+function edicionRestauranteJS(id, nombre, latitud, altitud, localidad, email, telefono, descripcion, descripcion_larga, tipo, dieta, comidas, activo, precio) {
+    fails = document.getElementById('edicion_errores')
+    fail_validacion = document.getElementById('fallo_validacion')
+
     var formData = new FormData();
+
     formData.append('_token', document.getElementById('token').getAttribute("content"));
-    formData.append('id',id);
-    /* Inicializar un objeto AJAX */
+    formData.append('id', id);
+    formData.append('nombre', nombre);
+    formData.append('latitud', latitud);
+    formData.append('altitud', altitud);
+    formData.append('localidad', localidad);
+    formData.append('tipo', tipo);
+    formData.append('email', email);
+    formData.append('telefono', telefono);
+    formData.append('dieta', dieta);
+    formData.append('comidas', comidas);
+    formData.append('descripcion', descripcion);
+    formData.append('descripcion_larga', descripcion_larga);
+    formData.append('activo', activo);
+    formData.append('precio', precio);
+
     var ajax = objetoAjax();
-    //abrimos la ruta web pasando el objeto ajax con todas las variables
-    ajax.open("POST", "restaurante", true);
+    //Abrimos comunicacion para el controller
+    ajax.open("POST", "edicion_restaurante_ajax", true);
+    ajax.onreadystatechange = function() {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            var respuesta = JSON.parse(this.responseText);
+            /* Leerá la respuesta que es devuelta por el controlador: */
+            if (respuesta.resultado == 'OK') {
+                console.log(respuesta)
+                leerJS(0)
+                closeModalEdicion()
+
+            } else {
+                console.log(respuesta)
+                fails.innerHTML = "<p style='color:red'>Edición no registrada, fallo de datos o servidor</p>";
+            }
+
+
+        }
+    }
     ajax.send(formData);
 }
 
-//Modal BOX
 
-// Get the modal
-var modal = document.getElementById("myModal");
-
-// Get the <span> element that closes the modal
-var cerrar = document.getElementById("cerrar");
-
-// When the user clicks the button, open the modal 
-function abrir() {
-  modal.style.display = "block";
-  filtro=document.getElementById("filtro").value
-  enter=document.getElementById("Aqui")
-  var contenido=''
-  contenido+='<form onsubmit="editar(); return false;">' 
-  contenido+='<p>Nombre<p>'
-  contenido+='<input type="text" id="nombreE">'
-  contenido+='<p>Foto<p>'
-  contenido+='<input type="file" id="fotoE">'
-  contenido+='<input type="hidden" id="idE" ><br/><br/>'
-  contenido+='<input type="submit">'
-  contenido+='</form>'
-  contenido+=''
-  enter.innerHTML = contenido;
-}
-
-// When the user clicks on <span> (x), close the modal
-cerrar.onclick = function() {
-  modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
+//CERRAR MODAL DE EDICION
 window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
+    let modalEditar = document.getElementById("MyModalEditar");
+    if (event.target == modalEditar) {
+        modalEditar.style.display = "none";
+    }
 }
 
+function closeModalEdicion() {
+    let modalEditar = document.getElementById("MyModalEditar");
+    modalEditar.style.display = "none";
+}
+var span2 = document.getElementsByClassName("close")[2];
+span2.onclick = function() {
+    let modal = document.getElementById("MyModalEditar");
+    modal.style.display = "none";
+}
 
-//Ajax de Login
+//DESACTIVAR UN RESTAURANTE
 
-//alert("llego")
+function desactivarActivarRestaurante(id) {
+
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('id', id);
+
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "desactivar_activar_ajax", true);
+    notas_desactivar = document.getElementById('desactivar_errores');
+    ajax.onreadystatechange = function() {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            var respuesta = JSON.parse(this.responseText);
+            /* Leerá la respuesta que es devuelta por el controlador: */
+            if (respuesta.activo_restaurante == 0) {
+                console.log(respuesta)
+
+            } else if (respuesta.activo_restaurante == 1) {
+                console.log(respuesta)
+            }
+        }
+    }
+    ajax.send(formData);
+}
+
+//JS CREAR
+
+function crearModalRestaurante() {
+    let modal = document.getElementById('MyModalCrear')
+        //RECOPILamos valores del restaurante
+
+
+    modal.style.display = "block";
+}
+//VALIDAMOS DATOS DEL FORMULARIO MODAL DE CREACION
+function validacion_creadorJS() {
+    var creacion_errores = document.getElementById('creacion_errores');
+
+    nombre = document.getElementById('nombre_crear').value
+    latitud = document.getElementById('latitud_crear').value
+    descripcion = document.getElementById('descripcion_crear').value
+    descripcion_larga = document.getElementById('descripcion_larga_crear').value
+    email = document.getElementById('email_crear').value
+    telefono = document.getElementById('telefono_crear').value
+    altitud = document.getElementById('altitud_crear').value
+    localidad = document.getElementById('localidad_crear').value
+    tipo = document.getElementById('tipo_crear').value
+    dieta = document.getElementById('dieta_crear').value
+    comidas = document.getElementById('comidas_crear').value
+    activo = document.getElementById('activo_crear').value
+    foto = document.getElementById('foto_crear').files[0]
+    foto2 = document.getElementById('foto_crear2').files[0]
+    foto3 = document.getElementById('foto_crear3').files[0]
+    foto4 = document.getElementById('foto_crear4').files[0]
+    foto5 = document.getElementById('foto_crear5').files[0]
+    precio = document.getElementById('precio_crear').value
+
+    if (nombre == "" || latitud == "" || descripcion == "" || descripcion_larga == "" || email == "" || telefono == "" || altitud == "" || localidad == "" || tipo == "" || dieta == "" || comidas == "" || activo == "" || precio == "") {
+        creacion_errores.innerHTML = "<p style='color:red'>Falta algún dato</p>"
+    } else {
+        creacionRestauranteJS(foto, nombre, latitud, altitud, localidad, email, telefono, descripcion, descripcion_larga, tipo, dieta, comidas, activo, precio, foto2, foto3, foto4, foto5)
+    }
+
+}
+//INSERTAMOS DATOS DEL FORMULARIO SUANDO EL CONTROLLER MEDIANTE OBJETO AJAX
+function creacionRestauranteJS(foto, nombre, latitud, altitud, localidad, email, telefono, descripcion, descripcion_larga, tipo, dieta, comidas, activo, precio, foto2, foto3, foto4, foto5) {
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('foto', foto);
+    formData.append('foto2', foto2);
+    formData.append('foto3', foto3);
+    formData.append('foto4', foto4);
+    formData.append('foto5', foto5);
+    formData.append('nombre', nombre);
+    formData.append('latitud', latitud);
+    formData.append('altitud', altitud);
+    formData.append('localidad', localidad);
+    formData.append('tipo', tipo);
+    formData.append('email', email);
+    formData.append('telefono', telefono);
+    formData.append('descripcion_larga', descripcion_larga);
+    formData.append('dieta', dieta);
+    formData.append('comidas', comidas);
+    formData.append('descripcion', descripcion);
+    formData.append('activo', activo);
+    formData.append('precio', precio);
+
+    var ajax = objetoAjax();
+    //Abrimos comunicacion para el controller
+    validacion_crear = document.getElementById('creacion_errores')
+    creacion_bien = document.getElementById('creacion_bien')
+    ajax.open("POST", "creacion_restaurante_ajax", true);
+    ajax.onreadystatechange = function() {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            var respuesta = JSON.parse(this.responseText);
+            /* Leerá la respuesta que es devuelta por el controlador: */
+            if (respuesta.resultado == 'OK') {
+                console.log(respuesta)
+               leerJS(0)
+                closeModalCreacion()
+
+            } else {
+                console.log(respuesta)
+            }
+        }
+    }
+    ajax.send(formData);
+}
+//Cerrar Modal en click outside el modal
+window.onclick = function(event) {
+    let modalCrear = document.getElementById("MyModalCrear");
+    if (event.target == modalCrear) {
+        modalCrear.style.display = "none";
+    }
+}
+
+function closeModalCreacion() {
+    let modalCrear = document.getElementById("MyModalCrear");
+    modalCrear.style.display = "none";
+}
+
+//MODAL DE LOGIN
+function redirect_homeJS() {
+    //Aqui redirigimos al home
+    window.location.href = "./";
+}
 function IWantToLogin() {
     modal = document.getElementById('MyModal')
     modal.style.display = "block";
 }
-
-function IWantToLogout() {
-    //Hacemos un flush y que nos devuelva al home. Por ahora solo al login
-    var formData = new FormData();
-    formData.append('_token', document.getElementById('token').getAttribute("content"));
-
-    var ajax = objetoAjax();
-    //Abrimos comunicacion para el controller
-    ajax.open("POST", "logout", true);
-
-    ajax.send(formData);
-    redirect_homeJS()
-}
-
-
-
 //Funcion de validacion del login
 function validacion_loginJS() {
     var fails = document.getElementById('confirmacion')
@@ -222,52 +395,50 @@ function loginJS() {
     ajax.send(formData);
 }
 
+function closeModal() {
+    let modallogin = document.getElementById("MyModal");
+    modallogin.style.display = "none";
+}
+//Logout
+function IWantToLogout() {
+    //Hacemos un flush y que nos devuelva al home. Por ahora solo al login
+    var formData = new FormData();
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
 
-function abrir_formularioJS() {
-    var modal = document.getElementById("modal-content");
-    modal.style.display = "none";
-
-    formulario_html = document.getElementById('modal-content2')
-    formulario_html.style.display = "block";
+    var ajax = objetoAjax();
+    //Abrimos comunicacion para el controller
+    ajax.open("POST", "logout", true);
+    ajax.onreadystatechange = function() {
+    if (ajax.readyState == 4 && ajax.status == 200) {
+        window.location.href="./"
+    }
+}
+    ajax.send(formData);
 }
 
-function abrir_loginJS() {
-    var modal = document.getElementById("modal-content2");
-    modal.style.display = "none";
-
-    formulario_html = document.getElementById('modal-content')
-    formulario_html.style.display = "block";
-}
-
-
-/*Close modal*/
 var span0 = document.getElementsByClassName("close")[0];
 var span1 = document.getElementsByClassName("close")[1];
 span0.onclick = function() {
-    var modal = document.getElementById("MyModal");
+    let modal = document.getElementById("MyModal");
     modal.style.display = "none";
 }
 span1.onclick = function() {
-    var modal = document.getElementById("MyModal");
+    let modal = document.getElementById("MyModal");
     modal.style.display = "none";
 }
-
-
-// When the user clicks anywhere outside of the modal, close it
-
 window.onclick = function(event) {
-    var modal = document.getElementById("MyModal");
+    let modallogin = document.getElementById("MyModal");
     if (event.target == modal) {
-        modal.style.display = "none";
+        modallogin.style.display = "none";
     }
 }
 
 function closeModal() {
-    var modal = document.getElementById("MyModal");
-    modal.style.display = "none";
+    let modallogin = document.getElementById("MyModal");
+    modallogin.style.display = "none";
 }
-/*FIN CLOSE MODAL*/
 
+//Registrarse
 
 function validacion_registroJS() {
     var confirmacion = document.getElementById('confirmacion_reg')
@@ -323,7 +494,11 @@ function registroJS(name_reg, email_reg, pass_reg, type_reg, photo_reg) {
             } else {
                 if (respuesta.resultado == 'OK') {
                     console.log(respuesta)
-                        //redirect_homeJS();
+                    document.getElementById('email').value = email_reg
+                    document.getElementById('password').value = pass_reg
+                    loginJS()
+                        //closemodal()
+
                 } else {
                     console.log(respuesta)
                     fails.innerHTML = "Fallo en la inserción";
@@ -334,4 +509,21 @@ function registroJS(name_reg, email_reg, pass_reg, type_reg, photo_reg) {
     }
     ajax.send(formData);
     console.log(name_reg, email_reg, pass_reg, type_reg, photo_reg)
+}
+
+//CAMBIAR ENTRE LOGIN Y REGISTRO
+function abrir_formularioJS() {
+    let modal = document.getElementById("modal-content");
+    modal.style.display = "none";
+
+    formulario_html = document.getElementById('modal-content2')
+    formulario_html.style.display = "block";
+}
+
+function abrir_loginJS() {
+    let modal = document.getElementById("modal-content2");
+    modal.style.display = "none";
+
+    formulario_html = document.getElementById('modal-content')
+    formulario_html.style.display = "block";
 }
