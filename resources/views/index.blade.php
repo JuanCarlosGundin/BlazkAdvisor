@@ -151,10 +151,12 @@
                             <div>
                                 <img class="imagenres" src="img/2.jpg"><br>
                                 
-                                
                                 <button onclick="editarModalRestaurante(1,'Tio Bigotes', '2', 'muy cuco','joselito@a.com','2','Hospi','italiano','ninguna especial','patats',1,33); return false;">EDITAR</button>
-                                <div id="edicion_errores">
-                                </div>
+                                <!-- INICIO DESACTIVAR RESTAURANTE-->
+                                <button onclick="desactivarActivarRestaurante(1); return false;">DESACTIVAR</button>
+                                <div id="desactivar_errores"></div>
+                                <!-- FINAL DESACTIVAR RESTAURANTE-->
+                                <div id="edicion_errores"></div>
                             </div>
                             <!-- AQUI VIENEN MAS REST -->
                 </div>
@@ -236,8 +238,8 @@
                 <p class="texto_form">Nombre</p>
                 <input type="text" name="nombre_crear" id="nombre_crear" placeholder="Nombre..." class="input">
                 <p class="texto_form">Tipo Restaurante</p>
-                <input list="tipo_crear" class="input">
-                    <datalist id="tipo_crear">
+                <input list="tipos" class="input" id="tipo_crear">
+                    <datalist id="tipos">
                         <option value="Italiana">
                         <option value="Española">
                         <option value="Mexicana">
@@ -261,6 +263,10 @@
                 <p class="texto_form">Precio</p>
                 <input type="range" name="precio_crear" id="precio_crear" placeholder="Precio..." class="input" max=3 min=1>
                 <input type="file" name="foto_crear" id="foto_crear" class="input">
+                <input type="file" name="foto_crear2" id="foto_crear2" class="input">
+                <input type="file" name="foto_crear3" id="foto_crear3" class="input">
+                <input type="file" name="foto_crear4" id="foto_crear4" class="input">
+                <input type="file" name="foto_crear5" id="foto_crear5" class="input">
                 <p class="texto_form">Activo?</p>
                 <!--<input type="text" name="activo_crear" id="activo_crear" placeholder="Activo..." class="input">-->
                 <label for="activo_crear">Des / Activar</label>
@@ -272,7 +278,7 @@
                 <br>
                 <center>
                 <input class="iniciosesion" type="submit" value="Crear">
-                <div id="fallo_validacion_crear">
+                <div id="creacion_errores">
                 </div>
                 </center>
             </form>
@@ -286,7 +292,6 @@
     <footer>
         <div class="footer">
             <p>Creado por Juan Carlos, Pol y Gerard</p>
-            <img src="img/UdPCY9k5EXP6f4cDjq1fqbyMwwgiod6mt73d1lz0.jpg" alt="" srcset="">
         </div>
     </footer>
 </body>

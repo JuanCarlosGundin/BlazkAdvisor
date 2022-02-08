@@ -48,9 +48,20 @@ class RestauranteController extends Controller
     public function crear(Request $request){
         try {
             //Request a la comunicacion con AJax
-
+            
             //FOTO
-            $path=$request->file('foto')->store('/img','public');
+            if ($request->hasFile('foto')) {
+                $path1=$request->file('foto')->store('/img','public');                
+            }else{
+                $path1="img/XQA0H4DjGOhvgZQAuLgnrSow4M7ho2DAngS06g6n.jpg";
+            }
+            for ($i=2; $i <= 6; $i++) { 
+                if ($request->hasFile('foto'.$i)) {
+                    $path[$i]=$request->file('foto'.$i)->store('/img','public');
+                }else{
+                    $path[$i]="img/XQA0H4DjGOhvgZQAuLgnrSow4M7ho2DAngS06g6n.jpg";
+                }
+            }
 
             //INPUTS
             $nombre = $request->input('nombre');
@@ -67,78 +78,25 @@ class RestauranteController extends Controller
 
             //Textos completos
             $id = DB::table('tbl_restaurantes')->insertGetId(
-                [ 'nombre_restaurante' => $nombre,'email_dueño'=> $email,'loc_alt_restaurante'=>$altitud,'loc_restaurante'=>$localidad,'tipo_restaurante'=>$tipo,'dieta_especial'=>$dieta,'comidas_restaurante'=>$comidas,'activo_restaurante'=>$activo,'precio_restaurante'=>$precio ]);
-            DB::insert('insert into tbl_fotos (url_foto_principal,id_restaurante) values (?,?)',[$path,$id]);
+                [ 'nombre_restaurante' => $nombre,'email_dueño'=> $email,'loc_alt_restaurante'=>$altitud,'loc_lat_restaurante'=>$latitud,'descripcion_restaurante'=>$descripcion,'loc_restaurante'=>$localidad,'tipo_restaurante'=>$tipo,'dieta_especial'=>$dieta,'comidas_restaurante'=>$comidas,'activo_restaurante'=>$activo,'precio_restaurante'=>$precio ]);
+            DB::insert('insert into tbl_fotos (url_foto_principal,id_restaurante,url_foto1,url_foto2,url_foto3,url_foto4) values (?,?,?,?,?,?)',[$path1,$id,$path[2],$path[3],$path[4],$path[5]]);
             return response()->json(array('resultado'=> 'OK'));   
 
         } catch (\Throwable $th) {
             return response()->json(array('resultado'=> 'NOK: '.$th->getMessage()));
         }
     }
+    public function desactivar_activar(Request $request){
+        $id = $request->input('id');
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Restaurante  $restaurante
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Restaurante $restaurante)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Restaurante  $restaurante
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Restaurante $restaurante)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Restaurante  $restaurante
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Restaurante $restaurante)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Restaurante  $restaurante
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Restaurante $restaurante)
-    {
-        //
+        $select_rest=DB::select('select activo_restaurante from tbl_restaurantes where id_restaurante=?',[$id]);
+        if ($select_rest[0]->activo_restaurante==1) {
+            DB::update('update tbl_restaurantes set activo_restaurante=? where id_restaurante = ?',[0,$id]);
+            return response()->json($select_rest[0]);
+        }elseif($select_rest[0]->activo_restaurante==0){
+            DB::update('update tbl_restaurantes set activo_restaurante=? where id_restaurante = ?',[1,$id]);
+            return response()->json($select_rest[0]);
+        }
+        
     }
 }

@@ -363,21 +363,29 @@ function validacion_creadorJS() {
     comidas = document.getElementById('comidas_crear').value
     activo = document.getElementById('activo_crear').value
     foto = document.getElementById('foto_crear').files[0]
+    foto2 = document.getElementById('foto_crear2').files[0]
+    foto3 = document.getElementById('foto_crear3').files[0]
+    foto4 = document.getElementById('foto_crear4').files[0]
+    foto5 = document.getElementById('foto_crear5').files[0]
     precio = document.getElementById('precio_crear').value
 
-    if (foto == "" || nombre == "" || latitud == "" || descripcion == "" || email == "" || altitud == "" || localidad == "" || tipo == "" || dieta == "" || comidas == "" || activo == "" || precio == "") {
+    if (nombre == "" || latitud == "" || descripcion == "" || email == "" || altitud == "" || localidad == "" || tipo == "" || dieta == "" || comidas == "" || activo == "" || precio == "") {
         creacion_errores.innerHTML = "<p style='color:red'>Falta algún dato</p>"
     } else {
-        creacionRestauranteJS(foto, nombre, latitud, altitud, localidad, email, descripcion, tipo, dieta, comidas, activo, precio)
+        creacionRestauranteJS(foto, nombre, latitud, altitud, localidad, email, descripcion, tipo, dieta, comidas, activo, precio, foto2, foto3, foto4, foto5)
     }
 
 }
 //INSERTAMOS DATOS DEL FORMULARIO SUANDO EL CONTROLLER MEDIANTE OBJETO AJAX
-function creacionRestauranteJS(foto, nombre, latitud, altitud, localidad, email, descripcion, tipo, dieta, comidas, activo, precio) {
+function creacionRestauranteJS(foto, nombre, latitud, altitud, localidad, email, descripcion, tipo, dieta, comidas, activo, precio, foto2, foto3, foto4, foto5) {
     var formData = new FormData();
 
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('foto', foto);
+    formData.append('foto2', foto2);
+    formData.append('foto3', foto3);
+    formData.append('foto4', foto4);
+    formData.append('foto5', foto5);
     formData.append('nombre', nombre);
     formData.append('latitud', latitud);
     formData.append('altitud', altitud);
@@ -392,7 +400,7 @@ function creacionRestauranteJS(foto, nombre, latitud, altitud, localidad, email,
 
     var ajax = objetoAjax();
     //Abrimos comunicacion para el controller
-    validacion_crear = document.getElementById('fallo_validacion_crear')
+    validacion_crear = document.getElementById('creacion_errores')
     creacion_bien = document.getElementById('creacion_bien')
     ajax.open("POST", "creacion_restaurante_ajax", true);
     ajax.onreadystatechange = function() {
@@ -423,4 +431,33 @@ window.onclick = function(event) {
 function closeModalCreacion() {
     let modalCrear = document.getElementById("MyModalCrear");
     modalCrear.style.display = "none";
+}
+
+//DESACTIVAMOS O ACTIVAMOS PLAYER
+function desactivarActivarRestaurante(id) {
+
+    var formData = new FormData();
+
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('id', id);
+
+    var ajax = objetoAjax();
+
+    ajax.open("POST", "desactivar_activar_ajax", true);
+    notas_desactivar = document.getElementById('desactivar_errores');
+    ajax.onreadystatechange = function() {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            var respuesta = JSON.parse(this.responseText);
+            /* Leerá la respuesta que es devuelta por el controlador: */
+            if (respuesta.activo_restaurante == 0) {
+                console.log(respuesta)
+                notas_desactivar.innerHTML = "<p style='color:green'>Equipo activado</p>";
+
+            } else if (respuesta.activo_restaurante == 1) {
+                console.log(respuesta)
+                notas_desactivar.innerHTML = "<p style='color:green'>Equipo desactivado</p>";
+            }
+        }
+    }
+    ajax.send(formData);
 }
