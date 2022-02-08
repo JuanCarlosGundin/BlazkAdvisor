@@ -51,6 +51,8 @@ function leerJS(valor) {
             /* Leerá la respuesta que es devuelta por el controlador y empezare a cargar la variable
              que contiene todo el contenido de la propia web*/
             for (let i = 0; i < respuesta.length; i++) {
+                //si la tabla esta activada se suma, si no fuera
+                if(respuesta[i].activo_restaurante==1){
                 recarga += '<div class="restaurante">'
                 recarga += '<button class="resbtn" onclick="window.location.href = \'restaurante/' + respuesta[i].id_restaurante + '\'">'
                 recarga += '<div>'
@@ -71,6 +73,7 @@ function leerJS(valor) {
                 recarga += '<div id="desactivar_errores"></div>'
                 recarga += '<div id="edicion_errores"></div>'
                 recarga += '</div>'
+            }
             }
             tabla.innerHTML = recarga;
         
@@ -217,6 +220,7 @@ function desactivarActivarRestaurante(id) {
             } else if (respuesta.activo_restaurante == 1) {
                 console.log(respuesta)
             }
+            leerJS(0)
         }
     }
     ajax.send(formData);
