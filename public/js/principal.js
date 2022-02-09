@@ -248,6 +248,15 @@ window.onclick = function(event) {
 function closeModalEdicion() {
     let modalEditar = document.getElementById("MyModal");
     modalEditar.style.display = "none";
+    let modal_editar = document.getElementById('modal-content-editar')
+    modal_editar.style.display = "none";
+    let modal_login = document.getElementById('modal-content')
+    modal_login.style.display = "none";
+    let modal_reg = document.getElementById('modal-content2')
+    modal_reg.style.display = "none";
+    let modal_crear = document.getElementById('modal-content-crear')
+        //RECOPILamos valores del restaurante
+    modal_crear.style.display = "none";
 }
 var span2 = document.getElementsByClassName("close")[2];
 span2.onclick = function() {
@@ -294,6 +303,10 @@ function crearModalRestaurante() {
     modal_crear.style.display = "block";
     let modal_login = document.getElementById('modal-content')
     modal_login.style.display = "none";
+    let modal_reg = document.getElementById('modal-content2')
+    modal_reg.style.display = "none";
+    let modal_reg1 = document.getElementById('modal-content-editar')
+    modal_reg1.style.display = "none";
 }
 //VALIDAMOS DATOS DEL FORMULARIO MODAL DE CREACION
 function validacion_creadorJS() {
@@ -490,11 +503,16 @@ function IWantToLogout() {
 //crucecita cerrar
 var span0 = document.getElementsByClassName("close")[0];
 var span1 = document.getElementsByClassName("close")[1];
+var span3 = document.getElementsByClassName("close")[3];
 span0.onclick = function() {
     let modal = document.getElementById("MyModal");
     modal.style.display = "none";
 }
 span1.onclick = function() {
+    let modal = document.getElementById("MyModal");
+    modal.style.display = "none";
+}
+span3.onclick = function() {
     let modal = document.getElementById("MyModal");
     modal.style.display = "none";
 }

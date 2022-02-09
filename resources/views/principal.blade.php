@@ -38,7 +38,9 @@ session_start();
         <div class="modal" id="MyModal">
             <div class="modal-content" id="modal-content">
                 <span class="close">&times;</span>
-                <img src="https://static.tacdn.com/img2/brand_refresh/Tripadvisor_Logo_dark-bg_circle-green_horizontal-lockup_registered_RGB.svg" width="226" height="50" alt="">
+                <div class="logomodal">
+                    <img class="logo" src="img/logo.png">
+                </div>                
                 <h3 class="text_form">¡Hola de nuevo!</h3>
                 <form action="" onsubmit="validacion_loginJS(); return false;">
                     <p class="texto_form">Dirección de correo electrónico</p><br>
@@ -63,8 +65,10 @@ session_start();
     
             <div class="modal-content" id="modal-content2">
                 <span class="close">&times;</span>
-                <img src="https://static.tacdn.com/img2/brand_refresh/Tripadvisor_Logo_dark-bg_circle-green_horizontal-lockup_registered_RGB.svg" width="226" height="50" alt="">
-                <h3 class="text_form">Únete y descubre lo mejor de Tripadvisor</h3>
+                <div class="logomodal">
+                    <img class="logo" src="img/logo.png">
+                </div>                 
+                <h3 class="text_form">Únete y descubre lo mejor de Trapadvisor</h3>
                 <form action="" onsubmit="validacion_registroJS(); return false;">
                     <p class="texto_form">Nombre</p>
                     <input type="text" name="name_reg" id="name_reg" placeholder="Nombre..." class="input">
@@ -79,19 +83,19 @@ session_start();
                     <center>
                     <input class="iniciosesion" type="submit" value="Registrar">
                     <div id="confirmacion_reg">
-                        <p class="texto_form">¿Ya eres miemnbro?</p>
+                        <p class="texto_form">¿Ya eres miembro?</p>
                         <button onclick="abrir_loginJS(); return false;" class="iniciosesion">Inicia Sesión</button>
                     </div>
                     </center>
                 </form>
             </div>
     
-            <div class="modal-content" id="modal-content-editar">
+            <div class="modalmodificar" id="modal-content-editar">
                 <span class="close">&times;</span>
-                <img src="https://static.tacdn.com/img2/brand_refresh/Tripadvisor_Logo_dark-bg_circle-green_horizontal-lockup_registered_RGB.svg" width="226" height="50" alt="">
+                <div class="logomodal">
+                    <img class="logo" src="img/logo.png">
+                </div>                 
                 <h1 class="text_form">Editar valores Restaurante</h1>
-                
-                
                 <form action="" onsubmit="validacion_modificadorJS(); return false;">
                     <p class="texto_form">Nombre</p>
                     <input type="text" name="nombre_mod" id="nombre_mod" placeholder="Nombre..." class="input">
@@ -147,12 +151,12 @@ session_start();
                     </center>
                 </form>       
             </div>
-            <div class="modal-content" id="modal-content-crear">
+            <div class="modalcrear" id="modal-content-crear">
                 <span class="close">&times;</span>
-                <img src="https://static.tacdn.com/img2/brand_refresh/Tripadvisor_Logo_dark-bg_circle-green_horizontal-lockup_registered_RGB.svg" width="226" height="50" alt="">
+                <div class="logomodal">
+                    <img class="logo" src="img/logo.png">
+                </div>                 
                 <h1 class="text_form">Crear Restaurante</h1>
-                
-                
                 <form action="" onsubmit="validacion_creadorJS(); return false;">
                     <p class="texto_form">Nombre</p>
                     <input type="text" name="nombre_crear" id="nombre_crear" placeholder="Nombre..." class="input">

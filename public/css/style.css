@@ -110,7 +110,7 @@ body {
 /* Modal Content/Box */
 
 .modal-content {
-    display: none;
+    
     background-color: #fefefe;
     margin: 5% auto;
     /* 15% from the top and centered */
@@ -137,9 +137,29 @@ body {
     display: none;
     font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
 }
-.modalcrear {}
+.modalcrear {
+    background-color: #fefefe;
+    margin: 5% auto;
+    /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+    height: 210vh;
+    font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+    display: none;
+}
 
-.modalmodificar {}
+.modalmodificar {
+    background-color: #fefefe;
+    margin: 5% auto;
+    /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+    height: 215vh;
+    font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+    display: none;
+}
 
 
 /*FINAL MODAL CONTENT BOX*/
