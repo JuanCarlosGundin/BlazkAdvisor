@@ -40,15 +40,15 @@ session_start();
             </div>
         </div>
     </header>
+    <div class="menu">
+        <ul>
+            <li><a href="#fotos">Fotos</a></li>
+            <li><a href="#descripcion">Descripción</a></li>
+            <li><a href="#ubicacion">Ubicación y contacto</a></li>
+            <li><a href="#opiniones">Opiniones</a></li>
+        </ul>
+    </div>
     <div class="main">
-        <div class="menu">
-            <ul>
-                <li><a href="">Fotos</a></li>
-                <li><a href="">Descripción</a></li>
-                <li><a href="">Ubicación y contacto</a></li>
-                <li><a href="">Opiniones</a></li>
-            </ul>
-        </div>
         <div class="info">
             <div class="titulores">
                 <h1>{{$restaurante->nombre_restaurante}}</h1>
@@ -61,7 +61,7 @@ session_start();
     </div>
     <div class="contenido">
         <div class="cuadros">
-            <div class="fotos">
+            <div class="fotos" id="fotos">
                 <div class="fotoprincipal">
                     <img class="foto1" src="../storage/{{$restaurante->url_foto_principal}}">
                 </div>
@@ -73,8 +73,8 @@ session_start();
                 </div>
             </div>
         </div>
-        <div class="cuadros">
-            <div class="detalles">
+        <div class="cuadros" >
+            <div class="detalles" id="descripcion">
                 <h1>Sobre nosotros</h1>
                 <p class="descripcion">{{$restaurante->desc_larga}}</p>
                 <p class="descripcion">Telefono: {{$restaurante->telefono}}</p>
@@ -82,24 +82,37 @@ session_start();
             </div>
         </div>
         <div class="cuadros">
-            <div class="ubicacion">
+            <div class="ubicacion" id="ubicacion">
                 <p class="descripcion">{{$restaurante->loc_restaurante}}</p>
                 <div id="map" style=" height: 200px; "></div>
             </div>
         </div>
-<div class="cuadros">
+        <div class="cuadros" >
             <div class="opiniones" id="opiniones">
                 <h1 class="opinionestitulo">Opiniones</h1>
-                <h1 class="notamedia">Nota media: </h1>
+                <h1 class="notamedia">Nota media: 8</h1>
                 <div class="userprofile">
                     <div class="profile">
                         <img class="profilefoto" src="../img/2.jpg">
-                        <h5 class="nombreusuario">Nombre de muestra</h5>
+                        <h5 class="nombreusuario">Manolo</h5>
                     </div>
                 </div>
                 <div class="useropinion">
-                    <input type="text" class="opinion" placeholder="Escriba aqui su opinión...">
-                </div>
+                    <form>
+                        <input type="text" class="opinion" placeholder="Escriba aqui su opinión...">
+                        <div class="submitopinion">
+                            <select class="inputopinion" value="nota">
+                                <option selected="true" disabled="disabled"><b>Nota</b></option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                            <input class="inputopinion" type="submit" >
+                        </div>
+                    </form>
+                </div> 
             </div>
         </div>
         <div class="cuadros">
@@ -107,11 +120,11 @@ session_start();
                 <div class="userprofile">
                     <div class="profile">
                         <img class="profilefoto" src="../img/2.jpg">
-                        <h5 class="nombreusuario">Nombre de muestra dice...</h5>
+                        <h5 class="nombreusuario">Antonio dice...</h5>
                     </div>
                 </div>
                 <div class="useropinion">
-                    <h5 class="nombreusuario">PUNTUACION: </h5>
+                    <h5 class="nombreusuario">PUNTUACION:8 </h5>
                     <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
                 </div>
             </div>

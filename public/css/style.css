@@ -110,6 +110,7 @@ body {
 /* Modal Content/Box */
 
 .modal-content {
+    display: none;
     background-color: #fefefe;
     margin: 5% auto;
     /* 15% from the top and centered */
@@ -132,7 +133,10 @@ body {
     font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
     display: none;
 }
-
+#modal-content-editar {
+    display: none;
+    font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+}
 .modalcrear {}
 
 .modalmodificar {}
@@ -500,6 +504,12 @@ h4 {
     color: rgb(117, 117, 117);
 }
 
+.puntuacion {
+    padding: 0;
+    font-size: 13px;
+    color: rgb(117, 117, 117);
+}
+
 .titulo:hover {
     text-decoration: underline;
     transition: 0.5s;
@@ -536,7 +546,8 @@ h4 {
     overflow: hidden;
     position: sticky;
     top: 0;
-    margin-top: -3%;
+    margin-bottom: -3.5%;
+    z-index: 10000;
 }
 
 ul {
@@ -735,6 +746,23 @@ a:hover {
     float: left;
     width: 50%;
     padding-bottom: 2%;
+}
+
+.submitopinion {
+    padding-top: 2%;
+}
+
+.inputopinion {
+    color: white;
+    font-size: 15px;
+    background-color: black;
+    border-radius: 25px;
+    padding: 1%;
+    border-color: black;
+    cursor: pointer;
+    transition: 0.2s;
+    width: 10%;
+    font-weight: bold;
 }
 
 
