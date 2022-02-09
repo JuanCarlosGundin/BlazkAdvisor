@@ -25,6 +25,10 @@ class RestauranteController extends Controller
             $filtro=$request->input('filtro');
             $tipo=$request->input('comida');
             $datos=DB::select('select * from tbl_restaurantes inner join tbl_fotos on tbl_restaurantes.id_restaurante=tbl_fotos.id_foto where nombre_restaurante like ? and tipo_restaurante like ?',['%'.$filtro.'%','%'.$tipo.'%']);
+        }else if($request->input('tipo')==3){
+            $filtro=$request->input('filtro');
+            $precio=$request->input('dinero');
+            $datos=DB::select('select * from tbl_restaurantes inner join tbl_fotos on tbl_restaurantes.id_restaurante=tbl_fotos.id_foto where nombre_restaurante like ? and precio_restaurante = ?',['%'.$filtro.'%',$precio]);
         }else{
             $datos=DB::select('select * from tbl_restaurantes where id_restaurante = ?',[$request->input('filtro')]);
         }

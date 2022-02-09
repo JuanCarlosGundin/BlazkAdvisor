@@ -30,19 +30,20 @@ function leerJS(valor) {
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     //estoy filtrando el valor, si es 0 es el valor del texto
     // y si es diferente de 0 es el valor de los botones "String"
-    if(valor != 0){
-        formData.append('comida',valor);
-        formData.append('filtro', document.getElementById('filtro').value);
-        formData.append('tipo',2);
-    }else{
+    if(valor == 0){
         formData.append('filtro', document.getElementById('filtro').value);
         formData.append('tipo',1);
     }
-    usuario=document.getElementById('typeUser').value
-    if (usuario == 1) {
-        alert("admin")
+     else if(valor > 0){
+        formData.append('dinero',valor);
+        formData.append('filtro', document.getElementById('filtro').value);
+        formData.append('tipo',3);
+    }else{
+        formData.append('comida',valor);
+        formData.append('filtro', document.getElementById('filtro').value);
+        formData.append('tipo',2);
     }
-
+    usuario=document.getElementById('typeUser').value
     /* Inicializar un objeto AJAX */
     var ajax = objetoAjax();
     //abrimos la ruta web pasando el objeto ajax con todas las variables
@@ -56,7 +57,9 @@ function leerJS(valor) {
              que contiene todo el contenido de la propia web*/
             for (let i = 0; i < respuesta.length; i++) {
                 //si la tabla esta activada se suma, si no fuera
-                if(respuesta[i].activo_restaurante==1){
+                if (usuario == 1) {
+                    if(respuesta[i].activo_restaurante==1){
+                    //si el usuario es administrador injecta esto, en el caso contrario injecta la normal sin edición
                 recarga += '<div class="restaurante">'
                 recarga += '<button class="resbtn" onclick="window.location.href = \'restaurante/' + respuesta[i].id_restaurante + '\'">'
                 recarga += '<div>'
@@ -77,8 +80,31 @@ function leerJS(valor) {
                 recarga += '<div id="desactivar_errores"></div>'
                 recarga += '<div id="edicion_errores"></div>'
                 recarga += '</div>'
+                }else{console.log("Easter egg")}   
+                }else{
+                    if(respuesta[i].activo_restaurante==1){
+                    recarga += '<div class="restaurante">'
+                    recarga += '<button class="resbtn" onclick="window.location.href = \'restaurante/' + respuesta[i].id_restaurante + '\'">'
+                    recarga += '<div>'
+                    recarga += '<img class="imagenres" src="storage/'+ respuesta[i].url_foto_principal + '">'
+                    recarga += '</div>'
+                    recarga += '<div class="titulo">'
+                    recarga += '<p>' + respuesta[i].nombre_restaurante + '</p>'
+                    recarga += '</div>'
+                    recarga += '<div class="estrellas">'
+                    recarga += '<p>' + respuesta[i].descripcion_restaurante + '</p>'
+                    recarga += '</div>'
+                    recarga += '<div class="desc">'
+                    recarga += '<p>Cocina ' + respuesta[i].tipo_restaurante + '</p>'
+                    recarga += '</div>'
+                    recarga += '</button>'
+                    recarga += '<div id="desactivar_errores"></div>'
+                    recarga += '<div id="edicion_errores"></div>'
+                    recarga += '</div>'
+                }
+                }
             }
-            }
+            
             tabla.innerHTML = recarga;
         
         }
@@ -534,4 +560,27 @@ function abrir_loginJS() {
 
     formulario_html = document.getElementById('modal-content')
     formulario_html.style.display = "block";
+}
+
+//DESPLEGABLE DE VALORACIONES
+function desplegable() {
+    document.getElementById("Dropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+    if (!event.target.matches('.tiposcomida')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+        }
+    }
+}
+
+function volver_inicio() {
+    window.location.href = "./";
 }

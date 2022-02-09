@@ -35,54 +35,56 @@ session_start();
             </div>
         </div>
         <!-- Aqui esta el modal -->
-    <div class="modal" id="MyModal">
-        <div class="modal-content" id="modal-content">
-            <span class="close">&times;</span>
-            <img src="https://static.tacdn.com/img2/brand_refresh/Tripadvisor_Logo_dark-bg_circle-green_horizontal-lockup_registered_RGB.svg" width="226" height="50" alt="">
+        <div class="modal" id="MyModal">
+            <div class="modal-content" id="modal-content">
+                <span class="close">&times;</span>
+                <div class="logomodal">
+                    <img class="logo" src="img/logo.png">
+            </div>
             <h3 class="text_form">¡Hola de nuevo!</h3>
             <form action="" onsubmit="validacion_loginJS(); return false;">
-                <p class="texto_form">Dirección de correo electrónico</p><br>
-                <input type="email" name="email" id="email" placeholder="Dirección de correo electrónico" class="input">
-                <br>
-                <p class="texto_form">Contraseña</p><br>
-                <input type="password" name="password" id="password" placeholder="Contraseña" class="input">
-                <br>
-                <br>
-                <center>
-                <input type="submit" value="Login" class="iniciosesion">
-                <p class="texto_form">No eres miembro?</p><br>
-                <button onclick="abrir_formularioJS(); return false;" class="iniciosesion">Únete</button>
-                <div id="confirmacion">
+                <p class="texto_form">Dirección de correo electrónico</p>
+                <input type="email" name="email" id="email" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Dirección de correo electrónico" class="input">
+                <p class="texto_form">Contraseña</p>
+                <input type="password" name="password" id="password" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Contraseña" class="input">
+                <div class="login_unete">
+                    <center>
+                        <input type="submit" value="Login" class="login">
+                        <p class="texto_form">No eres miembro?</p>
+                        <button onclick="abrir_formularioJS(); return false;" class="unete">Únete</button>
+                        <div class="texto_form" id="confirmacion">
+                        </div>
+                    </center>
                 </div>
-                </center>
             </form>
-            
         </div>
 
         <div id="errores"></div>
         <div id="datos_user"></div>
         
 
-        <div class="modal-content" id="modal-content2">
+       <div class="modal-content2" id="modal-content2">
             <span class="close">&times;</span>
-            <img src="https://static.tacdn.com/img2/brand_refresh/Tripadvisor_Logo_dark-bg_circle-green_horizontal-lockup_registered_RGB.svg" width="226" height="50" alt="">
+            <div class="logomodal">
+                <img class="logo" src="img/logo.png">
+            </div>
             <h3 class="text_form">Únete y descubre lo mejor de Tripadvisor</h3>
             <form action="" onsubmit="validacion_registroJS(); return false;">
                 <p class="texto_form">Nombre</p>
-                <input type="text" name="name_reg" id="name_reg" placeholder="Nombre..." class="input">
+                <input type="text" name="name_reg" id="name_reg" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Nombre..." class="input">
                 <p class="texto_form">Dirección de correo electrónico</p>
-                <input type="email" name="email_reg" id="email_reg" placeholder="Email..." class="input">
+                <input type="email" name="email_reg" id="email_reg" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Email..." class="input">
                 <p class="texto_form">Contraseña</p>
-                <input type = "password" name = "pass_reg" id = "pass_reg" placeholder="Contraseña" class="input">
+                <input type = "password" name = "pass_reg" id = "pass_reg" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Contraseña" class="input">
                 <input type = "hidden" name="type_reg" id="type_reg" value=1>
                 <p class="texto_form">Foto de perfil</p>
                 <input type="file" name="photo_reg" id="photo_reg" class="input">
                 <br>
                 <center>
-                <input class="iniciosesion" type="submit" value="Registrar">
+                <input class="registrar" type="submit" value="Registrar">
                 <div id="confirmacion_reg">
-                    <p class="texto_form">¿Ya eres miemnbro?</p>
-                    <button onclick="abrir_loginJS(); return false;" class="iniciosesion">Inicia Sesión</button>
+                    <p class="texto_form">¿Ya eres miembro?</p>
+                    <button onclick="abrir_loginJS(); return false;" class="registrar">Iniciar Sesión</button>
                 </div>
                 </center>
             </form>
@@ -130,14 +132,41 @@ session_start();
                 </button>
             </div>
             <div class="botonestipos">
-                <button class="tiposcomida" data-toggle="dropdown" onclick=""><b>Mejor valorados</b>
+                <button onclick="desplegable()" class="tiposcomida"><b>Por Precio</b>
+                    <div class="iconos">
+                        <i class="fas fa-angle-down"></i>
+                    </div>
                 </button>
-                <ul role="menu">
-                    <li><a href="#">Acción #1</a></li>
-                    <li><a href="#">Acción #2</a></li>
-                    <li><a href="#">Acción #3</a></li>
-                    <li><a href="#">Acción #4</a></li>
-                </ul>
+                <div id="Dropdown" class="dropdown-content">
+                    <ul>
+                        <li>
+                            <a href="#" onclick="leerJS(1)">
+                                <div class="iconos">
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </a>
+                        </li>
+                        <br>
+                        <li>
+                            <a href="#" onclick="leerJS(2)">
+                                <div class="iconos">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </a>
+                        </li>
+                        <br>
+                        <li>
+                            <a href="#" onclick="leerJS(3)">
+                                <div class="iconos">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
         <div class="filtro">
@@ -154,7 +183,8 @@ session_start();
                 <h4>Los mejores restaurantes de la ciudad</h4>
             </div>
             <div class="inicio">
-                <button class="crear" onclick="crearModalRestaurante(); return false;"><b>CREAR</b></button>
+                <!--Aqui seteamos el boton de crear dependiendo del tipo de usuario que seamos-->
+                <?php if(isset($tipo_user)){if($tipo_user==1){echo "<button class=\"crear\" onclick=\"crearModalRestaurante(); return false;\"><b>CREAR</b></button>";}}?>
             </div>
         </div>  
         <div id="tabla" class="restaurantes">

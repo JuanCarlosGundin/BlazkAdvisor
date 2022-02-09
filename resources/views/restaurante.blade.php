@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,11 +21,22 @@
 <body>
     <header>
         <div class="header1">
-            <div class="logo">
-                    <img class="logoimagen" src="../img/logo.png">
+            <div class="logo" onclick="volver_inicio()">
+                    <img onclick="volver_inicio()" class="logoimagen" src="../img/logo.png">
             </div>
             <div class="inicio">
-                <button class="iniciosesion"><b>Iniciar sesión</b></button>
+                <?php
+                if (session('user')) {
+                    $username_logged = session('user');
+                    $tipo_user = session('tipo');
+                    //print_r($username_logged);
+                    //echo "Bienvenido: ".$username_logged->nombre_usuario;
+                    echo '<button class="bienvenido" ><b>Bienvenido '.$username_logged.'</b></button>';
+                    echo '<button class="iniciosesion" onclick="IWantToLogout(); return false;"><b>Logout</b></button>';
+                }else{
+                    echo '<button  class="iniciosesion" onclick="IWantToLogin(); return false;"><b>Iniciar sesión</b></button>';
+                }
+            ?>
             </div>
         </div>
     </header>
@@ -49,13 +63,13 @@
         <div class="cuadros">
             <div class="fotos">
                 <div class="fotoprincipal">
-                    <img class="foto1" src="../img/{{$restaurante->url_foto_principal}}">
+                    <img class="foto1" src="../{{$restaurante->url_foto_principal}}">
                 </div>
                 <div class="fotosecundaria">
-                    <img class="foto2" src="../img/2.jpg">
-                    <img class="foto2" src="../img/2.jpg">
-                    <img class="foto2" src="../img/2.jpg">
-                    <img class="foto2" src="../img/2.jpg">
+                    <img class="foto2" src="../../{{$restaurante->url_foto1}}">
+                    <img class="foto2" src="../../{{$restaurante->url_foto2}}">
+                    <img class="foto2" src="../../{{$restaurante->url_foto3}}">
+                    <img class="foto2" src="../../{{$restaurante->url_foto4}}">
                 </div>
             </div>
         </div>
@@ -84,6 +98,67 @@
             <p>Creado por Juan Carlos, Pol y Gerard</p>
         </div>
     </footer>
+
+    <!--Modal boxes -->
+    <!-- Aqui esta el modal -->
+    <div class="modal" id="MyModal">
+        <div class="modal-content" id="modal-content">
+            <span class="close">&times;</span>
+            <div class="logomodal">
+                <img class="logo" src="../img/logo.png">
+        </div>
+        <h3 class="text_form">¡Hola de nuevo!</h3>
+        <form action="" onsubmit="validacion_loginJS(); return false;">
+            <p class="texto_form">Dirección de correo electrónico</p>
+            <input type="email" name="email" id="email" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Dirección de correo electrónico" class="input">
+            <p class="texto_form">Contraseña</p>
+            <input type="password" name="password" id="password" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Contraseña" class="input">
+            <div class="login_unete">
+                <center>
+                    <input type="submit" value="Login" class="login">
+                    <p class="texto_form">No eres miembro?</p>
+                    <button onclick="abrir_formularioJS(); return false;" class="unete">Únete</button>
+                    <div class="texto_form" id="confirmacion">
+                    </div>
+                </center>
+            </div>
+        </form>
+    </div>
+
+    <div id="errores"></div>
+    <div id="datos_user"></div>
+    
+
+    <div class="modal-content2" id="modal-content2">
+        <span class="close">&times;</span>
+        <div class="logomodal">
+            <img class="logo" src="../img/logo.png">
+        </div>
+        <h3 class="text_form">Únete y descubre lo mejor de Tripadvisor</h3>
+        <form action="" onsubmit="validacion_registroJS(); return false;">
+            <p class="texto_form">Nombre</p>
+            <input type="text" name="name_reg" id="name_reg" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Nombre..." class="input">
+            <p class="texto_form">Dirección de correo electrónico</p>
+            <input type="email" name="email_reg" id="email_reg" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Email..." class="input">
+            <p class="texto_form">Contraseña</p>
+            <input type = "password" name = "pass_reg" id = "pass_reg" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Contraseña" class="input">
+            <input type = "hidden" name="type_reg" id="type_reg" value=1>
+            <p class="texto_form">Foto de perfil</p>
+            <input type="file" name="photo_reg" id="photo_reg" class="input">
+            <br>
+            <center>
+            <input class="registrar" type="submit" value="Registrar">
+            <div id="confirmacion_reg">
+                <p class="texto_form">¿Ya eres miembro?</p>
+                <button onclick="abrir_loginJS(); return false;" class="registrar">Iniciar Sesión</button>
+            </div>
+            </center>
+        </form>
+    </div>
+    <div id="errores_reg">
+    </div>
+    </div>
+</div>
     <script src="../js/restaurante.js"></script>
 </body>
 </html>
