@@ -1,10 +1,11 @@
-# ABP-Inscripcion
-Inscripción de voluntarios en eventos benéficos
-Hecho por ALfredo y Gerard
+# BlazkAdvisor
+# Projecte 03: Guia restaurants
+Creació d'un lloc web que sigui una guia de restaurants de la nostra ciutat.
+Hecho por Pol, Juan Carlos y Gerard
 
 ## Comenzando 🚀
-Para obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas, usaremos XAMPP para hacer la copia y probar. 
-(En el siguiente paso explicaremos como instalar XAMPP). XAMPP nos genera localmente un sevridor LAMP fácil de gestionar para desarrollar comodamente.
+Para poder utilizar una copia del proyecto operativa en tu máquina local para propósitos de desarrollo y pruebas, usaremos XAMPP para hacer la copia y probar. 
+(En el siguiente paso explicaremos como instalar XAMPP). XAMPP nos genera localmente un servidor LAMP fácil de gestionar para desarrollar comodamente.
 
 Además usaremos GitHub como portal de Git y asi llevar un control de versiones de la aplicación web.
 Para ello, es necesario crear una cuenta en GitHub y tener un conocimiento básico de gestion de ficheros en tu sistema operativo.
@@ -24,12 +25,12 @@ Igual de importante es instalar el controlador de versions Git, para luego combi
 
 Una vez tengamos los softwares instalados y con los servicios arrancados como explicado anteriormente, hemos de importar el proyecto a nuestro entorno de desarrollo local.
 
-Para ello iremos al directorio htdocs hubicaod en la raiz de la aplicación XAMPP, una vez estemos posicionados desde el terminal de GIT en este directorio ejecutamos el siguiente comando
+Para ello iremos al directorio htdocs ubicado en la raiz de la aplicación XAMPP, una vez estemos posicionados desde el terminal de GIT en este directorio ejecutamos el siguiente comando
 
 ```
-git clone https://github.com/100007217/ABP-Inscripcion.git
+git clone https://github.com/JuanCarlosGundin/BlazkAdvisor.git
 ```
-Ahora deberemos implementar en nuestro servidor de BBDD de XAMPP la base de datos del proyecto. Dentro de la carpeta bd que acabmos de importar desde github se encuentran dos archivos. **bd_bar.sql**, nos permite generar la estructura de la base de datos y **bd_bar_inserts.sql** ejecuta los inserts en la bbdd creada.
+Ahora deberemos implementar en nuestro servidor de BBDD de XAMPP la base de datos del proyecto. Dentro de la carpeta bd que acabmos de importar desde github se encuentran dos archivos. **bd_pr03.sql**, nos permite generar la estructura de la base de datos y **bd_pr03.sql** ejecuta los inserts en la bbdd creada.
 
 Ahora solo irnos a [este enlace](http://localhost/phpmyadmin/) para administrar las bases de datos en XAMPP usando PhpMyAdmin.
 
@@ -40,25 +41,37 @@ Primero deberemos importar el archivo de estructuras y seguidamente el archivo d
 
 ## Despliegue 📦
 
-_Ahora desplegaremos el sitio web sobre una pagina de hosting como 000webhost, la cual permite tener un servidor LAMP de manera gratuita con algunas limitaciones.
+Una vez hayamos implementado la BBDD en nuestro servidor MySQL en XAMPP y hayamos clonado la estructura de ficheros en el directorio del proyecto. Deberemos hacer ajustes de Laravel usando el terminal para que el proyecto se despliegue correctamente. En primer lugar ejecutamos el siguiente comando.
 
-Una vez hayamos creado el sitio web desde el Wizard que ofrece 000Webhost, nos iremos a la herramienta "File Manager" dentro del sitio web.
-Ahora iremos al apartado "public_html\" y depslegaremos todos los archivos que hayamos clonado desde el GitHub. Este directorio actua como la carpeta htdocs en XAMPP que hemos visto anteriormente.
-![img](https://i.gyazo.com/9d4eaaf2409b16aa2b5161bf8f0e4274.png)
+```
+php artisan storage:link
+```
+Con esto habremos hecho un softlink de la carpeta storage en public, ahora deberemos crear la carpeta img, para manetener un orden en la estructura de archivos que subamos al servidor. Para crearla, desde la raiz del proyecto hacemos:
 
+```
+mkdir public/storage/img
+```
 
-Una vez hayamos subido los archivos del repositorio, implementaremos la bd en el servidor usando la herramienta "Database Manager", aqui crearemos la base de datos.
-¡¡IMPORTANTE!! A la hora de crear la base de datos se generará un nombre y un usuario, que serán importantes más adelante para configurar la conexión a la bd, así como el host. 
+Ya tenemos el proyecto preparado para trabajar con fotos en servidor local. Ahora instalaremos dependencias necesarias de Laravel para que nos funcione el proyecto. En caso de no funcionar solo con el primer comando, deberemos ejecutar el segundo.
+```
+composer install
+composer update
+```
 
-![img](https://i.gyazo.com/232e6e0ffb8a23a3a9335184f42bc189.png)
+Además para enlazar el sevridor MySQL de XAMPP con nuestro proyecto laravel deberemos modificar el archivo .env.example en función de los parametros que hayamos establecido a la hora de crear el servicio MySQL (puerto) y la base de datos (nombre de la base de datos)
 
-Ahora procederemos a importar la base de datos, el gestor de la bbdd es PHPMyAdmin con lo cual podemos ver el apartado anterior para ver como desplegarla.
+Una vez tengamos el example hecho. Ejecutamos el siguiente comando para usar este archivo como el archivo de configuración.
 
-Una vez hayamos importado la bbdd, debemos modificar el archivo services/config.php y aqui ingresaremos los datos obtenidos al generar la bd.
-![img](https://i.gyazo.com/b21498a3e849d49fcc40c0e454952066.png)
+```
+mv .env.example .env
+```
 
+Por ultimo debemos ejecutar un comando en la base del proyecto para generar una nueva clave de entorno. El comando es el siguiente
 
-Aqui tienes el enlace al hosting creado por mi, se debería ver igual [enlace](https://morfeo21.000webhostapp.com/)
+```
+php artisan key:generate
+```
+```
 
 ## Construido con 🛠️
 
@@ -68,7 +81,8 @@ _Las herramientas usada en este proyecto han sido
 * [MySQL](https://dev.mysql.com/doc/) - El gestor de base de datos usado
 * [PHP](https://www.php.net/docs.php) - Lenguaje de programación basico para la formación del sitio
 * [XAMPP](https://www.apachefriends.org/docs/) - Software de virtualización local de servidor LAMP
-* [000Webhost](https://www.000webhost.com/website-faq) - Hosting usado para alojar el sitio web
+* [Laravel](https://laravel.com/docs/9.x) - Framework usado construir la pagina web
+* [Ajax](https://www.w3schools.com/xml/ajax_intro.asp) - Framework usado construir la pagina web
 
 ## Contribuyendo 🖇️
 
@@ -76,7 +90,7 @@ Para contribuir a nuestro proyecto se pueden hacer pull requests sin problemas, 
 
 ## Wiki 📖
 
-Para encontrar mas documentación que en este README, lo cual es dificil. Puedes escribir un mail a gerard.gomez@dispostable.com
+Para encontrar mas documentación que en este README, lo cual es dificil. Puedes escribir un mail a gerard.gomez@dispostable.com o 6244.joan23@fje.edu o 100005882.joan23@fje.edu
 
 ## Versionado 📌
 
@@ -86,8 +100,9 @@ Usamos [GitHub](https://github.com/) para el versionado. Para todas las versione
 
 _Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
 
-* **Gerard Gómez** - * PHP + Backend + Frontend * - [gerard.gomez](https://github.com/100007217)
-* ** Alfredo Blum** - * PHP + Backend * - [alfredo.blum](https://github.com/blumal)
+* **Gerard Gómez** - * PHP + Ajax + Controller + HTML * - [gerard.gomez](https://github.com/100007217)
+* **Gerard Gómez** - * PHP + Ajax + Controller + HTML * - [gerard.gomez](https://github.com/100007217)
+* **Gerard Gómez** - * PHP + Ajax + Controller + HTML * - [gerard.gomez](https://github.com/100007217)
 
 ## Licencia 📄
 
