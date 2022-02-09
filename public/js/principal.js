@@ -75,7 +75,13 @@ function leerJS(valor) {
                 recarga += '<p>Cocina ' + respuesta[i].tipo_restaurante + '</p>'
                 recarga += '</div>'
                 recarga += '<div class="puntuacion">'
-                recarga += '<p>' + respuesta[i].precio_restaurante + '</p>'
+                if(respuesta[i].precio_restaurante==1){
+                    recarga += '<img src="img/euro1.png" style=" height: 25px; ">'
+                }else if(respuesta[i].precio_restaurante==2){
+                    recarga += '<img  src="img/euro2.png"style=" height: 25px;">'
+                }else{
+                    recarga += '<img  src="img/euro3.png"style=" height: 25px;">'
+                }
                 recarga += '</div>'
                 recarga += '</button>'
                 recarga += '<button class="modificar" onclick="editarModalRestaurante(' + respuesta[i].id_restaurante + ',\'' + respuesta[i].nombre_restaurante + '\',' + respuesta[i].loc_lat_restaurante + ',\'' + respuesta[i].descripcion_restaurante + '\',\'' + respuesta[i].email_dueño + '\',' + respuesta[i].loc_alt_restaurante + ',\'' + respuesta[i].loc_restaurante + '\',\'' + respuesta[i].tipo_restaurante + '\',\'' + respuesta[i].dieta_especial + '\',\'' + respuesta[i].comidas_restaurante + '\',' + respuesta[i].activo_restaurante + ',' + respuesta[i].precio_restaurante + ',\'' + respuesta[i].desc_larga + '\',\'' + respuesta[i].telefono + '\',\'' + respuesta[i].url_foto_principal + '\',\'' + respuesta[i].url_foto2 + '\',\'' + respuesta[i].url_foto3 + '\',\'' + respuesta[i].url_foto4 + '\',\'' + respuesta[i].url_foto5 + '\');return false;">EDITAR</button>'
@@ -101,7 +107,13 @@ function leerJS(valor) {
                     recarga += '<p>Cocina ' + respuesta[i].tipo_restaurante + '</p>'
                     recarga += '</div>'
                     recarga += '<div class="puntuacion">'
-                    recarga += '<p>' + respuesta[i].precio_restaurante + '</p>'
+                    if(respuesta[i].precio_restaurante==1){
+                        recarga += '<img src="img/euro1.png" style=" height: 25px; ">'
+                    }else if(respuesta[i].precio_restaurante==2){
+                        recarga += '<img  src="img/euro2.png"style=" height: 25px;">'
+                    }else{
+                        recarga += '<img  src="img/euro3.png"style=" height: 25px;">'
+                    }
                     recarga += '</div>'
                     recarga += '</button>'
                     recarga += '<div id="desactivar_errores"></div>'
