@@ -75,7 +75,7 @@ function leerJS(valor) {
                 recarga += '<p>Cocina ' + respuesta[i].tipo_restaurante + '</p>'
                 recarga += '</div>'
                 recarga += '</button>'
-                recarga += '<button class="modificar" onclick="editarModalRestaurante(' + respuesta[i].id_restaurante + ',\'' + respuesta[i].nombre_restaurante + '\',' + respuesta[i].loc_lat_restaurante + ',\'' + respuesta[i].descripcion_restaurante + '\',\'' + respuesta[i].email_dueño + '\',' + respuesta[i].loc_alt_restaurante + ',\'' + respuesta[i].loc_restaurante + '\',\'' + respuesta[i].tipo_restaurante + '\',\'' + respuesta[i].dieta_especial + '\',\'' + respuesta[i].comidas_restaurante + '\',' + respuesta[i].activo_restaurante + ',' + respuesta[i].precio_restaurante + ',\'' + respuesta[i].desc_larga + '\',\'' + respuesta[i].telefono +'\');return false;">EDITAR</button>'
+                recarga += '<button class="modificar" onclick="editarModalRestaurante(' + respuesta[i].id_restaurante + ',\'' + respuesta[i].nombre_restaurante + '\',' + respuesta[i].loc_lat_restaurante + ',\'' + respuesta[i].descripcion_restaurante + '\',\'' + respuesta[i].email_dueño + '\',' + respuesta[i].loc_alt_restaurante + ',\'' + respuesta[i].loc_restaurante + '\',\'' + respuesta[i].tipo_restaurante + '\',\'' + respuesta[i].dieta_especial + '\',\'' + respuesta[i].comidas_restaurante + '\',' + respuesta[i].activo_restaurante + ',' + respuesta[i].precio_restaurante + ',\'' + respuesta[i].desc_larga + '\',\'' + respuesta[i].telefono + '\',\'' + respuesta[i].url_foto_principal + '\',\'' + respuesta[i].url_foto2 + '\',\'' + respuesta[i].url_foto3 + '\',\'' + respuesta[i].url_foto4 + '\',\'' + respuesta[i].url_foto5 + '\');return false;">EDITAR</button>'
                 recarga += '<button class="eliminar" onclick="desactivarActivarRestaurante(' + respuesta[i].id_restaurante + '); return false;">DESACTIVAR</button>'
                 recarga += '<div id="desactivar_errores"></div>'
                 recarga += '<div id="edicion_errores"></div>'
@@ -117,10 +117,8 @@ function leerJS(valor) {
 
 ///EDITAR UN RESTAURANTE
 
-function editarModalRestaurante(id, nombre, latitud, descripcion, email, altitud, localidad, tipo, dieta, comidas, activo, precio, desc_larga, telefono) {
-    console.log(tipo)
-    let modal = document.getElementById('MyModalEditar')
-            //RECOPILamos valores del restaurante
+function editarModalRestaurante(id, nombre, latitud, descripcion, email, altitud, localidad, tipo, dieta, comidas, activo, precio, desc_larga, telefono, foto_principal, foto2, foto3, foto4, foto5) {
+    //RECOPILamos valores del restaurante
     document.getElementById('id_mod').value = id
     document.getElementById('nombre_mod').value = nombre
     document.getElementById('latitud_mod').value = latitud
@@ -135,7 +133,21 @@ function editarModalRestaurante(id, nombre, latitud, descripcion, email, altitud
     document.getElementById('precio_mod').value = precio
     document.getElementById('descripcion_larga_mod').value = desc_larga
     document.getElementById('telefono_mod').value = telefono
+    document.getElementById('foto_principal_mod').files[0] = foto_principal
+    document.getElementById('foto2_mod').files[0] = foto2
+    document.getElementById('foto3_mod').files[0] = foto3
+    document.getElementById('foto4_mod').files[0] = foto4
+    document.getElementById('foto5_mod').files[0] = foto5
+
+    let modal = document.getElementById('MyModal')
     modal.style.display = "block";
+    let modal_editar = document.getElementById('modal-content-editar')
+    modal_editar.style.display = "block";
+    let modal_login = document.getElementById('modal-content')
+    modal_login.style.display = "none";
+    let modal_crear = document.getElementById('modal-content-crear')
+        //RECOPILamos valores del restaurante
+    modal_crear.style.display = "none";
 }
 
 function validacion_modificadorJS() {
@@ -155,18 +167,23 @@ function validacion_modificadorJS() {
     comidas = document.getElementById('comidas_mod').value
     activo = document.getElementById('activo_mod').value
     precio = document.getElementById('precio_mod').value
+    foto_principal = document.getElementById('foto_principal_mod').files[0]
+    foto2 = document.getElementById('foto2_mod').files[0]
+    foto3 = document.getElementById('foto3_mod').files[0]
+    foto4 = document.getElementById('foto4_mod').files[0]
+    foto5 = document.getElementById('foto5_mod').files[0]
 
     if (id == "" || nombre == "" || latitud == "" || descripcion == "" || descripcion_larga == "" || email == "" || telefono == "" || altitud == "" || localidad == "" || tipo == "" || dieta == "" || comidas == "" || activo == "" || precio == "") {
         edicion_errores.innerHTML = "<p style='color:red'>Falta algún dato</p>"
     } else {
-        edicionRestauranteJS(id, nombre, latitud, altitud, localidad, email, telefono, descripcion, descripcion_larga, tipo, dieta, comidas, activo, precio)
+        edicionRestauranteJS(id, nombre, latitud, altitud, localidad, email, telefono, descripcion, descripcion_larga, tipo, dieta, comidas, activo, precio, foto_principal, foto2, foto3, foto4, foto5)
     }
 }
 
-function edicionRestauranteJS(id, nombre, latitud, altitud, localidad, email, telefono, descripcion, descripcion_larga, tipo, dieta, comidas, activo, precio) {
+function edicionRestauranteJS(id, nombre, latitud, altitud, localidad, email, telefono, descripcion, descripcion_larga, tipo, dieta, comidas, activo, precio, foto_principal, foto2, foto3, foto4, foto5) {
     fails = document.getElementById('edicion_errores')
     fail_validacion = document.getElementById('fallo_validacion')
-
+    console.log(tipo + " entrar al Controller")
     var formData = new FormData();
 
     formData.append('_token', document.getElementById('token').getAttribute("content"));
@@ -184,6 +201,11 @@ function edicionRestauranteJS(id, nombre, latitud, altitud, localidad, email, te
     formData.append('descripcion_larga', descripcion_larga);
     formData.append('activo', activo);
     formData.append('precio', precio);
+    formData.append('foto_principal', foto_principal);
+    formData.append('foto2', foto2);
+    formData.append('foto3', foto3);
+    formData.append('foto4', foto4);
+    formData.append('foto5', foto5);
 
     var ajax = objetoAjax();
     //Abrimos comunicacion para el controller
@@ -211,19 +233,19 @@ function edicionRestauranteJS(id, nombre, latitud, altitud, localidad, email, te
 
 //CERRAR MODAL DE EDICION
 window.onclick = function(event) {
-    let modalEditar = document.getElementById("MyModalEditar");
+    let modalEditar = document.getElementById("MyModal");
     if (event.target == modalEditar) {
         modalEditar.style.display = "none";
     }
 }
 
 function closeModalEdicion() {
-    let modalEditar = document.getElementById("MyModalEditar");
+    let modalEditar = document.getElementById("MyModal");
     modalEditar.style.display = "none";
 }
 var span2 = document.getElementsByClassName("close")[2];
 span2.onclick = function() {
-    let modal = document.getElementById("MyModalEditar");
+    let modal = document.getElementById("MyModal");
     modal.style.display = "none";
 }
 
@@ -259,11 +281,13 @@ function desactivarActivarRestaurante(id) {
 //JS CREAR
 
 function crearModalRestaurante() {
-    let modal = document.getElementById('MyModalCrear')
-        //RECOPILamos valores del restaurante
-
-
+    let modal = document.getElementById("MyModal");
     modal.style.display = "block";
+    let modal_crear = document.getElementById('modal-content-crear')
+        //RECOPILamos valores del restaurante
+    modal_crear.style.display = "block";
+    let modal_login = document.getElementById('modal-content')
+    modal_login.style.display = "none";
 }
 //VALIDAMOS DATOS DEL FORMULARIO MODAL DE CREACION
 function validacion_creadorJS() {
@@ -342,14 +366,14 @@ function creacionRestauranteJS(foto, nombre, latitud, altitud, localidad, email,
 }
 //Cerrar Modal en click outside el modal
 window.onclick = function(event) {
-    let modalCrear = document.getElementById("MyModalCrear");
+    let modalCrear = document.getElementById("MyModal");
     if (event.target == modalCrear) {
         modalCrear.style.display = "none";
     }
 }
 
 function closeModalCreacion() {
-    let modalCrear = document.getElementById("MyModalCrear");
+    let modalCrear = document.getElementById("MyModal");
     modalCrear.style.display = "none";
 }
 
@@ -361,6 +385,13 @@ function redirect_homeJS() {
 function IWantToLogin() {
     modal = document.getElementById('MyModal')
     modal.style.display = "block";
+    modal_login = document.getElementById('modal-content')
+    modal_login.style.display = "block";
+    let modal_editar = document.getElementById('modal-content-editar')
+    modal_editar.style.display = "none";
+    let modal_crear = document.getElementById('modal-content-crear')
+    modal_crear.style.display = "none";
+
 }
 //Funcion de validacion del login
 function validacion_loginJS() {
@@ -450,6 +481,7 @@ function IWantToLogout() {
     ajax.send(formData);
 }
 
+//crucecita cerrar
 var span0 = document.getElementsByClassName("close")[0];
 var span1 = document.getElementsByClassName("close")[1];
 span0.onclick = function() {
@@ -462,7 +494,7 @@ span1.onclick = function() {
 }
 window.onclick = function(event) {
     let modallogin = document.getElementById("MyModal");
-    if (event.target == modal) {
+    if (event.target == modallogin) {
         modallogin.style.display = "none";
     }
 }

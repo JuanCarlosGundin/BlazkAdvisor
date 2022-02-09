@@ -133,6 +133,10 @@ body {
     display: none;
 }
 
+.modalcrear {}
+
+.modalmodificar {}
+
 
 /*FINAL MODAL CONTENT BOX*/
 
@@ -348,6 +352,10 @@ header {
     float: right;
 }
 
+.dollar {
+    float: left;
+}
+
 
 /* FILTRO */
 
@@ -524,6 +532,11 @@ h4 {
     font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
     width: 100%;
     background-color: white;
+    margin: 0;
+    overflow: hidden;
+    position: sticky;
+    top: 0;
+    margin-top: -3%;
 }
 
 ul {
@@ -533,7 +546,6 @@ ul {
     overflow: hidden;
     border-width: 2px;
     border-color: black;
-    position: sticky;
 }
 
 li {
@@ -582,7 +594,7 @@ a:hover {
     padding-right: 12.5%;
     padding-top: 2%;
     padding-bottom: 2%;
-    height: 1000px;
+    height: 1200px;
     font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
 }
 
@@ -591,6 +603,7 @@ a:hover {
     text-decoration: none;
     font-size: 80%;
     font-weight: bold;
+    padding: 10px;
 }
 
 
@@ -666,6 +679,62 @@ a:hover {
     float: right;
     padding: 2%;
     border: solid 0.2px rgb(206, 206, 206);
+}
+
+.userprofile {
+    width: 20%;
+    float: left;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile {
+    width: 100%;
+    border-radius: 50px;
+    margin-left: 10%;
+    padding: 0;
+}
+
+.profilefoto {
+    object-fit: cover;
+    width: 40px;
+    height: 40px;
+    border-radius: 150px;
+    margin-left: 20%;
+    margin-top: 5%
+}
+
+.useropinion {
+    width: 80%;
+    float: right;
+}
+
+.opinion {
+    width: 100%;
+    height: 100px;
+    border-radius: 5px;
+}
+
+.nombreusuario {
+    color: rgb(117, 117, 117);
+    text-decoration: none;
+    font-size: 100%;
+    font-weight: bold;
+}
+
+.notamedia {
+    float: right;
+    text-align: right;
+    width: 50%;
+    padding-bottom: 2%;
+}
+
+.opinionestitulo {
+    float: left;
+    width: 50%;
+    padding-bottom: 2%;
 }
 
 

@@ -63,13 +63,13 @@ session_start();
         <div class="cuadros">
             <div class="fotos">
                 <div class="fotoprincipal">
-                    <img class="foto1" src="../{{$restaurante->url_foto_principal}}">
+                    <img class="foto1" src="../storage/{{$restaurante->url_foto_principal}}">
                 </div>
                 <div class="fotosecundaria">
-                    <img class="foto2" src="../../{{$restaurante->url_foto1}}">
-                    <img class="foto2" src="../../{{$restaurante->url_foto2}}">
-                    <img class="foto2" src="../../{{$restaurante->url_foto3}}">
-                    <img class="foto2" src="../../{{$restaurante->url_foto4}}">
+                    <img class="foto2" src="../storage/{{$restaurante->url_foto1}}">
+                    <img class="foto2" src="../storage/{{$restaurante->url_foto2}}">
+                    <img class="foto2" src="../storage/{{$restaurante->url_foto3}}">
+                    <img class="foto2" src="../storage/{{$restaurante->url_foto4}}">
                 </div>
             </div>
         </div>
@@ -87,18 +87,36 @@ session_start();
                 <div id="map" style=" height: 200px; "></div>
             </div>
         </div>
+<div class="cuadros">
+            <div class="opiniones" id="opiniones">
+                <h1 class="opinionestitulo">Opiniones</h1>
+                <h1 class="notamedia">Nota media: </h1>
+                <div class="userprofile">
+                    <div class="profile">
+                        <img class="profilefoto" src="../img/2.jpg">
+                        <h5 class="nombreusuario">Nombre de muestra</h5>
+                    </div>
+                </div>
+                <div class="useropinion">
+                    <input type="text" class="opinion" placeholder="Escriba aqui su opinión...">
+                </div>
+            </div>
+        </div>
         <div class="cuadros">
             <div class="opiniones">
-                <h1>COMENTARIOS:</h1>
+                <div class="userprofile">
+                    <div class="profile">
+                        <img class="profilefoto" src="../img/2.jpg">
+                        <h5 class="nombreusuario">Nombre de muestra dice...</h5>
+                    </div>
+                </div>
+                <div class="useropinion">
+                    <h5 class="nombreusuario">PUNTUACION: </h5>
+                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                </div>
             </div>
         </div>
     </div>
-    <footer>
-        <div class="footer">
-            <p>Creado por Juan Carlos, Pol y Gerard</p>
-        </div>
-    </footer>
-
     <!--Modal boxes -->
     <!-- Aqui esta el modal -->
     <div class="modal" id="MyModal">
