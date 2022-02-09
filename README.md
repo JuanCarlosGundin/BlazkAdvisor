@@ -30,14 +30,13 @@ Para ello iremos al directorio htdocs ubicado en la raiz de la aplicación XAMPP
 ```
 git clone https://github.com/JuanCarlosGundin/BlazkAdvisor.git
 ```
-Ahora deberemos implementar en nuestro servidor de BBDD de XAMPP la base de datos del proyecto. Dentro de la carpeta bd que acabmos de importar desde github se encuentran dos archivos. **bd_pr03.sql**, nos permite generar la estructura de la base de datos y **bd_pr03.sql** ejecuta los inserts en la bbdd creada.
+Ahora deberemos implementar en nuestro servidor de BBDD de XAMPP la base de datos del proyecto.
 
 Ahora solo irnos a [este enlace](http://localhost/phpmyadmin/) para administrar las bases de datos en XAMPP usando PhpMyAdmin.
 
-En este momento podremos hacer la importacion de dos maneras, podemos copiar el contenido del archivo sql y pegarlo en el campo de texto de SQL o importar directamente el archivo SQL pulsando en la pestaña Importar.
-![img](https://i.gyazo.com/ef4852689af26a97e2f57f8490f43330.png)
-
-Primero deberemos importar el archivo de estructuras y seguidamente el archivo de inserts. Una vez lo hayamos hecho tendremos la base de datos insertada en el servidor MySQL de XAMPP
+Deberemos crear una bbdd y luego usar el archivo sql ubicado en /backupdb  y pulsar el botón importar una vez dentro de la BD.
+![img](https://i.gyazo.com/a78485d38c6a1a0cc68a04bd3c4e8a4e.png)
+Una vez lo hayamos hecho tendremos la base de datos insertada en el servidor MySQL de XAMPP
 
 ## Despliegue 📦
 
